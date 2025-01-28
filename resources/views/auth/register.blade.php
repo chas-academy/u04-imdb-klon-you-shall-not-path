@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <div class="flex min-h-screen items-center justify-center bg-gray-100">
-        <div class="w-1/3 bg-white p-16 rounded-2xl shadow-lg mx-auto">
+    <div class="flex min-h-screen items-center justify-center">
+        <div class="w-800 p-16 rounded-2xl shadow-lg mx-auto">
             <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Register</h2>
 
             <form method="POST" action="{{ route('register') }}" class="space-y-4">
