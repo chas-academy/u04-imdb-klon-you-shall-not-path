@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -19,13 +19,13 @@
         </style>
     @endif
 </head>
-<body>
+<body class="bg-gradient-to-b from-[#012169] to-[#3874F8] min-h-screen flex flex-col">
     <header>
-        <nav class="bg-white shadow-md">
+        <nav class="bg-[#012169]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16 items-center">
                     <div class="flex-shrink-0">
-                        <a href="" class="text-2xl font-bold text-gray-900">
+                        <a href="" class="text-white text-2xl font-bold text-gray-900"> <!-- Insert logo here -->
                             MyApp
                         </a>
                     </div>
@@ -38,28 +38,28 @@
                     <div>
                         @auth
                             @if(Auth::user()->role === 'admin')
-                            <a href="" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium mx-4">
+                            <a href="" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
                                 Dashboard
                             </a>
-                            <a href="" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium mx-4">
+                            <a href="" class="text-[#012169] bg-white px-4 py-2 rounded-lg font-medium mx-4">
                                 Admin
                             </a>
-                            <a href="{{ route('logout') }}" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium mx-4">
+                            <a href="{{ route('logout') }}" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
                                 Logout
                             </a>
                             @else
-                            <a href="" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium mx-4">
+                            <a href="" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
                                 User
                             </a>
-                            <a href="{{ route('logout') }}" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium mx-4">
+                            <a href="{{ route('logout') }}" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
                                 Logout
                             </a>
                             @endif
                         @else
-                            <a href="{{ route('login') }}" class="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-medium mx-4">
+                            <a href="{{ route('login') }}" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
                                 Login
                             </a>
-                            <a href="{{ route('register') }}" class="ml-4 text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg font-medium mx-4">
+                            <a href="{{ route('register') }}" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
                                 Register
                             </a>
                         @endauth

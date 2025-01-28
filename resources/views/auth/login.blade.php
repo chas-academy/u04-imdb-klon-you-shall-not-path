@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <div class="flex min-h-screen items-center justify-center bg-gray-100">
-        <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
+    <div class="flex min-h-screen items-center justify-center">
+        <div class="w-full max-w-md p-8 rounded-2xl shadow-lg">
             <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
 
             <form method="POST" action="{{ route('login') }}" class="space-y-4">
