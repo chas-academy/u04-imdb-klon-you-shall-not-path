@@ -22,3 +22,29 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+
+Route::get('/user-dashboard', function () {
+    return view ('user-dashboard');
+});
+
+Route::get('/admin-dashboard', function () {
+    return view ('admin-dashboard');
+});
+
+Route::get('/actors', function () {
+    return view ('actors');
+});
+
+Route::get('/actorpage', function () {
+    return view ('actorpage');
+});
+
+Route::get('/admin-settings', function () {
+    return view ('admin-settings');
+})->name('admin_settings');
+
+Route::get('/user-settings', function () {
+    return view ('user-settings');
+})->name('user_settings');
