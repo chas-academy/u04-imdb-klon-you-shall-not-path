@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage');
 })->name('home');
 
 Route::get('/dashboard', function () {
@@ -22,6 +23,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/test', [TestController::class, 'test'])->name('test');
+
+Route::get('/genre/{title}', [TestController::class, 'show'])->name('genre.movies');
 
 
 

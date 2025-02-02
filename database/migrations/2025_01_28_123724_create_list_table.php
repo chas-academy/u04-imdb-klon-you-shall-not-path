@@ -16,9 +16,7 @@ return new class extends Migration
             $table->string('title', 255);
             $table->mediumText('overview');
             $table->foreignId('user_id')->references('user_id')->on('users')->onDelete('cascade');
-            // Add user_id FK
             $table->foreignID('movie_id')->references('movie_id')->on('movie')->onDelete('cascade');
-            // Add movie_id FK
             $table->timestamps();
         });
     }
