@@ -39,7 +39,7 @@
     </div>
 
     <!-- Right Section: Actor Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-2">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-3 gap-2">
         @for ($i = 0; $i < 6; $i++)
             <div class="actor-container p-4 text-white">
                 <div class="w-full h-48 bg-gray-700 rounded-lg"></div>
