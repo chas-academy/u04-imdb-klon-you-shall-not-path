@@ -42,7 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::view('/top-rated-movies', 'top-rated-movies');
+// Route::view('/top-rated-movies', 'top-rated-movies');
+
+Route::get('/top-rated-movies', [TestController::class, 'showTop'])->name('showTop');
 
 require __DIR__.'/auth.php';
 
