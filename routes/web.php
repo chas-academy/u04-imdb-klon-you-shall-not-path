@@ -4,10 +4,10 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
-Route::get('/', function () {
-    return view('homepage');
-})->name('home');
+Route::get('/', [PageController::class, 'homepage'])->name('home');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
