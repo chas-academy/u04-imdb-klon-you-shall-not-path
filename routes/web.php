@@ -16,6 +16,26 @@ Route::get('/watchlist', function () {
     return view('watchlist');
 })->name('watchlist');
 
+Route::get('/specificmovie', function () {
+    return view('specificmovie');
+})->name('specificmovie');
+
+Route::get('/specificactor', function () {
+    return view('specificactor');
+})->name('specificactor');
+
+Route::get('/actor', function () {
+    return view('actor');
+})->name('actor');
+
+Route::get('/review', function () {
+    return view('review');
+})->name('review');
+
+Route::get('/genre', function () {
+    return view('genre');
+})->name('genre');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
