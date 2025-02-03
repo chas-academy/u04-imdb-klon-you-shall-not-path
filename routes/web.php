@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::view('/top-rated-movies', 'top-rated-movies');
+
 require __DIR__.'/auth.php';
 
 

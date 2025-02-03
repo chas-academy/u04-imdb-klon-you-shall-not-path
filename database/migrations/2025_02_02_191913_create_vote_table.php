@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('vote', function (Blueprint $table) {
             $table->unsignedBigInteger('vote_id')->autoIncrement();
             $table->unsignedBigInteger('vote');
-            // $table->foreign('movie_id')->references('movie_id')->on('movies')->onDelete('cascade');
-            // $table->foreign('user_id')->references('user_id')->on('user')->onDelete('cascade');
+            $table->unsignedBigInteger('movie_id');
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('movie_id')->references('movie_id')->on('movie')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
