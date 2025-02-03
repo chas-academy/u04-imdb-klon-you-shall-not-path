@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('review', function (Blueprint $table) {
             $table->id('review_id');
-            $table->string('title', 255);
+            $table->string('title');
             $table->mediumText('review');
+            // $table->foreign('movie_id')->references('movie_id')->on('movie')->onDelete('cascade');
+            // $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('positive_vote_count');
             $table->unsignedInteger('negative_vote_count');
             $table->timestamps();
