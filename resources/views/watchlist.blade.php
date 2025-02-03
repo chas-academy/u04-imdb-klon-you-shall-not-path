@@ -1,18 +1,13 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 <x-guest-layout>
 <div class=" min-h-screen flex">
+
+
     <!-- Sidebar -->
-    <aside class="w-1/4 bg-blue-950 p-6 text-white">
-        <h1 class="text-2xl font-bold">Watchlists</h1>
-        <button class="mt-4 bg-red-500 text-white px-4 py-2 rounded">+ Create watchlist</button>
-        <h2 class="mt-6 text-gray-400">My Lists</h2>
-        <div class="mt-2 bg-black text-white px-4 py-2 rounded flex items-center">🎬 Movies by Tom Cruise</div>
-        <div class="mt-4 flex items-center">
-            <input type="checkbox" class="mr-2">
-            <span>Abdu lista</span>
-            <button class="ml-auto text-gray-400">⋯</button>
-        </div>
-    </aside>
+    <x-sidebar-component>
+        <x-slot:title>Watchlist</x-slot:title>
+        <x-slot:subtitle>My list</x-slot:subtitle>
+    </x-sidebar-component>
     
     <!-- Main Content -->
     <main class="w-3/4 p-10 text-white">
