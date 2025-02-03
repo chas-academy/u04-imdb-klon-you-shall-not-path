@@ -10,48 +10,61 @@ class ActorMovieSeeder extends Seeder
     public function run(): void
     {
         $movieActors = [
-            ['movie_title' => 'Sonic the Hedgehog 3', 'actor_name' => 'Jim Carrey'],
-            ['movie_title' => 'Sonic the Hedgehog 3', 'actor_name' => 'Ben Schwartz'],
-            ['movie_title' => 'Sonic the Hedgehog 3', 'actor_name' => 'Keanu Reeves'],
-            ['movie_title' => 'Back in Action', 'actor_name' => 'Cameron Diaz'],
-            ['movie_title' => 'Back in Action', 'actor_name' => 'Jamie Foxx'],
-            ['movie_title' => 'Back in Action', 'actor_name' => 'McKenna Roberts'],
-            ['movie_title' => 'Kraven the Hunter', 'actor_name' => 'Aaron Taylor-Johnson'],
-            ['movie_title' => 'Kraven the Hunter', 'actor_name' => 'Ariana DeBose'],
-            ['movie_title' => 'Kraven the Hunter', 'actor_name' => 'Fred Hechinger'],
-            ['movie_title' => 'Nosferatu', 'actor_name' => 'Lily-Rose Depp'],
-            ['movie_title' => 'Nosferatu', 'actor_name' => 'Nicholas Hoult'],
-            ['movie_title' => 'Nosferatu', 'actor_name' => 'Willem Dafoe'],
-            ['movie_title' => 'Mufasa: The Lion King', 'actor_name' => 'Aaron Pierre'],
-            ['movie_title' => 'Mufasa: The Lion King', 'actor_name' => 'Kelvin Harrison Jr.'],
-            ['movie_title' => 'Mufasa: The Lion King', 'actor_name' => 'Tiffany Boone'],
-            ['movie_title' => 'Alarum', 'actor_name' => 'Scott Eastwood'],
-            ['movie_title' => 'Alarum', 'actor_name' => 'Sylvester Stallone'],
-            ['movie_title' => 'Alarum', 'actor_name' => 'Willa Fitzgerald'],
-            ['movie_title' => 'Devara: Part 1', 'actor_name' => 'N.T. Rama Rao Jr.'],
-            ['movie_title' => 'Devara: Part 1', 'actor_name' => 'Saif Ali Khan'],
-            ['movie_title' => 'Devara: Part 1', 'actor_name' => 'Prakash Raj'],
-            ['movie_title' => 'Moana 2', 'actor_name' => 'Dwayne Johnson'],
-            ['movie_title' => 'Moana 2', 'actor_name' => 'Rose Matafeo'],
-            ['movie_title' => 'Moana 2', 'actor_name' => 'David Fane'],
-            ['movie_title' => 'Gladiator II', 'actor_name' => 'Paul Mescal'],
-            ['movie_title' => 'Gladiator II', 'actor_name' => 'Denzel Washington'],
-            ['movie_title' => 'Gladiator II', 'actor_name' => 'Pedro Pascal'],
-            ['movie_title' => 'Venom: The Last Dance', 'actor_name' => 'Tom Hardy'],
-            ['movie_title' => 'Venom: The Last Dance', 'actor_name' => 'Chiwetel Ejiofor'],
-            ['movie_title' => 'Venom: The Last Dance', 'actor_name' => 'Juno Temple'],
+            ['title' => 'Sonic the Hedgehog 3', 'name' => 'Jim Carrey'],
+            ['title' => 'Sonic the Hedgehog 3', 'name' => 'Ben Schwartz'],
+            ['title' => 'Sonic the Hedgehog 3', 'name' => 'Keanu Reeves'],
+            ['title' => 'Back in Action', 'name' => 'Cameron Diaz'],
+            ['title' => 'Back in Action', 'name' => 'Jamie Foxx'],
+            ['title' => 'Back in Action', 'name' => 'McKenna Roberts'],
+            ['title' => 'Kraven the Hunter', 'name' => 'Aaron Taylor-Johnson'],
+            ['title' => 'Kraven the Hunter', 'name' => 'Ariana DeBose'],
+            ['title' => 'Kraven the Hunter', 'name' => 'Fred Hechinger'],
+            ['title' => 'Nosferatu', 'name' => 'Lily-Rose Depp'],
+            ['title' => 'Nosferatu', 'name' => 'Nicholas Hoult'],
+            ['title' => 'Nosferatu', 'name' => 'Willem Dafoe'],
+            ['title' => 'Mufasa: The Lion King', 'name' => 'Aaron Pierre'],
+            ['title' => 'Mufasa: The Lion King', 'name' => 'Kelvin Harrison Jr.'],
+            ['title' => 'Mufasa: The Lion King', 'name' => 'Tiffany Boone'],
+            ['title' => 'Alarum', 'name' => 'Scott Eastwood'],
+            ['title' => 'Alarum', 'name' => 'Sylvester Stallone'],
+            ['title' => 'Alarum', 'name' => 'Willa Fitzgerald'],
+            ['title' => 'Devara: Part 1', 'name' => 'N.T. Rama Rao Jr.'],
+            ['title' => 'Devara: Part 1', 'name' => 'Saif Ali Khan'],
+            ['title' => 'Devara: Part 1', 'name' => 'Prakash Raj'],
+            ['title' => 'Moana 2', 'name' => 'Dwayne Johnson'],
+            ['title' => 'Moana 2', 'name' => 'Rose Matafeo'],
+            ['title' => 'Moana 2', 'name' => 'David Fane'],
+            ['title' => 'Gladiator II', 'name' => 'Paul Mescal'],
+            ['title' => 'Gladiator II', 'name' => 'Denzel Washington'],
+            ['title' => 'Gladiator II', 'name' => 'Pedro Pascal'],
+            ['title' => 'Venom: The Last Dance', 'name' => 'Tom Hardy'],
+            ['title' => 'Venom: The Last Dance', 'name' => 'Chiwetel Ejiofor'],
+            ['title' => 'Venom: The Last Dance', 'name' => 'Juno Temple'],
         ];
 
         foreach ($movieActors as $entry) {
-            $movie = DB::table('movie')->where('title', $entry['movie_title'])->first();
-            $actor = DB::table('actor')->where('name', $entry['actor_name'])->first();
+            $movie = DB::table('movie')->where('title', $entry['title'])->first();
+            $actor = DB::table('actor')->where('name', $entry['name'])->first();
 
             if ($movie && $actor) {
-                DB::table('movie_actor')->insert([
-                    'movie_id' => $movie->id,
-                    'actor_id' => $actor->id,
-                ]);
+                // Ensure the correct primary key names
+                $movie_id = $movie->movie_id;
+                $actor_id = $actor->actor_id;
+
+                // Avoid duplicate insertions
+                $exists = DB::table('movie_actor')
+                    ->where('movie_id', $movie_id)
+                    ->where('actor_id', $actor_id)
+                    ->exists();
+
+                if (!$exists) {
+                    DB::table('movie_actor')->insert([
+                        'movie_id' => $movie_id,
+                        'actor_id' => $actor_id,
+                    ]);
+                }
             }
         }
     }
 }
+
