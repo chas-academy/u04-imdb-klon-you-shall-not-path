@@ -13,9 +13,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/watchlist', function () {
-    return view('watchlist');
-})->name('watchlist');
+Route::get('/watchlist', [TestController::class, 'showWatchList'])->name('watchlist');
 
 Route::get('/specificmovie', function () {
     return view('specificmovie');
