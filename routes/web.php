@@ -5,6 +5,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ImageController; // Testing
+use Intervention\Image\ImageManager; // Testing
+use Illuminate\Support\Facades\Response; // Testing
+use Intervention\Image\Drivers\Gd\Driver; // Testing
 
 Route::get('/', [PageController::class, 'homepage'])->name('home');
 
@@ -77,3 +81,36 @@ Route::get('/admin-settings', function () {
 Route::get('/user-settings', function () {
     return view ('user-settings');
 })->name('user_settings');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Testing
+
+Route::get('/images', [ImageController::class, 'index'])->name('images.index');
+Route::post('/images', [ImageController::class, 'store'])->name('images.store');
+Route::get('/images/{id}', [ImageController::class, 'show'])->name('images.show');
+
+
+
+
+Route::get('/test-image', function () {
+    // Correct way to initialize ImageManager
+    $manager = new ImageManager(new Driver());
+
+    // Create a blank canvas and fill it with red
+    $img = $manager->create(300, 200)->fill('#ff0000');
+
+    return Response::make($img->toPng()->save('image/test.png'))->header('Content-Type', 'image/png');
+});
