@@ -55,19 +55,19 @@ Route::get('/genre/{title}', [TestController::class, 'show'])->name('genre.movie
 
 Route::get('/user-dashboard', function () {
     return view ('user-dashboard');
-});
+})->name('user-dashboard');
 
 Route::get('/admin-dashboard', function () {
     return view ('admin-dashboard');
-});
+})->name('admin-dashboard');
 
-Route::get('/actors', function () {
-    return view ('actors');
-});
+// Route::get('/actors', function () {
+//     return view ('actors');
+// });
 
-Route::get('/actorpage', function () {
-    return view ('actorpage');
-});
+// Route::get('/actorpage', function () {
+//     return view ('actorpage');
+// });
 
 Route::get('/admin-settings', function () {
     return view ('admin-settings');
