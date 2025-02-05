@@ -4,8 +4,6 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
-<<<<<<< Updated upstream
-=======
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SpecificMovieController;
 use App\Http\Controllers\ImageController; // Testing
@@ -14,7 +12,6 @@ use Illuminate\Support\Facades\Response; // Testing
 use Intervention\Image\Drivers\Gd\Driver; // Testing
 
 Route::get('/', [PageController::class, 'homepage'])->name('home');
->>>>>>> Stashed changes
 
 Route::get('/', function () {
     return view('homepage');
@@ -29,6 +26,10 @@ Route::get('/watchlist', function () {
 })->name('watchlist');
 
 Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
+
+Route::get('/specificactor', function () {
+    return view('specificactor');
+})->name('specificactor');
 
 Route::get('/actor', function () {
     return view('actor');
