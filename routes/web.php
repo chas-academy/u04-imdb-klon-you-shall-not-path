@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SpecificMovieController;
 use App\Http\Controllers\ImageController; // Testing
 use Intervention\Image\ImageManager; // Testing
 use Illuminate\Support\Facades\Response; // Testing
@@ -19,9 +20,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/watchlist', [TestController::class, 'showWatchList'])->name('watchlist');
 
-Route::get('/specificmovie', function () {
-    return view('specificmovie');
-})->name('specificmovie');
+Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
 
 Route::get('/specificactor', function () {
     return view('specificactor');
