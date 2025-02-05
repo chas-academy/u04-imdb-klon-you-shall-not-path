@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedInteger('vote_count')->default(0);
             $table->float('vote_avr')->unsigned()->default(0);
             $table->date('release_date');
-            $table->string('poster_file_path');
             $table->string('trailer_file_path', 255);
             $table->timestamps();
         });

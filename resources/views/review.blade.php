@@ -40,11 +40,8 @@
     <div class="mt-8 review-container">
         <h3 class="text-highlight text-xl font-semibold mb-4">Add Your Review</h3>
         <form>
-            <x-text-input class="w-full p-2 rounded bg-gray-800 text-white" rows="4" placeholder="Write your review here..."></x-text-input>
-            <br></br>
-            <x-button class="mt-4 bg-yellow-500 px-4 py-2 rounded text-black">
-            submit
-            </x-button>
+            <textarea class="w-full p-2 rounded bg-gray-800 text-white" rows="4" placeholder="Write your review here..."></textarea>
+            <button type="submit" class="mt-4 bg-yellow-500 px-4 py-2 rounded text-black">Submit</button>
         </form>
     </div>
 </div>

@@ -2,22 +2,19 @@
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\ImageController; // Testing
-use Intervention\Image\ImageManager; // Testing
-use Illuminate\Support\Facades\Response; // Testing
-use Intervention\Image\Drivers\Gd\Driver; // Testing
 
-Route::get('/', [PageController::class, 'homepage'])->name('home');
-
+Route::get('/', function () {
+    return view('homepage');
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/watchlist', [TestController::class, 'showWatchList'])->name('watchlist');
+Route::get('/watchlist', function () {
+    return view('watchlist');
+})->name('watchlist');
 
 Route::get('/specificmovie', function () {
     return view('specificmovie');
@@ -35,7 +32,9 @@ Route::get('/review', function () {
     return view('review');
 })->name('review');
 
-Route::get('/genre', [GenreController::class, 'index']);
+Route::get('/genre', function () {
+    return view('genre');
+})->name('genre');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -43,9 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::view('/top-rated-movies', 'top-rated-movies');
-
-Route::get('/top-rated-movies', [TestController::class, 'showTop'])->name('showTop');
+Route::view('/top-rated-movies', 'top-rated-movies');
 
 require __DIR__.'/auth.php';
 
@@ -79,36 +76,3 @@ Route::get('/admin-settings', function () {
 Route::get('/user-settings', function () {
     return view ('user-settings');
 })->name('user_settings');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Testing
-
-Route::get('/images', [ImageController::class, 'index'])->name('images.index');
-Route::post('/images', [ImageController::class, 'store'])->name('images.store');
-Route::get('/images/{id}', [ImageController::class, 'show'])->name('images.show');
-
-
-
-
-Route::get('/test-image', function () {
-    // Correct way to initialize ImageManager
-    $manager = new ImageManager(new Driver());
-
-    // Create a blank canvas and fill it with red
-    $img = $manager->create(300, 200)->fill('#ff0000');
-
-    return Response::make($img->toPng()->save('image/test.png'))->header('Content-Type', 'image/png');
-});

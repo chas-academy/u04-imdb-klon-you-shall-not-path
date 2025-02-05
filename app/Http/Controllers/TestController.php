@@ -28,23 +28,4 @@ class TestController extends Controller
         // Pass the genre and movies data to the Blade view
         return view('displaytest', compact('genre', 'movies'));
     }
-
-    public function showTop()
-    {
-        // Fetch movies with their genres
-        $movies = Movie::with('genres')->get();
-
-        // Pass the data to the Blade view
-        return view('top-rated-movies', compact('movies'));
-    }
-
-
-    public function showWatchList()
-    {
-        // Fetch movies with their genres
-        $movies = Movie::with('genre')->get();
-
-        // Pass the data to the Blade view
-        return view('watchlist', compact('movies'));
-    }
 }
