@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<body>
-    <div class="flex h-full">
-    <div class="flex h-screen">
+<div class="flex h-full">
+<div class="flex h-screen">
      
     <!-- Sidebar -->
     <x-user-sidebar>
@@ -26,7 +25,6 @@
 
             </div>
     </main>
-    </div>
-    </div>
-</body>
+</div>
+</div>
 @endsection

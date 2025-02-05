@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<body>
-    <div class="flex h-full">
-    <div class="flex h-screen">
+<div class="flex h-full">
+<div class="flex h-screen">
 
     <!-- Sidebar -->
     <x-user-sidebar>    
@@ -20,15 +19,12 @@
     <!-- Profile Image -->
     <x-profile-photo>
     </x-profile-photo> 
-               
-            
+                      
     <x-profile-settings-form>
     </x-profile-settings-form>
             </div>
 
-    </main>
-    
-    </div>
-    </div>
-</body>         
+    </main>  
+</div>
+</div>        
 @endsection
