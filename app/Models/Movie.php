@@ -9,8 +9,13 @@ class Movie extends Model
     protected $table = 'movie';
     protected $primaryKey = 'movie_id';
 
-    public function genres()
+    public function genre()
     {
         return $this->belongsToMany(Genre::class, 'movie_genre', 'movie_id', 'genre_id');
+    }
+
+    public function actor()
+    {
+        return $this->belongsToMany(Actor::class, 'movie_actor', 'movie_id', 'actor_id');
     }
 }

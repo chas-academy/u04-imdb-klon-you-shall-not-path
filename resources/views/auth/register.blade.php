@@ -41,7 +41,7 @@
 
             <p class="text-center text-lg text-white mt-4">
                 Already have an account? 
-                <a href="{{ route('login') }}" class="text-black hover:text-indigo-800">Login here</a>
+                <a href="{{ route('login') }}" class="text-black hover:text-indigo-500">Login here</a>
             </p>
         
         </div>

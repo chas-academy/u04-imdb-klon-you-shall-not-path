@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id('review_id');
             $table->string('title');
             $table->mediumText('review');
-            // $table->foreign('movie_id')->references('movie_id')->on('movie')->onDelete('cascade');
-            // $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('movie_id');
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('movie_id')->references('movie_id')->on('movie')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('positive_vote_count');
             $table->unsignedInteger('negative_vote_count');
             $table->timestamps();
