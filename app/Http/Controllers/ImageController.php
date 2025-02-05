@@ -22,10 +22,11 @@ class ImageController extends Controller
     {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,jpg,png|max:2048', // Ensure it's an image
+            'name' => 'required|string|max:255',
         ]);
 
         $image = $request->file('image');
-        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $filename = $request->name . '.' . $image->getClientOriginalExtension();
         $filepath = 'uploads/' . $filename;
 
         $manager = new ImageManager(new Driver());
