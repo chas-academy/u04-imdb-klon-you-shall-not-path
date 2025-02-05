@@ -30,10 +30,6 @@ Route::get('/watchlist', function () {
 
 Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
 
-Route::get('/specificactor', function () {
-    return view('specificactor');
-})->name('specificactor');
-
 Route::get('/actor', function () {
     return view('actor');
 })->name('actor');
