@@ -13,17 +13,12 @@ use Intervention\Image\Drivers\Gd\Driver; // Testing
 
 Route::get('/', [PageController::class, 'homepage'])->name('home');
 
-Route::get('/', function () {
-    return view('homepage');
-})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/watchlist', function () {
-    return view('watchlist');
-})->name('watchlist');
+Route::get('/watchlist', [TestController::class, 'showWatchList'])->name('watchlist');
 
 Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
 
@@ -47,7 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::view('/top-rated-movies', 'top-rated-movies');
+// Route::view('/top-rated-movies', 'top-rated-movies');
+
+Route::get('/top-rated-movies', [TestController::class, 'showTop'])->name('showTop');
 
 require __DIR__.'/auth.php';
 
@@ -60,19 +57,19 @@ Route::get('/genre/{title}', [TestController::class, 'show'])->name('genre.movie
 
 Route::get('/user-dashboard', function () {
     return view ('user-dashboard');
-});
+})->name('user-dashboard');
 
 Route::get('/admin-dashboard', function () {
     return view ('admin-dashboard');
-});
+})->name('admin-dashboard');
 
-Route::get('/actors', function () {
-    return view ('actors');
-});
+// Route::get('/actors', function () {
+//     return view ('actors');
+// });
 
-Route::get('/actorpage', function () {
-    return view ('actorpage');
-});
+// Route::get('/actorpage', function () {
+//     return view ('actorpage');
+// });
 
 Route::get('/admin-settings', function () {
     return view ('admin-settings');
@@ -81,3 +78,36 @@ Route::get('/admin-settings', function () {
 Route::get('/user-settings', function () {
     return view ('user-settings');
 })->name('user_settings');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Testing
+
+Route::get('/images', [ImageController::class, 'index'])->name('images.index');
+Route::post('/images', [ImageController::class, 'store'])->name('images.store');
+Route::get('/images/{id}', [ImageController::class, 'show'])->name('images.show');
+
+
+
+
+Route::get('/test-image', function () {
+    // Correct way to initialize ImageManager
+    $manager = new ImageManager(new Driver());
+
+    // Create a blank canvas and fill it with red
+    $img = $manager->create(300, 200)->fill('#ff0000');
+
+    return Response::make($img->toPng()->save('image/test.png'))->header('Content-Type', 'image/png');
+});
