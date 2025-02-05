@@ -6,6 +6,11 @@
     <!-- Sidebar -->
     <x-sidebar-component>
         <x-slot:title>Watchlist</x-slot:title>
+            
+        <x-button customClass=" mx-20 my-4 bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md flex items-center justify-center">
+            + Create Watchlist
+        </x-button>
+            
         <x-slot:subtitle>My list</x-slot:subtitle>
     </x-sidebar-component>
     
