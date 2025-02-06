@@ -47,4 +47,7 @@ class TestController extends Controller
         // Pass the data to the Blade view
         return view('watchlist', compact('movies'));
     }
+
+
+
 }

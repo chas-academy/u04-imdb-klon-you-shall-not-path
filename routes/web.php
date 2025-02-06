@@ -20,6 +20,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/watchlist', [TestController::class, 'showWatchList'])->name('watchlist');
 
+
 Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
 
 Route::get('/specificactor', function () {
@@ -81,7 +82,11 @@ Route::get('/user-settings', function () {
 
 
 
+Route::get('/create-watchlist', function () {
+    return view('create-watchlist');
+})->name('create-watchlist');
 
+// Route::get('/', [PageController::class, 'homepage'])->name('home');
 
 
 
