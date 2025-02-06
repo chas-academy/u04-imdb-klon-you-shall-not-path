@@ -27,6 +27,7 @@ Route::get('/watchlist', [TestController::class, 'showWatchList'])->name('watchl
 Route::get('/create_watchlist', [TestController::class, 'create_watchlist'])->name('create_watchlist');
 
 
+
 Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
 
 
@@ -92,7 +93,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/create_new_user', [RegisteredUserController::class, 'storeAdmin'])->name('create_new_user');
 });
 
+Route::get('/create-watchlist', function () {
+    return view('create-watchlist');
+})->name('create-watchlist');
 
+// Route::get('/', [PageController::class, 'homepage'])->name('home');
 
 
 
