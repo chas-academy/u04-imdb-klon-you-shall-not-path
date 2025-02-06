@@ -34,12 +34,16 @@
         <div class="mt-4">
             <div class="flex items-center gap-2">
                 <span class="text-highlight text-lg font-bold">8.5/10</span>
-                <h2 class="text-xl font-semibold">Movie Title</h2>
+                <h2 class="text-xl font-semibold">{{ $movie->title }}</h2>
             </div>
-            <p class="mt-2 text-sm"><strong>Actors:</strong> Actor 1, Actor 2, Actor 3</p>
-            <p class="text-sm"><strong>Director:</strong> Director Name</p>
-            <p class="text-sm"><strong>Writers:</strong> Writer 1, Writer 2</p>
-            <p class="mt-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam...</p>
+            <p class="mt-2 text-sm"><strong>Actors:</strong> 
+                {{ $movie->actor->pluck('name')->join(', ') }}
+            </p>
+            <p class="text-sm"><strong>Genre:</strong> 
+                {{ $movie->genre->pluck('title')->join(', ') }}
+            </p>
+            <p class="text-sm"><strong>Release Date:</strong> {{ $movie->release_date ?? 'Unknown' }}</p>
+            <p class="mt-2 text-sm">{{ $movie->overview ?? 'No description available.' }}</p>
         </div>
     </div>
 
