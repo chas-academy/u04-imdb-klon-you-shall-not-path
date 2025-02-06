@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actor', function (Blueprint $table) {
-            $table->id('actor_id');
-            $table->string('headshot_file_path')->default('missing');
-            $table->string('name');
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
+            $table->string('file_path'); // Save relative file path
+            $table->timestamps();
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actor');
+        Schema::dropIfExists('image');
     }
 };

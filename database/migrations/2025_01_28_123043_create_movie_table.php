@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id('movie_id');
             $table->string('title', 255);
             $table->mediumText('overview');
-            $table->unsignedInteger('vote_count');
-            $table->float('vote_avr')->unsigned();
-            $table->foreignId('review_id')->references('review_id')->on('review')->onDelete('cascade'); // Foreign key
+            $table->unsignedInteger('vote_count')->default(0);
+            $table->float('vote_avr')->unsigned()->default(0);
             $table->date('release_date');
-            $table->timestamps();
+            $table->string('poster_file_path');
             $table->string('trailer_file_path', 255);
+            $table->timestamps();
         });
 
         Schema::create('genre', function (Blueprint $table) {
