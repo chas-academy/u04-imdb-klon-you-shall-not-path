@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="flex h-full">
 <div class="flex h-screen">
+
 
     <!-- Sidebar -->
     <x-admin-sidebar>
@@ -19,6 +21,10 @@
     </x-pending-reiviews-table>    
 
         </main>
+
 </div>   
 </div>
+
+
+
 @endsection

@@ -16,7 +16,7 @@
 
         <form action="{{ route('images.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
-            <input type="text" name="name" required class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg p-2">
+            <input type="text" name="name" placeholder="name" required class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg p-2">
             <input type="file" name="image" required class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg p-2">
             <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition">Upload Image</button>
         </form>
@@ -26,7 +26,6 @@
             @foreach($images as $image)
                 <div class="bg-gray-200 p-2 rounded-lg">
                     <img src="{{ url('storage/' . $image->file_path) }}" alt="Uploaded Image" class="w-full h-32 object-cover rounded-lg">
-                    <!-- <img src="{{ route('images.show', $image->id) }}" alt="Uploaded Image" class="w-full h-32 object-cover rounded-lg"> -->
                 </div>
             @endforeach
         </div>
