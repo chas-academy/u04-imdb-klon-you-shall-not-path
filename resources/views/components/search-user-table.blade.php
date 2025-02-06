@@ -11,19 +11,18 @@
         <table class="w-full text-left border-collapse">
             <thead>
                 <tr class="bg-blue-600 text-black">
-                    <th class="p-4" style="display: none;">User ID</th>
-                    <th class="p-4">First Name</th>
-                    <th class="p-4">Last Name</th>
+                    <!-- <th class="p-4" style="display: none;">User ID</th> -->
+                    <th class="p-4">Name</th>
                     <th class="p-4">Role</th>
                     <th class="p-4 text-center">Actions</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700">
+                @foreach ($users as $user)
                 <tr class="border-b hover:bg-gray-100">
-                    <td class="p-4" style="display: none;">1</td> <!-- Hidden User ID -->
-                    <td class="p-4">John</td>
-                    <td class="p-4">Doe</td>
-                    <td class="p-4">Admin</td>
+                    <!-- <td class="p-4" style="display: none;"></td>  Hidden User ID -->
+                    <td class="p-4">{{ $user->name }}</td>
+                    <td class="p-4">{{ $user->role }}</td>
                     <td class="p-4 text-center">
                         <x-edit-button>
                         </x-edit-button>
@@ -33,20 +32,7 @@
                         <button class="bg-red-500 text-black px-4 py-2 rounded hover:bg-red-600">Delete</button> -->
                     </td>
                 </tr>
-                <tr class="border-b hover:bg-gray-100">
-                    <td class="p-4" style="display: none;">1</td> <!-- Hidden User ID -->
-                    <td class="p-4">Jane</td>
-                    <td class="p-4">Smith</td>
-                    <td class="p-4">User</td>
-                    <td class="p-4 text-center">
-                    <x-edit-button>
-                        </x-edit-button>
-                        <x-delete-button>
-                        </x-delete-button>
-                        <!-- <button class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600">Edit</button>
-                        <button class="bg-red-500 text-black px-4 py-2 rounded hover:bg-red-600">Delete</button> -->
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

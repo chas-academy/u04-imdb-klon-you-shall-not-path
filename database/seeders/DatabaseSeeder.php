@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             MovieGenreSeeder::class,
             ActorMovieSeeder::class,
             ActorGenreSeeder::class,
+            TestListSeeder::class,
         ]);
     }
 }

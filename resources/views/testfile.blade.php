@@ -16,7 +16,7 @@
                     <tr class="hover:bg-gray-50">
                         <td class="border border-gray-300 px-4 py-2 text-gray-800">{{ $movie->title }}</td>
                         <td class="border border-gray-300 px-4 py-2 text-gray-600">
-                            @foreach ($movie->genres as $genre)
+                            @foreach ($movie->genre as $genre)
                                 <a href="{{ url('/genre/' . urlencode($genre->title)) }}" 
                                    class="inline-block bg-blue-100 text-blue-600 px-2 py-1 rounded-md text-sm font-medium hover:bg-blue-200 transition">
                                     {{ $genre->title }}
