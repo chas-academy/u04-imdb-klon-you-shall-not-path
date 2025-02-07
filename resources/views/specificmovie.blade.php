@@ -27,7 +27,7 @@
                 <img id="slide" src="{{ asset('images/movie1.jpg') }}" alt="Movie Image" class="w-full h-full object-cover">
             </div>
         </div>
-
++
         <!-- Movie Info -->
         <div class="mt-4">
             <div class="flex items-center gap-2">

@@ -20,6 +20,7 @@
     <!-- Profile Image -->
     <x-profile-photo>
     </x-profile-photo> 
+    <!-- Remove Profile phot -->
                
             
     <x-profile-settings-form>

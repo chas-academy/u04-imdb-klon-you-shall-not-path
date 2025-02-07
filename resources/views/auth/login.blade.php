@@ -13,13 +13,13 @@
                 <div class="w-full">
                     <label for="name" class="block text-lg font-medium text-white">Name</label>
                     <input type="text" name="name" required 
-                        class="mt-1 block w-full px-4 py-2 bg-transparent text-black border-4 border-gray-300 rounded-lg shadow-sm focus:ring-blue-400 focus:border-blue-400 backdrop-blur-md">
+                        class="mt-1 block w-full px-4 py-2 bg-transparent text-white border-4 border-gray-300 rounded-lg shadow-sm focus:ring-blue-400 focus:border-blue-400 backdrop-blur-md">
                 </div>
 
                 <div class="w-full">
                     <label for="password" class="block text-lg font-medium text-white">Password</label>
                     <input type="password" name="password" required 
-                        class="mt-1 block w-full px-4 py-2 bg-transparent text-black border-4 border-gray-300 rounded-lg shadow-sm focus:ring-blue-400 focus:border-blue-400 backdrop-blur-md">
+                        class="mt-1 block w-full px-4 py-2 bg-transparent text-white border-4 border-gray-300 rounded-lg shadow-sm focus:ring-blue-400 focus:border-blue-400 backdrop-blur-md">
                 </div>
                 
                 <x-button>
