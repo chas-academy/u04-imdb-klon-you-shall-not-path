@@ -15,6 +15,7 @@ use Intervention\Image\Drivers\Gd\Driver; // Testing
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\VoteController;
 
 Route::get('/', [PageController::class, 'homepage'])->name('home');
 
@@ -29,9 +30,13 @@ Route::get('/watchlist', [TestController::class, 'showWatchList'])->name('watchl
 Route::get('/create_watchlist', [TestController::class, 'create_watchlist'])->name('create_watchlist');
 
 Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
+
   
-Route::get('/movie/{movie}', [MovieController::class, 'show'])->name('movie.show');
-Route::get('/movie/{movie}/reviews', [ReviewController::class, 'index'])->name('movie.reviews');
+Route::get('/movie/{movie_id}', [MovieController::class, 'show'])->name('movie.show');
+
+Route::post('/movie/{movie_id}/review/{review_id}/vote/add', [VoteController::class, 'add'])->middleware('auth')->name('vote.add');
+Route::post('/movie/{movie_id}/review/{review_id}/vote/subtract', [VoteController::class, 'subtract'])->middleware('auth')->name('vote.subtract');
+
 
 Route::get('/specificactor', function () {
     return view('specificactor');
@@ -42,6 +47,7 @@ Route::get('/review', function () {
 })->name('review');
 
 Route::get('/genre', [GenreController::class, 'index'])->name('genre');
+Route::get('/genre/{title}', [GenreController::class, 'show'])->name('genre.movies');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -56,9 +62,11 @@ Route::get('/top-rated-movies', [TestController::class, 'showTop'])->name('showT
 require __DIR__.'/auth.php';
 
 
-Route::get('/test', [TestController::class, 'test'])->name('test');
+// Route::get('/test', [TestController::class, 'test'])->name('test');
 
-Route::get('/genre/{title}', [TestController::class, 'show'])->name('genre.movies');
+// Route::get('/genre/{title}', [TestController::class, 'show'])->name('genre.movie');
+
+
 
 Route::get('/actors', [ActorController::class, 'ShowActor'])->name('actors');
 
@@ -74,6 +82,10 @@ Route::get('/actors/{actor_id}', [ActorController::class, 'ShowSpecificActor'])-
 Route::middleware('auth')->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'ShowAdminDashboard'])->name('admin-dashboard');
     Route::get('/admin-settings', [AdminController::class, 'ShowAdminSettings'])->name('admin-settings');
+    Route::post('/admin-settings', [AdminController::class, 'search'])->name('users.search');
+    Route::get('/admin-settings/edit/{user:user_id}', [AdminController::class, 'edit'])->name('user.edit');
+    Route::put('/admin-settings/update/{user:user_id}', [AdminController::class, 'update'])->name('user.update');
+    Route::delete('/admin-settings/delete/{user:user_id}', [AdminController::class, 'destroy'])->name('user.destroy');
 });
 
 // Route::get('/admin-dashboard', function () {

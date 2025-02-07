@@ -34,13 +34,13 @@
     <!-- Right Section: Actor Grid -->
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-3 gap-2">
         @foreach ($movies as $movie)
-        <a href="">
+        <a href="{{ url('/movie/' . urlencode($movie->movie_id)) }}">
             <div class="p-4 text-white rounded-lg transition-transform transform hover:scale-105 cursor-pointer bg-gradient-to-br from-[#0b1a3a] to-[#142d5c] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70]">
                 <div class="w-full h-48 bg-gray-700 rounded-lg">
                     <img src="">
                     <!-- Add {{ $movie->poster_file_path }} in later after the images has been added -->
                 </div>
-                <p class="text-center mt-2 text-[#FFFFFF]">{{ $movie->title }}</p>
+                <p class="text-center mt-2 text-white">{{ $movie->title }}</p>
             </div>
         </a>
         @endforeach
