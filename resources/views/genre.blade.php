@@ -12,6 +12,7 @@
                 <div class="w-full h-48 bg-gray-700 rounded-lg flex items-center justify-center">
                     <p class="text-center font-bold text-white">{{ $genre->title }}</p>
                 </div>
+                <p class="text-center font-bold text-highlight">{{ $genre->title }}</p>
             </div>
         </a>
         @endforeach
