@@ -26,8 +26,6 @@
             <div class="w-full h-64 overflow-hidden rounded-lg">
                 <img id="slide" src="{{ asset('images/movie1.jpg') }}" alt="Movie Image" class="w-full h-full object-cover">
             </div>
-            <button onclick="prevSlide()" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-700 px-3 py-2 rounded-full">❮</button>
-            <button onclick="nextSlide()" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-700 px-3 py-2 rounded-full">❯</button>
         </div>
 +
         <!-- Movie Info -->
@@ -72,23 +70,14 @@
                     <p class="text-sm"><strong>User3:</strong> Great movie! Would watch again.</p>
                     <p class="text-xs text-gray-400">8/10</p>
                 </div>
+                <br>
+                <a href="{{ route('movie.reviews', $movie->movie_id) }}">
+                    <x-button class="mt-4 bg-yellow-500 px-4 py-2 rounded text-black">
+                        See All Reviews
+                    </x-button>
+                </a>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    let images = ['{{ asset('images/movie1.jpg') }}', '{{ asset('images/movie2.jpg') }}', '{{ asset('images/movie3.jpg') }}'];
-    let index = 0;
-
-    function nextSlide() {
-        index = (index + 1) % images.length;
-        document.getElementById('slide').src = images[index];
-    }
-
-    function prevSlide() {
-        index = (index - 1 + images.length) % images.length;
-        document.getElementById('slide').src = images[index];
-    }
-</script>
 @endsection

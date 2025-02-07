@@ -6,6 +6,8 @@ use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SpecificMovieController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ImageController; // Testing
 use Intervention\Image\ImageManager; // Testing
 use Illuminate\Support\Facades\Response; // Testing
@@ -26,11 +28,14 @@ Route::get('/dashboard', function () {
 Route::get('/watchlist', [TestController::class, 'showWatchList'])->name('watchlist');
 Route::get('/create_watchlist', [TestController::class, 'create_watchlist'])->name('create_watchlist');
 
-
-
 Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
+  
+Route::get('/movie/{movie}', [MovieController::class, 'show'])->name('movie.show');
+Route::get('/movie/{movie}/reviews', [ReviewController::class, 'index'])->name('movie.reviews');
 
-
+Route::get('/specificactor', function () {
+    return view('specificactor');
+})->name('specificactor');
 
 Route::get('/review', function () {
     return view('review');
