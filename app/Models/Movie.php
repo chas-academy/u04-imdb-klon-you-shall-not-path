@@ -18,4 +18,8 @@ class Movie extends Model
     {
         return $this->belongsToMany(Actor::class, 'movie_actor', 'movie_id', 'actor_id');
     }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'movie_id', 'movie_id'); // Anpassad nyckel
+    }
 }

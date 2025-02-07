@@ -9,19 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('review', function (Blueprint $table) {
-            $table->id('review_id');
-            $table->string('title');
-            $table->mediumText('review');
-            $table->unsignedBigInteger('movie_id');
-            $table->unsignedBigInteger('user_id');
-
-            $table->foreign('movie_id')->references('movie_id')->on('movie')->onDelete('cascade');
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
-            $table->unsignedInteger('positive_vote_count');
-            $table->unsignedInteger('negative_vote_count');
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('movie_id')->constrained('movie')->onDelete('cascade'); // Anpassad tabell
+            $table->string('username');
+            $table->text('content');
+            $table->integer('rating')->unsigned();
             $table->timestamps();
         });
     }

@@ -27,12 +27,11 @@
     <div class="review-container">
         <h3 class="text-highlight text-xl font-semibold mb-4">User Reviews</h3>
         <div class="space-y-4">
-            <div class="comment-box">
-                <p><span class="text-highlight">User1:</span> Amazing movie! Loved every bit of it.</p>
-            </div>
-            <div class="comment-box">
-                <p><span class="text-highlight">User2:</span> A well-directed film with great storytelling.</p>
-            </div>
+            @foreach ($reviews as $review)
+                <div class="comment-box">
+                    <p><span class="text-highlight">{{ $review->user->name }}:</span> {{ $review->content }}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 
