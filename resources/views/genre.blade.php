@@ -7,13 +7,14 @@
     <!-- Genre Grid -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         @foreach ($genres as $genre)
-            <div class="p-4 text-white rounded-lg transition-transform transform hover:scale-105 cursor-pointer bg-gradient-to-br from-[#0b1a3a] to-[#142d5c] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70]">
-                <div class="w-full h-48 bg-gray-700 rounded-lg">
-                    <img src=""> 
-                    <!-- Headshot file path in src ^ -->
+        <a href="{{ url('/genre/' . urlencode($genre->title)) }}">
+            <div class="bg-gradient-to-br from-[#0b1a3a] to-[#142d5c] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70] rounded-lg transition-transform duration-300 ease-in-out cursor-pointer transition-transform duration-200 hover:scale-105 p-4 text-white">
+                <div class="w-full h-48 bg-gray-700 rounded-lg flex items-center justify-center">
+                    <p class="text-center font-bold text-white">{{ $genre->title }}</p>
                 </div>
                 <p class="text-center font-bold text-highlight">{{ $genre->title }}</p>
             </div>
+        </a>
         @endforeach
     </div>
 </div>

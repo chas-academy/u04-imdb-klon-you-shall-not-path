@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Vote extends Model
 {
-    protected $table = 'review';
-    protected $primaryKey = 'review_id';
-    protected $fillable = ['movie_id', 'username', 'content', 'rating'];
+    protected $table = 'vote';
+    protected $primaryKey = 'vote_id';
 
     public function movie()
     {
