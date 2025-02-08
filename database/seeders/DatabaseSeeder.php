@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             ActorMovieSeeder::class,
             ActorGenreSeeder::class,
             TestListSeeder::class,
+            ReviewAndVoteSeeder::class,
         ]);
     }
 }

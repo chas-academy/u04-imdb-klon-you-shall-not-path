@@ -24,10 +24,10 @@
                 <td class="p-4 flex justify-center space-x-2">
                     <x-approve-button>
                     </x-approve-button>
-                    <x-edit-button>
-                    </x-edit-button>
-                    <x-delete-button>
-                    </x-delete-button>
+                    <x-edit-review-button>
+                    </x-edit-review-button>
+                    <x-delete-review-button>
+                    </x-delete-review-button>
                     <!-- <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Approve</button>
                     <button class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">Edit</button>
                     <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Delete</button> -->
