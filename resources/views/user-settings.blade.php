@@ -18,10 +18,6 @@
     
             <div class="flex w-full items-start">
             
-    <!-- Profile Image -->
-    <x-profile-photo>
-    </x-profile-photo> 
-
     <x-profile-settings-form>
     </x-profile-settings-form>
             </div>

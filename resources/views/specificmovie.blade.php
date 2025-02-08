@@ -1,35 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    .movie-container {
-        background: linear-gradient(145deg, #0b1a3a, #012169);
-        box-shadow: 5px 5px 15px #0a1329, -5px -5px 15px #1c3e70;
-        border-radius: 10px;
-    }
-    .text-highlight {
-        color: #FFFFFF;
-    }
-    .review-container {
-        background: #0b1a3a;
-        border: 2px solid #FFFFFF;
-        padding: 10px;
-        border-radius: 10px;
-    }
-</style>
-
 <div class="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
     <!-- Left Section: Movie & Image Slideshow -->
-    <div class="movie-container p-4 text-white">
+    <div class="p-4 text-white rounded-lg bg-gradient-to-br from-[#0b1a3a] to-[#012169] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70]">
         <!-- Image Slideshow -->
         <div class="relative">
             <div class="w-full h-64 overflow-hidden rounded-lg">
                 <img id="slide" src="{{ asset('images/movie1.jpg') }}" alt="Movie Image" class="w-full h-full object-cover">
             </div>
-            <button onclick="prevSlide()" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-700 px-3 py-2 rounded-full">❮</button>
-            <button onclick="nextSlide()" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-700 px-3 py-2 rounded-full">❯</button>
         </div>
-
++
         <!-- Movie Info -->
         <div class="mt-4">
             <div class="flex items-center gap-2">
@@ -56,7 +37,7 @@
         </div>
         
         <!-- Review Section -->
-        <div class="movie-container p-4 text-white">
+        <div class="p-4 text-white rounded-lg bg-gradient-to-br from-[#0b1a3a] to-[#012169] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70]">
             <h3 class="text-lg font-semibold mb-2">Reviews</h3>
             <div class="space-y-4">
                 <!-- Sample Reviews -->
@@ -72,23 +53,14 @@
                     <p class="text-sm"><strong>User3:</strong> Great movie! Would watch again.</p>
                     <p class="text-xs text-gray-400">8/10</p>
                 </div>
+                <br>
+                <a href="{{ route('movie.reviews', $movie->movie_id) }}">
+                    <x-button class="mt-4 bg-yellow-500 px-4 py-2 rounded text-black">
+                        See All Reviews
+                    </x-button>
+                </a>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    let images = ['{{ asset('images/movie1.jpg') }}', '{{ asset('images/movie2.jpg') }}', '{{ asset('images/movie3.jpg') }}'];
-    let index = 0;
-
-    function nextSlide() {
-        index = (index + 1) % images.length;
-        document.getElementById('slide').src = images[index];
-    }
-
-    function prevSlide() {
-        index = (index - 1 + images.length) % images.length;
-        document.getElementById('slide').src = images[index];
-    }
-</script>
 @endsection

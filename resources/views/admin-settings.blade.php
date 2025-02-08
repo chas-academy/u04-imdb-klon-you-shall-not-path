@@ -12,12 +12,13 @@
 
     <!-- Main Content -->
     <main class="flex-1 p-6">
-        <h2 class="text-2xl font-semibold text-white mb-4 text-center">Welcome, John Doe</h2>
+        <h2 class="text-2xl font-semibold text-white mb-4 text-center">Welcome, {{ $id->name }}</h2>
         <h2 class="text-2xl font-semibold text-white mb-4 text-center">Users List</h2>
-
-
-  <x-search-user-table>
-  </x-search-user-table>   
+  
+    <x-search-user-table :users="$users">
+      <x-slot:slot>
+      </x-slot:slot>
+    </x-search-user-table>
 
   <x-create-new-user-form>  
   </x-create-new-user-form>      

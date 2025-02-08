@@ -13,25 +13,25 @@
                 <div class="w-full">
                     <label for="name" class="block text-lg font-medium text-white">Name</label>
                     <input type="text" name="name" required 
-                        class="mt-1 block w-full px-4 py-2 bg-transparent border-4 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        class="mt-1 block w-full px-4 py-2 bg-transparent border-4 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-white">
                 </div>
 
                 <div class="w-full">
                     <label for="email" class="block text-lg font-medium text-white">Email</label>
                     <input type="email" name="email" required 
-                        class="mt-1 block w-full px-4 py-2 bg-transparent border-4 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        class="mt-1 block w-full px-4 py-2 bg-transparent border-4 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-white">
                 </div>
 
                 <div class="w-full">
                     <label for="password" class="block text-lg font-medium text-white">Password</label>
                     <input type="password" name="password" required 
-                        class="mt-1 block w-full px-4 py-2 bg-transparent border-4 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        class="mt-1 block w-full px-4 py-2 bg-transparent border-4 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-white">
                 </div>
 
                 <div class="w-full">
                     <label for="password_confirmation" class="block text-lg font-medium text-white">Confirm Password</label>
                     <input type="password" name="password_confirmation" required 
-                        class="mt-1 block w-full px-4 py-2 bg-transparent border-4 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        class="mt-1 block w-full px-4 py-2 bg-transparent border-4 border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-white">
                 </div>
 
                 <x-button>
@@ -41,7 +41,7 @@
 
             <p class="text-center text-lg text-white mt-4">
                 Already have an account? 
-                <a href="{{ route('login') }}" class="text-black hover:text-indigo-500">Login here</a>
+                <a href="{{ route('login') }}" class="text-white hover:text-indigo-500">Login here</a>
             </p>
         
         </div>

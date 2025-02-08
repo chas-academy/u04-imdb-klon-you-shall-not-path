@@ -25,30 +25,32 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16 items-center">
                     <div class="flex-shrink-0">
-                        <a href="{{ route('home') }}" class="text-white text-2xl font-bold text-gray-900"> <!-- Insert logo here -->
+                        <a href="{{ route('home') }}" class="text-white text-2xl font-bold"> <!-- Insert logo here -->
                             MyApp
                         </a>
                     </div>
-                    <!-- <div class="hidden md:flex space-x-8">
-                        <a href="/" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
-                        <a href="/about" class="text-gray-700 hover:text-gray-900 font-medium">About</a>
-                        <a href="/services" class="text-gray-700 hover:text-gray-900 font-medium">Services</a>
-                        <a href="/contact" class="text-gray-700 hover:text-gray-900 font-medium">Contact</a>
-                    </div> -->
+                    <div class="hidden md:flex space-x-8">
+                        <a href="{{ route('home') }}" class="text-white hover:text-indigo-700 font-medium transition duration-300">Movies</a>
+                        <a href="{{ route('actors') }}" class="text-white hover:text-indigo-700 font-medium transition duration-300">Actors</a>
+                        <a href="{{ route('genre') }}" class="text-white hover:text-indigo-700 font-medium transition duration-300">Genres</a>
+                    </div>
                     <div>
                         @auth
                             @if(Auth::user()->role === 'admin')
-                            <a href="" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
+                            <a href="{{ route('admin-dashboard') }}" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
                                 Dashboard
                             </a>
-                            <a href="" class="text-[#012169] bg-white px-4 py-2 rounded-lg font-medium mx-4">
+                            <a href="{{ route('admin-settings') }}" class="text-[#012169] bg-white px-4 py-2 rounded-lg font-medium mx-4">
                                 Admin
                             </a>
                             <a href="{{ route('logout') }}" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
                                 Logout
                             </a>
                             @else
-                            <a href="" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
+                            <a href="{{ route('user-dashboard') }}" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
+                                Dashboard
+                            </a>
+                            <a href="{{ route('user-settings') }}" class="text-[#012169] bg-white px-4 py-2 rounded-lg font-medium mx-4">
                                 User
                             </a>
                             <a href="{{ route('logout') }}" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
