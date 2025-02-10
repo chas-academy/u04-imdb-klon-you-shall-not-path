@@ -10,4 +10,8 @@ class WatchList extends Model
     protected $primaryKey = 'list_id';
 
     // ADD a function belongsToMany regarding movies
+    public function movie()
+    {
+        return $this->belongsToMany(Movie::class, 'movie_list', 'movie_id', 'list_id');
+    }
 }

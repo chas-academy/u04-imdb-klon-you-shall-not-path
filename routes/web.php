@@ -6,7 +6,6 @@ use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SpecificMovieController;
-use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ImageController; // Testing
 use Intervention\Image\ImageManager; // Testing
@@ -16,6 +15,8 @@ use App\Http\Controllers\ActorController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\MovieController;
+
 
 Route::get('/', [PageController::class, 'homepage'])->name('home');
 
@@ -23,11 +24,6 @@ Route::get('/', [PageController::class, 'homepage'])->name('home');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-
-
-Route::get('/watchlist', [TestController::class, 'showWatchList'])->name('watchlist');
-Route::get('/create_watchlist', [TestController::class, 'create_watchlist'])->name('create_watchlist');
 
 Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
 
@@ -110,9 +106,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/create_new_user', [RegisteredUserController::class, 'storeAdmin'])->name('create_new_user');
 });
 
-Route::get('/create-watchlist', function () {
-    return view('create-watchlist');
-})->name('create-watchlist');
+Route::get('/create-watchlist', [MovieController::class, 'create_watchlist'])->name('create-watchlist');
+Route::post('/create-watchlist', [MovieController::class, 'storeWatchlist'])->name('store.watchlist');
+
+// Show empty watchlist when no list is selected
+Route::get('/watchlist', [MovieController::class, 'showEmptyWatchlist'])->name('watchlist.empty');
+
+// Handle watchlist selection and redirect
+Route::post('/watchlist', [MovieController::class, 'selectWatchlist'])->name('watchlist.show');
+
+// Display the selected watchlist and movies
+Route::get('/watchlist/{list_id}', [MovieController::class, 'showWatchlist'])->name('watchlist.view');
+
+
+// Route::post('/watchlist/{list_id}', [TestController::class, 'showSpecificWatchList'])->name('specific.whatlist');
 
 // Route::get('/', [PageController::class, 'homepage'])->name('home');
 
