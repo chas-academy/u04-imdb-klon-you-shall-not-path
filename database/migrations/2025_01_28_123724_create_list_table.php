@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id('list_id');
             $table->string('title', 255);
             $table->mediumText('overview');
-            // $table->foreignId('user_id')->references('user_id')->on('users')->onDelete('cascade')->default(0);
-            // $table->foreignID('movie_id')->references('movie_id')->on('movie')->onDelete('cascade')->default(0);
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
