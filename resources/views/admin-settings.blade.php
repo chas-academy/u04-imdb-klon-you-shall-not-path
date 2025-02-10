@@ -2,13 +2,15 @@
 
 @section('content')
 
-<div class="flex h-full">
-<div class="flex h-screen">
+<!-- <div class="flex h-full">
+<div class="flex h-screen"> -->
+<div class="flex flex-col md:flex-row h-full min-h-screen">
         
       <!-- Sidebar -->
+    <div class="md:w-1/4 w-full md:block hidden">
   <x-admin-sidebar>
   </x-admin-sidebar> 
-
+  </div>
 
     <!-- Main Content -->
     <main class="flex-1 p-6">
@@ -36,6 +38,6 @@
 
     </main>
 </div>
-</div>
+<!-- </div> -->
 
 @endsection
