@@ -19,8 +19,7 @@
             <div class="flex w-full items-start">
 
     <!-- Profile Image -->
-    <x-profile-photo>
-    </x-profile-photo>  
+  
         
     <x-watchlist-gallery>
     </x-watchlist-gallery>      
