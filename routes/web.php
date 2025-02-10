@@ -46,6 +46,10 @@ Route::get('/review', function () {
     return view('review');
 })->name('review');
 
+Route::get('/review-form', function () {
+    return view('review-form');
+})->name('review-form');
+
 Route::get('/genre', [GenreController::class, 'index'])->name('genre');
 Route::get('/genre/{title}', [GenreController::class, 'show'])->name('genre.movies');
 
@@ -96,6 +100,19 @@ Route::middleware('auth')->group(function () {
 //     return view ('admin-settings');
 // })->middleware(['auth'])->name('admin_settings');
 
+Route::middleware('auth')->group(function () {
+    Route::post('/movie/{movie_id}/review', [ReviewController::class, 'store'])->name('review.store');
+});
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/reviews', [ReviewController::class, 'pendingReviews'])->name('admin.reviews');
+    Route::post('/admin/review/{review_id}/approve', [ReviewController::class, 'approve'])->name('review.approve');
+});
+
+Route::get('/review-form', [ReviewController::class, 'showReviewForm'])->name('review.form');
+
+
 
 Route::get('/user-dashboard', function () {
     return view ('user-dashboard');
@@ -120,6 +137,7 @@ Route::get('/create-watchlist', function () {
 
 
 
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 
 
