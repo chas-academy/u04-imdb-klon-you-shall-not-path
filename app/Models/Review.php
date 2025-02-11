@@ -8,7 +8,7 @@ class Review extends Model
 {
     protected $table = 'review';
     protected $primaryKey = 'review_id';
-    protected $fillable = ['movie_id', 'username', 'content', 'rating'];
+    protected $fillable = ['movie_id', 'user_id', 'review', 'title'];
 
     public function movie()
     {
