@@ -106,8 +106,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/review/{review_id}/approve', [ReviewController::class, 'approve'])->name('review.approve');
 });
 
-Route::get('/review-form', [ReviewController::class, 'showReviewForm'])->name('review.form');
-
+// Route::get('/review-form', [ReviewController::class, 'showReviewForm'])->name('review.form');
+Route::get('/review-form/{movie_id}', [ReviewController::class, 'showReviewForm'])->name('review.form');
 
 
 Route::get('/user-dashboard', function () {
@@ -145,6 +145,7 @@ Route::get('/watchlist/{list_id}', [MovieController::class, 'showWatchlist'])->n
 
 
 Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
 
 
 
