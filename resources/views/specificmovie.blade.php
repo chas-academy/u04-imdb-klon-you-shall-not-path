@@ -70,7 +70,7 @@
                         </x-button>
                     </a>
                     <div class="ml-auto">
-                        <a href="">
+                        <a href="{{ url('/review-form/' . $movie->movie_id) }}">
                             <x-button class="bg-yellow-500 px-4 py-2 rounded text-black">
                                 Add review
                             </x-button>

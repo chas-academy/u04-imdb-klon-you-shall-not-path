@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
@@ -21,16 +22,19 @@ class ReviewController extends Controller
             'review' => 'required|string',
             'movie_id' => 'required|exists:movies,id',
             'user_id' => 'required|exists:users,id',
+            'vote' => 'required|integer|min:1|max:10'
         ]);
 
-        Review::create([
+        $review = Review::create([
             'title' => $request->title,
             'review' => $request->review,
             'movie_id' => $request->movie_id,
             'user_id' => auth()->id(),
+            'vote'=> $request->vote,
             'positive_vote_count' => 0,
             'negative_vote_count' => 0,
             'is_approved' => false, // Väntar på godkännande
+            
         ]);
 
         return back()->with('success', 'Recensionen har skickats in och väntar på godkännande.');
@@ -39,7 +43,7 @@ class ReviewController extends Controller
     public function approve($review_id)
     {
         $review = Review::findOrFail($review_id);
-        $review->update(['is_approved' => true]);
+        $review->update(['is_approved' => false]);
 
         return back()->with('success', 'Recensionen har godkänts.');
     }
@@ -51,10 +55,10 @@ class ReviewController extends Controller
     }
 
 
-    public function showReviewForm()    
+    public function showReviewForm($movie_id)    
     {
-    $reviews = Review::where('approved', true)->get(); // Hämta endast godkända recensioner
-    return view('review-form', compact('reviews'));
+    $movie = Movie::findOrFail($movie_id);
+    return view('review-form', compact('movie','reviews'));
     }
 
 
