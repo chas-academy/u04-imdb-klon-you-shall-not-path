@@ -6,6 +6,8 @@
 <div class="flex h-screen"> -->
 <div class="flex flex-col md:flex-row h-full min-h-screen">
 
+        <!-- Sidebar -->
+        <x-admin-sidebar></x-admin-sidebar>  
 
     <!-- Sidebar -->
     <div class="flex flex-col md:flex-row h-full min-h-screen">    
@@ -22,11 +24,10 @@
     <x-pending-reviews-table>
     </x-pending-reviews-table>    
 
+
         </main>
 
-</div>   
+    </div>   
 </div>
-
-
 
 @endsection

@@ -18,4 +18,9 @@ class Movie extends Model
     {
         return $this->belongsToMany(Actor::class, 'movie_actor', 'movie_id', 'actor_id');
     }
+
+    public function watchlist()
+    {
+        return $this->belongsToMany(Watchlist::class, 'movie_list', 'movie_id', 'list_id');
+    }
 }

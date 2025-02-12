@@ -10,15 +10,11 @@
             </button>
             
             <h3 class="mt-6 text-lg font-semibold">My Lists</h3>
-            
+            @foreach ($lists as $list)
             <div class="mt-2 bg-black text-white p-3 rounded-lg flex items-center">
-                <span class="mr-2 bg-white text-black p-2 rounded-full">M</span> 
-                Movies by Tom Cruise
+                {{ $list->title }}
             </div>
-            
-            <button class="mt-6 flex items-center text-gray-400">
-                <span class="mr-2">⚫</span> Add List
-            </button>
+            @endforeach
         </aside>
 
         <!-- Main Content -->
@@ -26,42 +22,38 @@
             <div class="bg-blue-800 p-6 rounded-lg shadow-lg border border-blue-400">
                 
                 <div class="flex justify-between">
-                    <h1 class="text-3xl font-bold">Movies by Tom Cruise</h1>
-                    <a href="#" class="text-red-400 hover:text-red-600">Delete Watchlist</a>
+                    <h1 class="text-3xl font-bold">Create New Watchlist</h1>
+                    <a href="" class="text-red-400 hover:text-red-600">Cancel</a>
                 </div>
 
                 <!-- Form -->
-                <form class="mt-6 space-y-4">
+                <form action="{{ route('store.watchlist') }}" method="POST" class="mt-6 space-y-4">
+                @csrf
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    @if(session('success'))
+                        <div class="p-4 mb-4 text-green-600 bg-green-200 rounded">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                        <div class="p-4 mb-4 text-red-600 bg-red-200 rounded">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <label class="block">
                         <span class="text-gray-300">Name</span>
-                        <input type="text" class="w-full p-2 mt-1 bg-gray-700 border border-gray-500 rounded-md">
+                        <input type="text" name="name" class="w-full p-2 mt-1 bg-gray-700 border border-gray-500 rounded-md">
                     </label>
 
                     <label class="block">
                         <span class="text-gray-300">Description</span>
-                        <textarea class="w-full p-2 mt-1 bg-gray-700 border border-gray-500 rounded-md"></textarea>
+                        <textarea name="description" class="w-full p-2 mt-1 bg-gray-700 border border-gray-500 rounded-md"></textarea>
                     </label>
 
-                    <h3 class="text-lg font-semibold">Movies</h3>
+                    <x-search-watchlist-table :movies=$movies />
 
-                    <!-- Movie List -->
-                    @foreach ($movies as $movie)
-                    <div class="flex items-center justify-between bg-gray-700 p-3 rounded-md">
-                        <div class="flex items-center">
-                            <!-- Film Poster -->
-                            <div class="w-12 h-12 bg-gray-900 flex items-center justify-center rounded-md overflow-hidden">
-                                <img src="{{ asset('storage/' . $movie->poster_file_path) }}" 
-                                     alt="{{ $movie->title }}" class="w-full h-full object-cover">
-                            </div>
-
-                            <!-- Film Titel -->
-                            <span class="ml-4">🎬 {{ $movie->title }} ({{ $movie->year }})</span>
-                        </div>
-
-                        <!-- Checkbox -->
-                        <input type="checkbox" class="w-6 h-6 rounded-md border-white bg-transparent">
-                    </div>
-                @endforeach
+                    <x-create-watchlist-button />
                 </form>
             </div>
         </main>
