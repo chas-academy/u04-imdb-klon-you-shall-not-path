@@ -2,9 +2,7 @@
 
 @section('content')
 
-<div class="flex h-full">
-<div class="flex h-screen">
-
+<div class="flex flex-col md:flex-row h-screen w-full">
 
     <!-- Sidebar -->
     <x-user-sidebar>    
@@ -16,15 +14,12 @@
         <!-- H2 Centered at the Top -->
         <h2 class="text-2xl font-semibold text-white mb-4 text-center">Welcome, John Doe</h2>
     
-            <div class="flex w-full items-start">
-            
-    <x-profile-settings-form>
-    </x-profile-settings-form>
-            </div>
-
+    <div class="flex w-full items-start">    
+        <x-profile-settings-form>
+        </x-profile-settings-form>
+    </div>
 
     </main>  
 </div>
-</div>        
-
+    
 @endsection

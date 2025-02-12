@@ -2,10 +2,8 @@
 
 @section('content')
 
-<div class="flex h-full">
-<div class="flex h-screen">
+<div class="flex flex-col md:flex-row h-screen w-full">
 
-     
     <!-- Sidebar -->
     <x-user-sidebar>
     </x-user-sidebar>
@@ -14,20 +12,14 @@
     <main class="flex-1 p-6 flex flex-col items-center w-full">
         
         <!-- H2 Centered at the Top -->
-        <h2 class="text-2xl font-semibold text-white mb-4 text-center">Welcome, John Doe</h2>
+        <h2 class="text-2xl font-semibold text-white mb-4 text-center">Welcome, {{ auth()->user()->name }}</h2>
          
-            <div class="flex w-full items-start">
+        <div class="w-full">
+            <x-watchlist-gallery>
+            </x-watchlist-gallery>      
+        </div>
 
-    <!-- Profile Image -->
-  
-        
-    <x-watchlist-gallery>
-    </x-watchlist-gallery>      
-
-            </div>
     </main>
-
-</div>
 </div>
 
 @endsection

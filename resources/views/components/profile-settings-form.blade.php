@@ -1,68 +1,68 @@
-<div class="mt-8 p-6 bg-white rounded-lg shadow-lg max-w-4xl ml-12">
+<div class="bg-gradient-to-br from-[#0b1a3a] to-[#142d5c] shadow-md rounded-lg p-5 text-white space-y-6 w-full">
 
-    <!-- update username form -->
-<form name="username-settings-update" id="username-settings-update" method="post" action class="flex items-center space-x-4">
+    <!-- Update Username Form -->
+<form name="username-settings-update" id="username-settings-update" method="post" action="" class="flex items-center space-x-4">
     @csrf
     
-    <!-- user Name -->
-    <div class="form-group">
-        <label name="">Username</label>
-        <input type="text" placeholder="Your current username" id="userName" name="userName" class="p-3 border rounded w-full" required="">
+    <!-- Current Username -->
+    <div class="w-full">
+        <label class="block text-sm font-medium">Current Username</label>
+        <input type="text" placeholder="Your current username" id="userName" name="userName" class="p-3 border rounded w-full bg-gray-800" required="">
     </div>
 
-    <!-- update user Name -->
-    <div class="form-group">
-        <label name="">New username</label>
-        <input type="text" placeholder="Type new username" id="newUserName" name="newUserName" class="p-3 border rounded w-full" required="">
+    <!-- New Username -->
+    <div class="w-full">
+        <label class="block text-sm font-medium">New Username</label>
+        <input type="text" placeholder="Enter new username" id="newUserName" name="newUserName" class="p-3 border rounded w-full bg-gray-800" required="">
     </div>
 
-    <!-- Submit Button (Centered) -->
-    <div class="col-span-2 flex justify-center">
-        <button type="submit" class="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700">Update Username</button>
+    <!-- Submit Button -->
+    <div class="w-full flex justify-end md:col-span-1">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 w-full md:w-auto">Update</button>
     </div>
 </form>
 
-    <!-- update email form -->
-<form name="email-settings-update" id="email-settings-update" method="post" action class="flex items-center space-x-4">
+    <!-- Update Email Form -->
+<form name="email-settings-update" id="email-settings-update" method="post" action="" class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
     @csrf
 
-    <!-- email -->
-    <div class="form-group">
-        <label name="">Email</label>
-        <input type="text" placeholder="Your current email" id="email" name="email" class="p-3 border rounded w-full" required="">
+    <!-- Current Email -->
+    <div class="w-full">
+        <label class="block text-sm font-medium">Current Email</label>
+        <input type="text" placeholder="Your current email" id="email" name="email" class="p-3 border rounded w-full bg-gray-800" required="">
     </div>
 
-    <!-- update email -->
-    <div class="form-group">
+    <!-- New Email -->
+    <div class="w-full">
         <label name="">New email</label>
-        <input type="text" placeholder="Type new email" id="newEmail" name="newEmail" class="p-3 border rounded w-full" required="">
+        <input type="text" placeholder="Enter new email" id="newEmail" name="newEmail" class="p-3 border rounded w-full bg-gray-800" required="">
     </div>
 
-    <!-- Submit Button (Centered) -->
-    <div class="col-span-2 flex justify-center">
-        <button type="submit" class="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700">Update Email adress</button>
+    <!-- Submit Button -->
+    <div class="w-full flex justify-end md:col-span-1">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 w-full md:w-auto">Update</button>
     </div>
 </form>
 
-    <!-- request new password form -->
-<form name="password-update" id="password-update" method="post" action class="flex items-center space-x-4">
+    <!-- Update Password Form -->
+<form name="password-update" id="password-update" method="post" action="" class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
     @csrf
 
-    <!-- password -->
-    <div class="form-group">
-        <label name="">Password</label>
-        <input type="text" placeholder="Your current password" id="password" name="password" class="p-3 border rounded w-full" required="">
+    <!-- Current Password -->
+    <div class="w-full">
+        <label class="block text-sm font-medium">Current Password</label>
+        <input type="text" placeholder="Your current password" id="password" name="password" class="p-3 border rounded w-full bg-gray-800" required="">
     </div>
 
-    <!-- update password -->
-    <div class="form-group">
-        <label name="">New password</label>
-        <input type="text" placeholder="Type new password" id="newPassword" name="newPassword" class="p-3 border rounded w-full" required="">
+    <!-- New Password -->
+    <div class="w-full">
+        <label class="block text-sm font-medium">New Password</label>
+        <input type="text" placeholder="Enter new password" id="newPassword" name="newPassword" class="p-3 border rounded w-full bg-gray-800" required="">
     </div>
 
-    <!-- Submit Button (Centered) -->
-    <div class="col-span-2 flex justify-center">
-        <button type="submit" class="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700">Update Password</button>
+    <!-- Submit Button -->
+    <div class="w-full flex justify-end md:col-span-1">
+        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 w-full md:w-auto">Update</button>
     </div>
 </form>
 
