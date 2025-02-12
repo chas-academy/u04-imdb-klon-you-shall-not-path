@@ -19,4 +19,12 @@ class Review extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    
+    public function vote()
+    {
+        return $this->belongsTo(Vote::class, 'vote_id');
+    }
+
+
+
 }
