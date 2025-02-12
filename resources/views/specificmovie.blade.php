@@ -63,11 +63,20 @@
                 </div>
                 @endforeach
                 <br>
-                <a href="">
-                    <x-button class="mt-4 bg-yellow-500 px-4 py-2 rounded text-black">
-                        See All Reviews
-                    </x-button>
-                </a>
+                <div class="mt-4 flex">
+                    <a href="">
+                        <x-button class="bg-yellow-500 px-4 py-2 rounded text-black">
+                            See All Reviews
+                        </x-button>
+                    </a>
+                    <div class="ml-auto">
+                        <a href="">
+                            <x-button class="bg-yellow-500 px-4 py-2 rounded text-black">
+                                Add review
+                            </x-button>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
