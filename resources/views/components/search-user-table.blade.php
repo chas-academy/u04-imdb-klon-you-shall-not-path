@@ -13,7 +13,8 @@
 </div>
 
 <!-- Users Table -->
-<div class="w-full bg-white rounded-lg shadow-lg overflow-hidden mb-6 overflow-x-auto">
+
+<div class="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden mb-6 overflow-x-auto">
     <table class="w-full min-w-max text-left border-collapse">
         <thead>
             <tr class="bg-gradient-to-br from-[#0b1a3a] to-[#142d5c] shadow-md rounded-lg p-5 text-white">

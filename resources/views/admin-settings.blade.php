@@ -2,7 +2,9 @@
 
 @section('content')
 
-<div class="flex flex-col md:flex-row h-full min-h-screen">
+<!-- <div class="flex flex-col md:flex-row h-full min-h-screen"> -->
+<div class="flex flex-col md:flex-row h-screen">
+<!-- <div class="flex flex-col min-h-screen"> -->
         
       <!-- Sidebar -->
   <x-admin-sidebar>
