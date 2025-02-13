@@ -18,10 +18,9 @@
             <!-- H1 Centered at the Top -->
             <h2 class="text-2xl font-semibold text-white mb-4 text-center">Welcome, {{ $id->name }}</h2>
     
-    <x-pending-reviews-table :reviews=$reviews>
-    </x-pending-reviews-table>    
 
-
+            <x-all-reviews-table :reviews=$reviews />
+            
         </main>
 
     </div>   

@@ -19,6 +19,7 @@ class MovieController extends Controller
 
         // Fetch Review Data based on movie_id and user_id
         $reviews = Review::where('movie_id', $movie_id)
+                         ->where('approved', true)
                          ->with('user')
                          ->take(3)
                          ->get();
@@ -28,11 +29,8 @@ class MovieController extends Controller
                     ->where('movie_id', $movie_id)
                     ->get();
 
-
         // Fetches movie data based on movie_id
         $movie = Movie::where('movie_id', $movie_id)->first();
-
-
 
         return view('specificmovie', compact('movie', 'reviews', 'vote'));
     }

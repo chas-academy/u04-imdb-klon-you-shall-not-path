@@ -5,9 +5,9 @@
     <!-- Left Section: Actor image & info -->
     <div class="p-4 text-white rounded-lg bg-gradient-to-br from-[#0b1a3a] to-[#012169] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70]">
         <!-- Image Slideshow -->
-        <div class="relative">
-            <div class="w-full h-64 overflow-hidden rounded-lg">
-                <img id="slide" src="{{ asset('images/movie1.jpg') }}" alt="Actor Image" class="w-full h-full object-cover">
+        <div class="relative flex justify-center items-center">
+            <div class="w-1/2 h-64 overflow-hidden rounded-lg flex justify-center items-center">
+                <img src="{{ asset($actor['headshot_file_path']) }}" alt="{{ $actor->name }}" class="w-full h-full object-cover">
             </div>
         </div>
 
@@ -46,5 +46,4 @@
         @endforeach
     </div>
 </div>
-
 @endsection

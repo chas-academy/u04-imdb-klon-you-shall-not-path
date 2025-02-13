@@ -32,9 +32,12 @@
     <div class="flex flex-col gap-4">
         <!-- Trailer Section -->
         <div class="bg-gradient-to-br from-[#0b1a3a] to-[#012169] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70] rounded-lg p-4 text-white">
-            <h3 class="text-lg font-semibold mb-2">Trailer</h3>
-            <iframe class="w-full h-48 md:h-64 rounded-lg" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <h3 class="text-lg font-semibold mb-2">Trailer</h3>
+        @php
+            $embedUrl = str_replace("watch?v=", "embed/", $movie->trailer_file_path);
+        @endphp
+        <iframe class="w-full h-48 md:h-64 rounded-lg" src="{{ $embedUrl }}" frameborder="0" allowfullscreen></iframe>
+    </div>
         
         <!-- Review Section -->
         <div class="bg-gradient-to-br from-[#0b1a3a] to-[#012169] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70] rounded-lg p-4 text-white">
@@ -64,7 +67,7 @@
                 @endforeach
                 <br>
                 <div class="mt-4 flex">
-                    <a href="">
+                    <a href="{{ route('review.show') }}">
                         <x-button class="bg-yellow-500 px-4 py-2 rounded text-black">
                             See All Reviews
                         </x-button>

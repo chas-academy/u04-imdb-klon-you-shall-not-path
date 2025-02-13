@@ -1,9 +1,7 @@
-<!-- <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Delete</button> -->
-
-<form action="" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this user?');">
+<form action="{{ route('review.delete', $review->review_id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this review?');">
     @csrf
     @method('DELETE')
-    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
+    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
         Delete
     </button>
 </form>
