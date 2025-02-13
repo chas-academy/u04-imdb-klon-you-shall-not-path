@@ -2,7 +2,7 @@
 <div class=" min-h-screen flex">
 
     <x-sidebar-component>
-        <x-slot:listbar>
+        <x-slot:listbar class="py-5">
             @foreach($lists as $list)
                 <form action="{{ route('watchlist.show') }}" method="POST">
                     @csrf
@@ -13,6 +13,9 @@
                 </form>
             @endforeach
         </x-slot:listbar>
+        <x-slot:create>
+            <a href="{{ route('create-watchlist') }}" class="my-8 bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg w-full">Create Watchlist +</a>
+        </x-slot:create>
 
         <x-slot:subtitle>My Lists</x-slot:subtitle>
     </x-sidebar-component>
@@ -27,6 +30,7 @@
         <!-- While no list is picked, show: x -->
         @if(isset($selectedlist))
             <h1 class="text-4xl font-bold flex justify-center">{{ $selectedlist->title }}</h1>
+            <h3 class="text-l flex justify-center font-normal"> {{ $selectedlist->overview }} </h3>
             <div class="mt-6 space-y-4">
                 @if(isset($movies) && $movies->isNotEmpty())
                     @foreach ($movies as $movie)

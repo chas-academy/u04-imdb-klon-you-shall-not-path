@@ -17,8 +17,8 @@
                 
                 <div class="flex flex-col space-y-2 ml-6">
                     <span class="text-yellow-400 font-bold text-lg">{{ $movie->vote_avr }}/10</span>
-                    <button class="bg-yellow-400 text-black px-5 py-2 rounded-lg hover:bg-yellow-500 transition">Rate</button>
-                    <a href="#" class="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition">More Info</a>
+                    <a href="{{ url('/review-form/' . $movie->movie_id) }}" class="bg-yellow-400 text-black px-5 py-2 rounded-lg hover:bg-yellow-500 transition text-center">Rate</a>
+                    <a href="{{ url('/movie/' . urlencode($movie->movie_id)) }}" class="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition">More Info</a>
                 </div>
             </li>
         </ul>

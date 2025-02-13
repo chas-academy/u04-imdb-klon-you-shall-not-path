@@ -4,11 +4,7 @@
         <!-- Sidebar -->
         <aside class="w-1/4 bg-blue-800 p-6 text-white">
             <h2 class="text-3xl font-bold">Watchlists</h2>
-            
-            <button class="mt-6 bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg w-full">
-                + Create Watchlist
-            </button>
-            
+                       
             <h3 class="mt-6 text-lg font-semibold">My Lists</h3>
             @foreach ($lists as $list)
             <div class="mt-2 bg-black text-white p-3 rounded-lg flex items-center">
@@ -23,7 +19,7 @@
                 
                 <div class="flex justify-between">
                     <h1 class="text-3xl font-bold">Create New Watchlist</h1>
-                    <a href="" class="text-red-400 hover:text-red-600">Cancel</a>
+                    <a href="{{ route('watchlist.empty') }}" class="text-red-400 hover:text-red-600">Cancel</a>
                 </div>
 
                 <!-- Form -->

@@ -1,4 +1,4 @@
-<h2 class="text-2xl font-semibold text-white mb-4 w-full text-center">Pending Reviews</h2>
+<h2 class="text-2xl font-semibold text-white mb-4 w-full text-center">All Reviews</h2>
 
 <!-- Responsive Table for Larger Screens -->
 <div class="hidden md:block w-full bg-black rounded-lg shadow-lg overflow-x-auto">
@@ -19,7 +19,6 @@
                 <th class="p-4">Film Name</th>
                 <th class="p-4">Votes</th>
                 <th class="p-4">Username</th>
-                <th class="p-4 text-center">Actions</th>
             </tr>
         </thead>
         <tbody class="text-white">
@@ -34,10 +33,6 @@
                 </td>
 
                 <td class="p-4">{{ $review->user->name }}</td>
-                <td class="p-4 flex justify-center space-x-2">
-                    <x-approve-button :review="$review" />
-                    <x-delete-review-button :review="$review" />
-                </td>
             </tr>
             @endforeach
         </tbody>
