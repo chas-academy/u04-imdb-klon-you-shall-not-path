@@ -2,8 +2,7 @@
 
 @section('content')
 
-<div class="flex h-full">
-<div class="flex h-screen">
+<div class="flex flex-col md:flex-row h-full min-h-screen">
         
       <!-- Sidebar -->
   <x-admin-sidebar>
@@ -36,6 +35,6 @@
 
     </main>
 </div>
-</div>
+
 
 @endsection
