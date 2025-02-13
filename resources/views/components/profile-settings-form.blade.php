@@ -1,69 +1,75 @@
-<div class="mt-8 p-6 bg-white rounded-lg shadow-lg max-w-4xl ml-12">
+<div class="mt-8 p-6 rounded-lg max-w-4xl ml-12">
 
     <!-- update username form -->
-<form name="username-settings-update" id="username-settings-update" method="post" action class="flex items-center space-x-4">
-    @csrf
-    
-    <!-- user Name -->
-    <div class="form-group">
-        <label name="">Username</label>
-        <input type="text" placeholder="Your current username" id="userName" name="userName" class="p-3 border rounded w-full" required="">
-    </div>
+    <form name="username-settings-update" id="username-settings-update" method="post" action="{{ route('user.profile.update') }}" class="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-2xl mx-auto">
+        @csrf
 
-    <!-- update user Name -->
-    <div class="form-group">
-        <label name="">New username</label>
-        <input type="text" placeholder="Type new username" id="newUserName" name="newUserName" class="p-3 border rounded w-full" required="">
-    </div>
+        <h2 class="text-xl font-bold text-center mb-4">Update Your Settings</h2>
 
-    <!-- Submit Button (Centered) -->
-    <div class="col-span-2 flex justify-center">
-        <button type="submit" class="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700">Update Username</button>
-    </div>
-</form>
+        <!-- Display success or error messages -->
+        @if(session('success'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
 
-    <!-- update email form -->
-<form name="email-settings-update" id="email-settings-update" method="post" action class="flex items-center space-x-4">
-    @csrf
+        @if(session('error'))
+            <div class="bg-red-500 text-white p-4 rounded mb-4">
+                {{ session('error') }}
+            </div>
+        @endif
 
-    <!-- email -->
-    <div class="form-group">
-        <label name="">Email</label>
-        <input type="text" placeholder="Your current email" id="email" name="email" class="p-3 border rounded w-full" required="">
-    </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Current Username -->
+            <div class="form-group">
+                <label class="block text-sm font-medium mb-1">Your current username</label>
+                <div class="p-3 border border-gray-600 rounded w-full bg-gray-800">{{ Auth::user()->name }}</div>
+            </div>
 
-    <!-- update email -->
-    <div class="form-group">
-        <label name="">New email</label>
-        <input type="text" placeholder="Type new email" id="newEmail" name="newEmail" class="p-3 border rounded w-full" required="">
-    </div>
+            <!-- New Username (Optional) -->
+            <div class="form-group">
+                <label class="block text-sm font-medium mb-1">New username (optional)</label>
+                <input type="text" placeholder="Type new username" id="username" name="username" class="p-3 border border-gray-600 rounded w-full bg-gray-800 text-white focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
 
-    <!-- Submit Button (Centered) -->
-    <div class="col-span-2 flex justify-center">
-        <button type="submit" class="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700">Update Email adress</button>
-    </div>
-</form>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <!-- Current Email -->
+            <div class="form-group">
+                <label class="block text-sm font-medium mb-1">Your current email</label>
+                <div class="p-3 border border-gray-600 rounded w-full bg-gray-800">{{ Auth::user()->email }}</div>
+            </div>
 
-    <!-- request new password form -->
-<form name="password-update" id="password-update" method="post" action class="flex items-center space-x-4">
-    @csrf
+            <!-- New Email (Optional) -->
+            <div class="form-group">
+                <label class="block text-sm font-medium mb-1">New email (optional)</label>
+                <input type="email" placeholder="Type new email" id="email" name="email" class="p-3 border border-gray-600 rounded w-full bg-gray-800 text-white focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
 
-    <!-- password -->
-    <div class="form-group">
-        <label name="">Password</label>
-        <input type="text" placeholder="Your current password" id="password" name="password" class="p-3 border rounded w-full" required="">
-    </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <!-- New Password (Optional) -->
+            <div class="form-group">
+                <label class="block text-sm font-medium mb-1">New password (optional)</label>
+                <input type="password" placeholder="Type new password" id="password" name="password" class="p-3 border border-gray-600 rounded w-full bg-gray-800 text-white focus:ring-2 focus:ring-blue-500">
+            </div>
 
-    <!-- update password -->
-    <div class="form-group">
-        <label name="">New password</label>
-        <input type="text" placeholder="Type new password" id="newPassword" name="newPassword" class="p-3 border rounded w-full" required="">
-    </div>
+            <!-- Confirm Password (Only If Changing) -->
+            <div class="form-group">
+                <label class="block text-sm font-medium mb-1">Confirm new password</label>
+                <input type="password" placeholder="Confirm new password" id="confirm-password" name="password_confirmation" class="p-3 border border-gray-600 rounded w-full bg-gray-800 text-white focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
 
-    <!-- Submit Button (Centered) -->
-    <div class="col-span-2 flex justify-center">
-        <button type="submit" class="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700">Update Password</button>
-    </div>
-</form>
+        <!-- Submit Button -->
+        <div class="flex justify-center mt-6">
+            <button type="submit" class="bg-blue-600 text-white px-6 py-3 mx-4 rounded-lg font-bold hover:bg-blue-700 transition duration-300">
+                Update
+            </button>
+            <x-delete-user-button :user=$user/>
+        </div>
+    </form>
+
+
 
 </div>

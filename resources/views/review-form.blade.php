@@ -4,20 +4,20 @@
 <div class="container mx-auto px-4 py-8">
     <h2 class="text-center text-white text-3xl font-bold mb-8">Reviews</h2>
     
-    <!-- Visa recensioner -->
+    <!-- Visa recensioner
     <div class="review-container">
         <div class="p-4 text-white rounded-lg bg-gradient-to-br from-[#0b1a3a] to-[#012169] shadow-lg">
             <h3 class="text-highlight text-xl font-semibold mb-4">User Reviews</h3>
             <div class="space-y-4">
-                @foreach ($reviews as $review)
+                
                 <div class="bg-[#0b1a3a] border-2 border-white p-2 rounded-lg">
-                    <p class="text-sm"><strong>{{ $review->user->name }}:</strong> {{ $review->review }}</p>
-                    <p class="text-xs text-gray-400">{{ $review->rating }} / 10</p>
+                    <p class="text-sm"><strong></strong> </p>
+                    <p class="text-xs text-gray-400"> / 10</p>
                 </div>
-                @endforeach
+                
             </div>
         </div>
-    </div> 
+    </div>  -->
     
 
     <!-- Skicka recension -->
@@ -38,18 +38,36 @@
                 
                 <!-- Rating -->
                 <div class="text-highlight text-xl font-semibold mb-4">
-                    <label for="rating" class="mr-2 font-semibold ">Rating:</label>
-                    <select name="rating" id="rating" class="p-2 rounded bg-gray-800 text-white">
+                    <label for="vote" class="mr-2 font-semibold ">Rating:</label>
+                    <select name="vote" id="vote" class="py-2 px-6 rounded bg-gray-800 text-white">
                         @for ($i = 1; $i <= 10; $i++)
                             <option value="{{ $i }}">{{ $i }}</option>
                         @endfor
                     </select>
                 </div>
+                
+                <div class="flex justify-space-between">
+                    <x-button>
+                        Submit
+                    </x-button>
+                    <a href="{{ route('home') }}" class=" flex justify-center w-48 bg-white hover:bg-indigo-700 text-black font-bold py-2 px-6 mx-6 rounded-full shadow-md transition duration-300">
+                        Cancel
+                    </a>
+                </div>
+                @if (session('success'))
+                <div class="bg-green-500 text-white p-4 mb-4 rounded-lg my-4">
+                    {{ session('success') }}
+                </div>
+                @endif
 
-                <x-button>
-                    Vote
-                </x-button>
+                @if (session('error'))
+                <div class="bg-red-500 text-white p-4 mb-4 rounded-lg my-4">
+                    {{ session('error') }}
+                </div>
+                @endif
+                    
             </form>
+
         </div>
     </div>
 </div>

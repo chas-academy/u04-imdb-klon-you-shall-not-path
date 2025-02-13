@@ -6,13 +6,9 @@
         <ul class="space-y-4">
             <li><a href="{{ route('home') }}" class="block hover:bg-blue-500 p-2 rounded">Home</a></li>
             <li><a href="{{ route('watchlist.empty') }}" class="block hover:bg-blue-500 p-2 rounded">Watchlist</a></li>
-            <li><a href="{{ route('user-dashboard') }}" class="block hover:bg-blue-500 p-2 rounded">Profile Page</a></li>
             <li><a href="{{ route('user-settings') }}" class="block hover:bg-blue-500 p-2 rounded">Profile Settings</a></li>
-            <li><a href="{{ route('review') }}" class="block hover:bg-blue-500 p-2 rounded">Reviews</a></li>
-            <li><a href="#" class="block hover:bg-blue-500 p-2 rounded">Films</a></li>
+            <li><a href="{{ route('review.show') }}" class="block hover:bg-blue-500 p-2 rounded">Reviews</a></li>
+            <li><a href="{{ route('home') }}" class="block hover:bg-blue-500 p-2 rounded">Movies</a></li>
             <!-- <li><a href="" class="block hover:bg-blue-500 p-2 rounded">Users</a></li> -->
-
-  
-
 </aside>
 

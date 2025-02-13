@@ -8,7 +8,7 @@ class Review extends Model
 {
     protected $table = 'review';
     protected $primaryKey = 'review_id';
-    protected $fillable = ['movie_id', 'user_id', 'review', 'title'];
+    protected $fillable = ['title', 'review', 'approved', 'movie_id', 'user_id'];
 
     public function movie()
     {
@@ -20,11 +20,8 @@ class Review extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
     
-    public function vote()
+    public function votes()
     {
-        return $this->belongsTo(Vote::class, 'vote_id');
+        return $this->belongsToMany(Vote::class, 'review_vote', 'review_id', 'vote_id');
     }
-
-
-
 }

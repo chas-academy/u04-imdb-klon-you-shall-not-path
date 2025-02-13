@@ -34,24 +34,14 @@ Route::post('/movie/{movie_id}/review/{review_id}/vote/add', [VoteController::cl
 Route::post('/movie/{movie_id}/review/{review_id}/vote/subtract', [VoteController::class, 'subtract'])->middleware('auth')->name('vote.subtract');
 
 
-Route::get('/specificactor', function () {
-    return view('specificactor');
-})->name('specificactor');
 
-Route::get('/review', function () {
-    return view('review');
-})->name('review');
-
-Route::get('/review-form', function () {
-    return view('review-form');
-})->name('review-form');
 
 Route::get('/genre', [GenreController::class, 'index'])->name('genre');
 Route::get('/genre/{title}', [GenreController::class, 'show'])->name('genre.movies');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
@@ -62,19 +52,9 @@ Route::get('/top-rated-movies', [TestController::class, 'showTop'])->name('showT
 require __DIR__.'/auth.php';
 
 
-// Route::get('/test', [TestController::class, 'test'])->name('test');
-
-// Route::get('/genre/{title}', [TestController::class, 'show'])->name('genre.movie');
-
-
-
 Route::get('/actors', [ActorController::class, 'ShowActor'])->name('actors');
 
 Route::get('/actors/{actor_id}', [ActorController::class, 'ShowSpecificActor'])->name('actors.id');
-
-// Route::get('/specificactor', function () {
-//     return view('specificactor');
-// })->name('specificactor');
 
 
 
@@ -86,38 +66,30 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin-settings/edit/{user:user_id}', [AdminController::class, 'edit'])->name('user.edit');
     Route::put('/admin-settings/update/{user:user_id}', [AdminController::class, 'update'])->name('user.update');
     Route::delete('/admin-settings/delete/{user:user_id}', [AdminController::class, 'destroy'])->name('user.destroy');
-});
 
-// Route::get('/admin-dashboard', function () {
-//     return view ('admin-dashboard');
-// })->middleware(['auth'])->name('admin-dashboard');
-
-// Route::get('/admin-settings', function () {
-//     return view ('admin-settings');
-// })->middleware(['auth'])->name('admin_settings');
-
-Route::middleware('auth')->group(function () {
-    Route::post('/movie/{movie_id}/review', [ReviewController::class, 'store'])->name('review.store');
-});
-
-
-Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/reviews', [ReviewController::class, 'pendingReviews'])->name('admin.reviews');
-    Route::post('/admin/review/{review_id}/approve', [ReviewController::class, 'approve'])->name('review.approve');
+    Route::post('/review/{review}/approve', [ReviewController::class, 'approveReview'])->name('review.approve');
+    Route::delete('/review/{review}/delete', [ReviewController::class, 'deleteReview'])->name('review.delete');
+
+    Route::post('/movie/{movie_id}/review', [ReviewController::class, 'store'])->name('review.store');
+    Route::get('/reviews/all', [ReviewController::class, 'show'])->name('review.show');
 });
 
-// Route::get('/review-form', [ReviewController::class, 'showReviewForm'])->name('review.form');
+
+// Normal review form route
 Route::get('/review-form/{movie_id}', [ReviewController::class, 'showReviewForm'])->name('review.form');
+
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
+
 
 
 Route::get('/user-dashboard', function () {
     return view ('user-dashboard');
 })->middleware(['auth'])->name('user-dashboard');
 
-Route::get('/user-settings', function () {
-    return view ('user-settings');
-})->middleware(['auth'])->name('user-settings');
-
+Route::get('/user-settings', [AdminController::class, 'showUserSettings'])->middleware(['auth'])->name('user-settings');
+Route::post('/user-settings', [AdminController::class, 'updateUserSettings'])->middleware(['auth'])->name('user.profile.update');
 
 Route::middleware('auth')->group(function () {
     Route::post('/create_new_user', [RegisteredUserController::class, 'storeAdmin'])->name('create_new_user');
@@ -134,22 +106,6 @@ Route::post('/watchlist', [MovieController::class, 'selectWatchlist'])->name('wa
 
 // Display the selected watchlist and movies
 Route::get('/watchlist/{list_id}', [MovieController::class, 'showWatchlist'])->name('watchlist.view');
-
-
-// Route::post('/watchlist/{list_id}', [TestController::class, 'showSpecificWatchList'])->name('specific.whatlist');
-
-// Route::get('/', [PageController::class, 'homepage'])->name('home');
-
-
-
-
-
-Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
-
-
-
-
-
 
 
 // Testing
