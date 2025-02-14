@@ -4,9 +4,7 @@
 
 <div class="flex h-screen">
     <!-- Sidebar -->
-    <div class="md:w-1/4 w-full md:block hidden">
         <x-admin-sidebar />
-    </div>
 
     <!-- Main Content Area -->
     <main class="flex-1 flex flex-col items-center relative p-6 pt-16">

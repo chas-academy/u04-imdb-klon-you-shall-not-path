@@ -4,14 +4,30 @@
     <x-sidebar-component class="w-full md:w-1/4 w-full flex flex-col md:py-5 md:h screen">
         <x-slot:listbar class="w-full py-5 flex flex-col">
             @foreach($lists as $list)
-                <form action="{{ route('watchlist.show') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="list_id" value="{{ $list->list_id }}">
-                    <button type="submit" class="w-full mt-2 bg-black text-white px-4 py-2 rounded flex items-center">
-                        {{ $list->title }}
-                    </button>
-                </form>
-            @endforeach
+                <div class="flex items-center w-full mt-2 bg-black text-white px-4 py-2 rounded justify-between">
+                <form action="{{ route('watchlist.show') }}" method="POST" class="w-full">
+            @csrf
+            <input type="hidden" name="list_id" value="{{ $list->list_id }}">
+            <button type="submit" class="text-left w-full">
+                {{ $list->title }}
+            </button>
+        </form>
+        
+        <div class="flex items-center space-x-2">
+            
+            <a href="{{ route('watchlist.edit', ['list_id' => $list->list_id]) }}" class="text-yellow-400 hover:text-yellow-600">
+                <i class="fa fa-edit" aria-hidden="true"></i>
+            </a>
+
+        <form action="{{ route('watchlist.destroy', ['list_id' => $list->list_id]) }}" method="POST" class="inline ml-2" onsubmit="return confirm('Are you sure you want to delete this watchlist?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="text-red-500 hover:text-red-700">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </form>
+    </div>
+@endforeach
         </x-slot:listbar>
 
         <x-slot:create class="w-full">
@@ -20,7 +36,7 @@
 
         <x-slot:subtitle class="w-full">My Lists</x-slot:subtitle>
     </x-sidebar-component>
-
+    
     <!-- Main Content -->
     <main class="w-full md:w-3/4 p-10 text-white">
         @if(session('error'))
@@ -28,7 +44,7 @@
                 {{ session('error') }}
             </div>
         @endif
-        <!-- While no list is picked, show: x -->
+        
         @if(isset($selectedlist))
             <h1 class="text-4xl font-bold flex justify-center">{{ $selectedlist->title }}</h1>
             <h3 class="text-l flex justify-center font-normal"> {{ $selectedlist->overview }} </h3>
