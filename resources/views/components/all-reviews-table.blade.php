@@ -33,9 +33,7 @@
                 <td class="p-4">
                     {{ $review->votes->pluck('vote')->implode(', ') }}/10
                 </td>
-
                 <td class="p-4">{{ $review->user->name }}</td>
-
                 <td class="p-4 flex flex-row gap-2">
                     <x-approve-button :review="$review" class="w-full" />
                     <x-edit-review-button :review="$review" class="w-full" />
