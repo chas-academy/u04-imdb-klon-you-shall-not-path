@@ -5,8 +5,8 @@
     <div class="flex h-full">
         <div class="flex h-screen w-full">
             <!-- Sidebar -->
-            <x-admin-sidebar>
-            </x-admin-sidebar>
+            <x-merge-sidebar>
+            </x-merge-sidebar>
 
             <!-- Main Content -->
             <main class="flex-1 p-6 overflow-y-auto">

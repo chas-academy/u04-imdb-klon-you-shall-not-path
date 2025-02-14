@@ -7,7 +7,7 @@
 <div class=" flex flex-1">
     <!-- Sidebar -->
     <div class="hidden md:flex md:w-1/4">
-        <x-user-sidebar />
+        <x-merge-sidebar />
     </div>
        
     <!-- Main Content Area (Right Column) -->

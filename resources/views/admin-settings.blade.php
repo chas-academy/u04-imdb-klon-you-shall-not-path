@@ -7,7 +7,7 @@
 
 <div class=" flex flex-1">
     <!-- Sidebar -->
-        <x-admin-sidebar/>
+        <x-merge-sidebar/>
 
 
   <!-- Main Content -->

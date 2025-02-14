@@ -8,8 +8,8 @@
 
     <!-- Sidebar -->
     <div class="md:w-1/4 w-full md:block hidden">
-    <x-admin-sidebar>
-    </x-admin-sidebar> 
+    <x-merge-sidebar>
+    </x-merge-sidebar> 
     </div>
     
         <!-- Main Content Area -->

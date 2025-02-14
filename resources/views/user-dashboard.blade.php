@@ -7,8 +7,8 @@
 
      
     <!-- Sidebar -->
-    <x-user-sidebar>
-    </x-user-sidebar>
+    <x-merge-sidebar>
+    </x-merge-sidebar>
 
     <!-- Main Content Area -->
     <main class="flex-1 p-6 flex flex-col items-center w-full">

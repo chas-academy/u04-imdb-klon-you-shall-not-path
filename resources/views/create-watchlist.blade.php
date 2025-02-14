@@ -15,7 +15,7 @@
 
         <!-- Main Content -->
         <main class="w-3/4 p-10 text-white">
-            <div class="bg-blue-800 p-6 rounded-lg shadow-lg border border-blue-400">
+            <div class="bg-blue-800 p-6 rounded-lg shadow-lg border border-blue-90">
                 
                 <div class="flex justify-between">
                     <h1 class="text-3xl font-bold">Create New Watchlist</h1>

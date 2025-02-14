@@ -1,4 +1,4 @@
-<!-- Sidebar with Toggle Button -->
+{{-- <!-- Sidebar with Toggle Button -->
 <div x-data="{ open: true }" class="flex">
     
     <!-- Sidebar -->
@@ -37,4 +37,4 @@
 </div>
 
 <!-- Include Alpine.js -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> --}}
