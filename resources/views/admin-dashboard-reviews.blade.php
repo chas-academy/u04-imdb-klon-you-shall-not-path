@@ -7,10 +7,10 @@
 <div class="flex flex-col md:flex-row h-full min-h-screen">
 
     <!-- Sidebar -->
-    <div class="md:w-1/4 w-full md:block hidden">
+    
     <x-merge-sidebar>
     </x-merge-sidebar> 
-    </div>
+    
     
         <!-- Main Content Area -->
         <main class="flex-1 p-6 flex flex-col items-center w-full">

@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
+    
     <h2 class="text-center text-white text-3xl font-bold mb-8">Reviews</h2>
     
     <!-- Reviews Section -->
