@@ -7,9 +7,7 @@
 
 <div class=" flex flex-1">
     <!-- Sidebar -->
-    <div class="md:w-1/4 w-full md:block hidden">
-        <x-admin-sidebar />
-    </div>
+        <x-admin-sidebar/>
 
 
   <!-- Main Content -->
