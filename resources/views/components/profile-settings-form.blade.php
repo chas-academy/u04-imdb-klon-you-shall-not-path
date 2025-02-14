@@ -1,7 +1,8 @@
 <div class="mt-8 p-6 rounded-lg max-w-4xl ml-12">
 
     <!-- update username form -->
-    <form name="username-settings-update" id="username-settings-update" method="post" action="{{ route('user.profile.update') }}" class="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-2xl mx-auto">
+    <form name="username-settings-update" id="username-settings-update" method="post" action="{{ route('user.profile.update') }}" 
+    class="bg-gradient-to-br from-[#0b1a3a] to-[#142d5c] shadow-md rounded-lg p-5 text-white p-6 rounded-lg shadow-lg max-w-2xl mx-auto">
         @csrf
 
         <h2 class="text-xl font-bold text-center mb-4">Update Your Settings</h2>
