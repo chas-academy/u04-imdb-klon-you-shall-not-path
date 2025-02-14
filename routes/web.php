@@ -16,6 +16,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\VoteController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\WatchlistController;
+use App\Models\Watchlist;
 
 
 Route::get('/', [PageController::class, 'homepage'])->name('home');
@@ -97,6 +99,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/create-watchlist', [MovieController::class, 'create_watchlist'])->name('create-watchlist');
 Route::post('/create-watchlist', [MovieController::class, 'storeWatchlist'])->name('store.watchlist');
+
+//new routes for watchlist
+Route::delete('/watchlist/{list_id}', [MovieController::class, 'destroy'])->name('watchlist.destroy');
+Route::get('/watchlist/{list_id}/edit', [MovieController::class, 'editWatchlist'])->middleware('auth')->name('watchlist.edit');
+Route::post('/watchlist/{list_id}/update', [MovieController::class, 'updateWatchlist'])->middleware('auth')->name('watchlist.update');
 
 // Show empty watchlist when no list is selected
 Route::get('/watchlist', [MovieController::class, 'showEmptyWatchlist'])->name('watchlist.empty');

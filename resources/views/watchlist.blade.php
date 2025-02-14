@@ -1,17 +1,35 @@
 <x-guest-layout>
 <div class=" min-h-screen flex">
+    
 
     <x-sidebar-component>
+
         <x-slot:listbar class="py-5">
             @foreach($lists as $list)
-                <form action="{{ route('watchlist.show') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="list_id" value="{{ $list->list_id }}">
-                    <button type="submit" class="w-full mt-2 bg-black text-white px-4 py-2 rounded flex items-center">
-                        {{ $list->title }}
-                    </button>
-                </form>
-            @endforeach
+                <div class="flex items-center w-full mt-2 bg-black text-white px-4 py-2 rounded justify-between">
+                <form action="{{ route('watchlist.show') }}" method="POST" class="w-full">
+            @csrf
+            <input type="hidden" name="list_id" value="{{ $list->list_id }}">
+            <button type="submit" class="text-left w-full">
+                {{ $list->title }}
+            </button>
+        </form>
+        
+        <div class="flex items-center space-x-2">
+            <!-- Edit Button -->
+            <a href="{{ route('watchlist.edit', ['list_id' => $list->list_id]) }}" class="text-yellow-400 hover:text-yellow-600">
+                <i class="fa fa-edit" aria-hidden="true"></i>
+            </a>
+
+        <form action="{{ route('watchlist.destroy', ['list_id' => $list->list_id]) }}" method="POST" class="inline ml-2" onsubmit="return confirm('Are you sure you want to delete this watchlist?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="text-red-500 hover:text-red-700">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+        </form>
+    </div>
+@endforeach
         </x-slot:listbar>
         <x-slot:create>
             <a href="{{ route('create-watchlist') }}" class="my-8 bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg w-full">Create Watchlist +</a>

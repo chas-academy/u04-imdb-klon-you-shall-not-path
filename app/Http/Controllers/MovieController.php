@@ -139,4 +139,91 @@ class MovieController extends Controller
     
         return redirect()->route('watchlist.view', ['list_id' => $request->list_id])->with('debug_list', $request->list_id);
     }
+
+
+    public function destroy($list_id)
+{
+    try {
+        
+        $watchlist = DB::table('list')->where('list_id', $list_id)->first();
+    
+
+        if (!$watchlist) {
+            return redirect()->route('watchlist.empty')->with('error', 'Watchlist not found.');
+        }
+
+        DB::table('list')->where('list_id', $list_id)->delete();
+
+        return redirect()->route('watchlist.empty')->with('success', 'Watchlist deleted successfully.');
+    } catch (\Exception $e) {
+        return redirect()->route('watchlist.empty')->with('error', 'Failed to delete watchlist. Please try again.');
+    }
+    }
+
+
+    public function editWatchlist($list_id)
+{
+    // Hämta den aktuella watchlisten
+    $watchlist = DB::table('list')->where('list_id', $list_id)->first();
+
+    // Kontrollera om listan finns
+    if (!$watchlist) {
+        return redirect()->route('watchlist.empty')->with('error', 'Watchlist not found.');
+    }
+
+    // Hämta alla watchlists för sidomenyn
+    $lists = DB::table('list')->get();
+
+    // Hämta alla filmer
+    $movies = DB::table('movie')->get();
+
+    // Hämta de filmer som redan finns i denna lista
+    $selectedMovies = DB::table('movie_list')
+        ->where('list_id', $list_id)
+        ->pluck('movie_id')
+        ->toArray();
+
+    return view('edit-watchlist', compact('watchlist', 'lists', 'movies', 'selectedMovies'));
+}
+
+
+    public function updateWatchlist(Request $request, $list_id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'selected_movies' => 'required|array',
+            'selected_movies.*' => 'exists:movie,movie_id',
+        ]);
+    
+        try {
+            DB::beginTransaction();
+    
+            // Uppdatera listans namn
+            DB::table('list')->where('list_id', $list_id)->update([
+                'title' => $request->name,
+                'updated_at' => now(),
+            ]);
+    
+            // Radera gamla filmer från listan
+            DB::table('movie_list')->where('list_id', $list_id)->delete();
+    
+            // Lägg till nya filmer i listan
+            $moviesToInsert = [];
+            foreach ($request->selected_movies as $movie_id) {
+                $moviesToInsert[] = [
+                    'list_id' => $list_id,
+                    'movie_id' => $movie_id,
+                ];
+            }
+    
+            DB::table('movie_list')->insert($moviesToInsert);
+    
+            DB::commit();
+    
+            return redirect()->route('watchlist.view', ['list_id' => $list_id])->with('success', 'Watchlist updated successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Failed to update watchlist. Please try again.');
+        }
+    }
 }
