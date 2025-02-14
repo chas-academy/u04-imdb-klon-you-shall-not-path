@@ -19,6 +19,8 @@
                 <th class="p-4">Film Name</th>
                 <th class="p-4">Votes</th>
                 <th class="p-4">Username</th>
+                <th class="p-4">awdaw</th>
+
             </tr>
         </thead>
         <tbody class="text-white">
@@ -31,13 +33,16 @@
                 <td class="p-4">
                     {{ $review->votes->pluck('vote')->implode(', ') }}/10
                 </td>
-
                 <td class="p-4">{{ $review->user->name }}</td>
+                <td class="p-4 flex flex-row gap-2">
+                    <x-approve-button :review="$review" class="w-full" />
+                    <x-edit-review-button :review="$review" class="w-full" />
+                    <x-delete-review-button :review="$review" class="w-full" />
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-
 </div>
 
 <!-- Card Layout for Mobile -->

@@ -13,10 +13,10 @@
         x-transition:leave-end="-translate-x-full"
     >
         <!-- Toggle Button (Inside Sidebar) -->
-        <button @click="open = !open" class="absolute top-1 right-1 bg-white text-blue-950 px-2 py-1 rounded-md">
+        <button @click="open = !open" class="absolute  left-1 bg-white text-blue-950 px-2 py-1 rounded-md">
             ✖
         </button>
-        <br>
+    <br> </br>
 
         <h1 class="text-2xl font-bold"></h1>
         <ul class="space-y-4 text-sm">
@@ -37,7 +37,7 @@
     </aside>
 
     <!-- Show Sidebar Button -->
-    <button @click="open = !open" x-show="!open" class="fixed top-4 left-4 bg-blue-950 text-white px-2 py-1 rounded-md">
+    <button @click="open = !open" x-show="!open" class="absolute left-1 bg-blue-950 text-white px-2 py-1 rounded-md">
         ☰
     </button>
 </div>
