@@ -16,7 +16,7 @@
         </form>
         
         <div class="flex items-center space-x-2">
-            <!-- Edit Button -->
+            
             <a href="{{ route('watchlist.edit', ['list_id' => $list->list_id]) }}" class="text-yellow-400 hover:text-yellow-600">
                 <i class="fa fa-edit" aria-hidden="true"></i>
             </a>
@@ -38,14 +38,14 @@
         <x-slot:subtitle>My Lists</x-slot:subtitle>
     </x-sidebar-component>
 
-    <!-- Main Content -->
+    
     <main class="w-3/4 p-10 text-white">
         @if(session('error'))
             <div class="p-4 mb-4 text-red-600 bg-red-200 rounded">
                 {{ session('error') }}
             </div>
         @endif
-        <!-- While no list is picked, show: x -->
+        
         @if(isset($selectedlist))
             <h1 class="text-4xl font-bold flex justify-center">{{ $selectedlist->title }}</h1>
             <h3 class="text-l flex justify-center font-normal"> {{ $selectedlist->overview }} </h3>

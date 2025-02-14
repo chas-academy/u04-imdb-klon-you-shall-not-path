@@ -163,21 +163,21 @@ class MovieController extends Controller
 
     public function editWatchlist($list_id)
 {
-    // Hämta den aktuella watchlisten
+    
     $watchlist = DB::table('list')->where('list_id', $list_id)->first();
 
-    // Kontrollera om listan finns
+    
     if (!$watchlist) {
         return redirect()->route('watchlist.empty')->with('error', 'Watchlist not found.');
     }
 
-    // Hämta alla watchlists för sidomenyn
+    
     $lists = DB::table('list')->get();
 
-    // Hämta alla filmer
+    
     $movies = DB::table('movie')->get();
 
-    // Hämta de filmer som redan finns i denna lista
+    
     $selectedMovies = DB::table('movie_list')
         ->where('list_id', $list_id)
         ->pluck('movie_id')
@@ -198,16 +198,16 @@ class MovieController extends Controller
         try {
             DB::beginTransaction();
     
-            // Uppdatera listans namn
+            
             DB::table('list')->where('list_id', $list_id)->update([
                 'title' => $request->name,
                 'updated_at' => now(),
             ]);
     
-            // Radera gamla filmer från listan
+            
             DB::table('movie_list')->where('list_id', $list_id)->delete();
     
-            // Lägg till nya filmer i listan
+            
             $moviesToInsert = [];
             foreach ($request->selected_movies as $movie_id) {
                 $moviesToInsert[] = [
