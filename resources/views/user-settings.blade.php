@@ -7,10 +7,11 @@
 <div class=" flex flex-1">
     <!-- Sidebar -->
     <div class="hidden md:flex md:w-1/4">
-        <x-admin-sidebar />
+        <x-user-sidebar />
     </div>
        
     <!-- Main Content Area (Right Column) -->
+    <div class="flex align-center justify center">
     <main class="flex-1 p-6 flex flex-col items-center w-full">
         
         <!-- H2 Centered at the Top -->
@@ -23,6 +24,7 @@
         </div>
 
     </main>  
+</div>
 </div>
 </div>        
 
