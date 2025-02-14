@@ -8,7 +8,7 @@
         </thead>
         <tbody>
             @forelse ($movies as $movie)
-                <tr class="border-b bg-blue-500 hover:bg-gray-100">
+                <tr class="border-b bg-blue-500 hover:bg-blue-900">
                     <td class="p-4">{{ $movie->title }}</td>
                     <td class="p-4 text-center">
                         <input type="checkbox" name="selected_movies[]" value="{{ $movie->movie_id }}" class="w-6 h-6 rounded-md border-white bg-transparent">

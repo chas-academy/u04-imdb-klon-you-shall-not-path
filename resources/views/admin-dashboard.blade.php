@@ -4,7 +4,7 @@
 
 <div class="flex h-screen">
     <!-- Sidebar -->
-        <x-admin-sidebar />
+        <x-merge-sidebar />
 
     <!-- Main Content Area -->
     <main class="flex-1 flex flex-col items-center relative p-6 pt-16">
