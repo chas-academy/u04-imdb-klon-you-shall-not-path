@@ -1,8 +1,8 @@
 <x-guest-layout>
-    <div class="min-h-screen flex bg-gradient-to-b from-blue-900 to-blue-600">
+    <div class="min-h-screen flex flex-col md:flex-row bg-gradient-to-b from-blue-900 to-blue-600">
         
         <!-- Sidebar -->
-        <aside class="w-1/4 bg-blue-800 p-6 text-white">
+        <aside class="w-full md:w-1/4 flex flex-col md:py-5 md:h screen bg-blue-950 p-6 text-white w-64">
             <h2 class="text-3xl font-bold">Watchlists</h2>
                        
             <h3 class="mt-6 text-lg font-semibold">My Lists</h3>
@@ -14,8 +14,8 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="w-3/4 p-10 text-white">
-            <div class="bg-blue-800 p-6 rounded-lg shadow-lg border border-blue-400">
+        <main class="w-full md:w-3/4 p-6 md:p-10 text-white">
+            <div class="bg-blue-950 p-6 rounded-lg shadow-lg border border-blue-400">
                 
                 <div class="flex justify-between">
                     <h1 class="text-3xl font-bold">Create New Watchlist</h1>
@@ -47,7 +47,9 @@
                         <textarea name="description" class="w-full p-2 mt-1 bg-gray-700 border border-gray-500 rounded-md"></textarea>
                     </label>
 
-                    <x-search-watchlist-table :movies=$movies />
+                    <div class="w-full overflow-x-auto mt-4">
+                        <x-search-watchlist-table :movies="$movies" class="w-full" />
+                    </div>
 
                     <x-create-watchlist-button />
                 </form>

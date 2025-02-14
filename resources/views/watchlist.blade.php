@@ -1,8 +1,8 @@
 <x-guest-layout>
-<div class=" min-h-screen flex">
+<div class="min-h-screen flex flex-col md:flex-row">
 
-    <x-sidebar-component>
-        <x-slot:listbar class="py-5">
+    <x-sidebar-component class="w-full md:w-1/4 w-full flex flex-col md:py-5 md:h screen">
+        <x-slot:listbar class="w-full py-5 flex flex-col">
             @foreach($lists as $list)
                 <form action="{{ route('watchlist.show') }}" method="POST">
                     @csrf
@@ -13,15 +13,16 @@
                 </form>
             @endforeach
         </x-slot:listbar>
-        <x-slot:create>
+
+        <x-slot:create class="w-full">
             <a href="{{ route('create-watchlist') }}" class="my-8 bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg w-full">Create Watchlist +</a>
         </x-slot:create>
 
-        <x-slot:subtitle>My Lists</x-slot:subtitle>
+        <x-slot:subtitle class="w-full">My Lists</x-slot:subtitle>
     </x-sidebar-component>
 
     <!-- Main Content -->
-    <main class="w-3/4 p-10 text-white">
+    <main class="w-full md:w-3/4 p-10 text-white">
         @if(session('error'))
             <div class="p-4 mb-4 text-red-600 bg-red-200 rounded">
                 {{ session('error') }}
