@@ -17,4 +17,6 @@ class PageController extends Controller
         // Pass the data to the Blade view
         return view('homepage', compact('genres'));
     }
+
+    
 }

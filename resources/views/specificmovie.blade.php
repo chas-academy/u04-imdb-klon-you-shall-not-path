@@ -1,39 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    .movie-container {
-        background: linear-gradient(145deg, #0b1a3a, #012169);
-        box-shadow: 5px 5px 15px #0a1329, -5px -5px 15px #1c3e70;
-        border-radius: 10px;
-    }
-    .text-highlight {
-        color: #FFFFFF;
-    }
-    .review-container {
-        background: #0b1a3a;
-        border: 2px solid #FFFFFF;
-        padding: 10px;
-        border-radius: 10px;
-    }
-</style>
-
 <div class="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
     <!-- Left Section: Movie & Image Slideshow -->
-    <div class="movie-container p-4 text-white">
+    <div class="bg-gradient-to-br from-[#0b1a3a] to-[#012169] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70] rounded-lg p-4 text-white">
         <!-- Image Slideshow -->
         <div class="relative">
             <div class="w-full h-64 overflow-hidden rounded-lg">
                 <img id="slide" src="{{ asset('images/movie1.jpg') }}" alt="Movie Image" class="w-full h-full object-cover">
             </div>
-            <button onclick="prevSlide()" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-700 px-3 py-2 rounded-full">❮</button>
-            <button onclick="nextSlide()" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-700 px-3 py-2 rounded-full">❯</button>
         </div>
-
++
         <!-- Movie Info -->
         <div class="mt-4">
             <div class="flex items-center gap-2">
-                <span class="text-highlight text-lg font-bold">8.5/10</span>
+                <span class="text-white text-lg font-bold">{{ $movie->vote_avr }} / 10</span>
                 <h2 class="text-xl font-semibold">{{ $movie->title }}</h2>
             </div>
             <p class="mt-2 text-sm"><strong>Actors:</strong> 
@@ -50,45 +31,57 @@
     <!-- Right Section: Trailer & Reviews -->
     <div class="flex flex-col gap-4">
         <!-- Trailer Section -->
-        <div class="movie-container p-4 text-white">
-            <h3 class="text-lg font-semibold mb-2">Trailer</h3>
-            <iframe class="w-full h-48 md:h-64 rounded-lg" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <div class="bg-gradient-to-br from-[#0b1a3a] to-[#012169] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70] rounded-lg p-4 text-white">
+        <h3 class="text-lg font-semibold mb-2">Trailer</h3>
+        @php
+            $embedUrl = str_replace("watch?v=", "embed/", $movie->trailer_file_path);
+        @endphp
+        <iframe class="w-full h-48 md:h-64 rounded-lg" src="{{ $embedUrl }}" frameborder="0" allowfullscreen></iframe>
+    </div>
         
         <!-- Review Section -->
-        <div class="movie-container p-4 text-white">
+        <div class="bg-gradient-to-br from-[#0b1a3a] to-[#012169] shadow-[5px_5px_15px_#0a1329,-5px_-5px_15px_#1c3e70] rounded-lg p-4 text-white">
             <h3 class="text-lg font-semibold mb-2">Reviews</h3>
             <div class="space-y-4">
                 <!-- Sample Reviews -->
-                <div class="review-container">
-                    <p class="text-sm"><strong>User1:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <p class="text-xs text-gray-400">10/10</p>
+                @foreach ($reviews->take(3) as $review)
+                <div class="bg-[#0b1a3a] border-2 border-white p-2 rounded-lg">
+                    <p class="text-sm"><strong>{{ $review->user->name }}:</strong> {{ $review->review }}</p>
+                    @php
+                        $ReviewVote = $vote->where('user_id', $review->user_id)->first();
+                    @endphp
+                    <p class="text-xs text-gray-400">{{ $ReviewVote->vote }}</p>
                 </div>
-                <div class="review-container">
-                    <p class="text-sm"><strong>User2:</strong> Great movie! Would watch again.</p>
-                    <p class="text-xs text-gray-400">9/10</p>
+                <div class="flex flex-row"> 
+                    <form method="POST" action="{{ route('vote.add', ['movie_id' => $movie->movie_id, 'review_id' => $review->review_id]) }}">
+                        @csrf
+                        <button type="submit" class="px-2"> &#128077; </button>
+                    </form>
+                    {{ $review->positive_vote_count }}
+                    <form method="POST" action="{{ route('vote.subtract', ['movie_id' => $movie->movie_id, 'review_id' => $review->review_id]) }}">
+                        @csrf
+                        <button type="submit" class="px-2"> &#128078; </button>
+                    </form>
+                    {{ $review->negative_vote_count }}
                 </div>
-                <div class="review-container">
-                    <p class="text-sm"><strong>User3:</strong> Great movie! Would watch again.</p>
-                    <p class="text-xs text-gray-400">8/10</p>
+                @endforeach
+                <br>
+                <div class="mt-4 flex">
+                    <a href="{{ route('review.show') }}">
+                        <x-button class="bg-yellow-500 px-4 py-2 rounded text-black">
+                            See All Reviews
+                        </x-button>
+                    </a>
+                    <div class="ml-auto">
+                        <a href="{{ url('/review-form/' . $movie->movie_id) }}">
+                            <x-button class="bg-yellow-500 px-4 py-2 rounded text-black">
+                                Add review
+                            </x-button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    let images = ['{{ asset('images/movie1.jpg') }}', '{{ asset('images/movie2.jpg') }}', '{{ asset('images/movie3.jpg') }}'];
-    let index = 0;
-
-    function nextSlide() {
-        index = (index + 1) % images.length;
-        document.getElementById('slide').src = images[index];
-    }
-
-    function prevSlide() {
-        index = (index - 1 + images.length) % images.length;
-        document.getElementById('slide').src = images[index];
-    }
-</script>
 @endsection

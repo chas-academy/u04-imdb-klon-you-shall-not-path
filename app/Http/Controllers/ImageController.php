@@ -28,14 +28,14 @@ class ImageController extends Controller
         $image = $request->file('image');
         $filename = $request->name . '.' . $image->getClientOriginalExtension();
         $filepath = 'uploads/' . $filename;
+        $data = getimagesize($image);
+        $imageheight = $data[1];
 
         $manager = new ImageManager(new Driver());
 
         // Compress and save the image
         $compressedImage = $manager->read($image)
-            ->resize(800, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })
+            ->scale(height: 800)
             ->encode(new AutoEncoder(quality: 75)); // 75% quality
 
         Storage::disk('public')->put($filepath, $compressedImage);
@@ -43,6 +43,7 @@ class ImageController extends Controller
         // Save file path in database
         $imageModel = new Image();
         $imageModel->file_path = $filepath;
+        $imageModel->original_height = 1000;
         $imageModel->save();
         $imageModel->id;
 
@@ -52,14 +53,14 @@ class ImageController extends Controller
     public function show($id)
     {
         $image = Image::findOrFail($id);
-        $imagePath = storage_path('app/public/storage/' . $image->file_path);
+        $imagePath = storage_path('app/public/image/storage/' . $image->file_path);
 
         if (!file_exists($imagePath)) {
             abort(404);
         }
 
         // Decompress image and return response
-        $decompressedImage = ImageManager::read($imagePath)->encode('jpg');
+        $decompressedImage = ImageManager::read($imagePath)->encode('jpg')->scale($image->original_height);
 
         // Look into the imageintervention, regarding decompressing
 

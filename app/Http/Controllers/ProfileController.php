@@ -26,15 +26,34 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = Auth::user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Ensure at least one field is filled
+        if (!$request->filled('username') && !$request->filled('email') && !$request->filled('password')) {
+            return redirect()->back()->with('error', 'You must provide at least one field to update.');
         }
 
-        $request->user()->save();
+        // Validate only the fields that are filled
+        $validatedData = $request->validate([
+            'username' => 'nullable|string|max:255|unique:users,name,' . $user->id,
+            'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => ['nullable', 'confirmed', Password::min(8)],
+        ]);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        // Update fields only if they are provided
+        if ($request->filled('username')) {
+            $user->name = $request->username;
+        }
+        if ($request->filled('email')) {
+            $user->email = $request->email;
+        }
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 
     /**
