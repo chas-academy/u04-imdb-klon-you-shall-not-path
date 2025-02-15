@@ -23,7 +23,7 @@
 <body class="bg-gradient-to-b from-[#012169] to-[#3874F8] min-h-screen flex flex-col">
     <header>
         <nav class="bg-[#012169] py-6">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16">
                 <div class="flex justify-between h-16 items-center">
                     <div class="flex-shrink-0">
                         <a href="{{ route('home') }}" class="text-white text-2xl font-bold"> <!-- Insert logo here -->
