@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Genre;
+use App\Models\WatchList;
 
 class TestController extends Controller
 {
     public function test()
     {
         // Fetch movies with their genres
-        $movies = Movie::with('genres')->get();
+        $movies = Movie::with('genre')->get();
 
         // Pass the data to the Blade view
         return view('testfile', compact('movies'));
@@ -37,14 +38,5 @@ class TestController extends Controller
         // Pass the data to the Blade view
         return view('top-rated-movies', compact('movies'));
     }
-
-
-    public function showWatchList()
-    {
-        // Fetch movies with their genres
-        $movies = Movie::with('genre')->get();
-
-        // Pass the data to the Blade view
-        return view('watchlist', compact('movies'));
-    }
+       
 }

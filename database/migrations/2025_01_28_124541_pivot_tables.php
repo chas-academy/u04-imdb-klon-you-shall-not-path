@@ -37,6 +37,15 @@ return new class extends Migration
             $table->foreign('movie_id')->references('movie_id')->on('movie')->onDelete('cascade');
             $table->foreign('actor_id')->references('actor_id')->on('actor')->onDelete('cascade');
         });
+
+        Schema::create('movie_list', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('movie_id');
+            $table->unsignedBigInteger('list_id');
+
+            $table->foreign('movie_id')->references('movie_id')->on('movie')->onDelete('cascade');
+            $table->foreign('list_id')->references('list_id')->on('list')->onDelete('cascade');
+        });
     }
 
     /**
@@ -47,5 +56,6 @@ return new class extends Migration
         Schema::dropIfExists('movie_genre');
         Schema::dropIfExists('actor_genre');
         Schema::dropIfExists('movie_actor');
+        Schema::dropIfExists('movie_list');
     }
 };
