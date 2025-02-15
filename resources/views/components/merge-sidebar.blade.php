@@ -30,7 +30,7 @@
                     <li><a href="{{ route('user-dashboard') }}" class="block hover:bg-blue-500 p-2 rounded">Profile Page</a></li>
                     <li><a href="{{ route('user-settings') }}" class="block hover:bg-blue-500 p-2 rounded">Profile Settings</a></li>
                 @endif
-                <li><a href="{{ route('create-watchlist') }}" class="block hover:bg-blue-500 p-2 rounded">Watchlist</a></li>
+                <li><a href="{{ route('watchlist.empty') }}" class="block hover:bg-blue-500 p-2 rounded">Watchlist</a></li>
                 <li><a href="{{ route('review.show') }}" class="block hover:bg-blue-500 p-2 rounded">Reviews</a></li>
             @endauth
         </ul>
