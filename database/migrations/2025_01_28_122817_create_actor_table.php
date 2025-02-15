@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('actor', function (Blueprint $table) {
             $table->id('actor_id');
             $table->string('headshot_file_path')->default('missing');
+            $table->string('original_height')->default(1000);
             $table->string('name');
         });
     }

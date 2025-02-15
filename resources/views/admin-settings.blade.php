@@ -1,27 +1,54 @@
 @extends('layouts.app')
 
 @section('content')
-<body>
-    <div class="flex h-full">
-    <div class="flex h-screen">
-        
-      <!-- Sidebar -->
-    <x-admin-sidebar>
-    </x-admin-sidebar> 
 
-    <!-- Main Content -->
-    <main class="flex-1 p-6">
-        <h2 class="text-2xl font-semibold text-white mb-4 text-center">Welcome, John Doe</h2>
-        <h2 class="text-2xl font-semibold text-white mb-4 text-center">Users List</h2>
+<!-- <div class="flex h-screen"> -->
+<div class="min-h-screen flex flex-col">
 
-    <x-search-user-table>
-    </x-search-user-table>   
+<div class=" flex flex-1">
+    <!-- Sidebar -->
+        <x-merge-sidebar/>
 
-    <x-create-new-user-form>  
-    </x-create-new-user-form>      
 
-    </main>
-    </div>
-    </div>
-</body>
+  <!-- Main Content -->
+  <main class="flex-1 p-6 md:p-6 lg:p-10 xl:p-16">
+        <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold text-white text-center mb-6">
+            Welcome, {{ $id->name }}
+        </h2>
+
+        <h2 class="text-lg md:text-xl lg:text-2xl font-semibold text-white text-center mb-4">
+            Users List
+        </h2>
+  
+        <!-- Search User Table -->
+        <div class="overflow-x-auto">
+          <x-search-user-table :users="$users">
+            <x-slot:slot></x-slot:slot>
+          </x-search-user-table>
+        </div>
+
+        <!-- Success & Error Messages -->
+        @if (session('success'))
+          <div class="bg-green-500 text-white p-4 mb-4 rounded-lg text-center">
+            {{ session('success') }}
+          </div>
+        @endif
+
+        @if (session('error'))
+          <div class="bg-red-500 text-white p-4 mb-4 rounded-lg text-center">
+            {{ session('error') }}
+          </div>
+        @endif
+
+        <!-- Create New User Form -->
+        <div class="mt-6">
+            <x-create-new-user-form></x-create-new-user-form>
+        </div>     
+
+  </main>
+</div>
+</div>
+
+
+
 @endsection

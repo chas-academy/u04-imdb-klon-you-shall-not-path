@@ -6,10 +6,19 @@ use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SpecificMovieController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ImageController; // Testing
 use Intervention\Image\ImageManager; // Testing
 use Illuminate\Support\Facades\Response; // Testing
 use Intervention\Image\Drivers\Gd\Driver; // Testing
+use App\Http\Controllers\ActorController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\VoteController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\WatchlistController;
+use App\Models\Watchlist;
+
 
 Route::get('/', [PageController::class, 'homepage'])->name('home');
 
@@ -18,27 +27,23 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/watchlist', [TestController::class, 'showWatchList'])->name('watchlist');
-
 Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
 
-Route::get('/specificactor', function () {
-    return view('specificactor');
-})->name('specificactor');
+  
+Route::get('/movie/{movie_id}', [MovieController::class, 'show'])->name('movie.show');
 
-Route::get('/actor', function () {
-    return view('actor');
-})->name('actor');
+Route::post('/movie/{movie_id}/review/{review_id}/vote/add', [VoteController::class, 'add'])->middleware('auth')->name('vote.add');
+Route::post('/movie/{movie_id}/review/{review_id}/vote/subtract', [VoteController::class, 'subtract'])->middleware('auth')->name('vote.subtract');
 
-Route::get('/review', function () {
-    return view('review');
-})->name('review');
 
-Route::get('/genre', [GenreController::class, 'index']);
+
+
+Route::get('/genre', [GenreController::class, 'index'])->name('genre');
+Route::get('/genre/{title}', [GenreController::class, 'show'])->name('genre.movies');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
@@ -49,48 +54,65 @@ Route::get('/top-rated-movies', [TestController::class, 'showTop'])->name('showT
 require __DIR__.'/auth.php';
 
 
-Route::get('/test', [TestController::class, 'test'])->name('test');
+Route::get('/actors', [ActorController::class, 'ShowActor'])->name('actors');
 
-Route::get('/genre/{title}', [TestController::class, 'show'])->name('genre.movies');
+Route::get('/actors/{actor_id}', [ActorController::class, 'ShowSpecificActor'])->name('actors.id');
+
+
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin-dashboard', [AdminController::class, 'ShowAdminDashboard'])->name('admin-dashboard');
+    Route::get('/admin-settings', [AdminController::class, 'ShowAdminSettings'])->name('admin-settings');
+    Route::post('/admin-settings', [AdminController::class, 'search'])->name('users.search');
+    Route::get('/admin-settings/edit/{user:user_id}', [AdminController::class, 'edit'])->name('user.edit');
+    Route::put('/admin-settings/update/{user:user_id}', [AdminController::class, 'update'])->name('user.update');
+    Route::delete('/admin-settings/delete/{user:user_id}', [AdminController::class, 'destroy'])->name('user.destroy');
+
+    Route::get('/admin/reviews', [ReviewController::class, 'pendingReviews'])->name('admin.reviews');
+    Route::post('/review/{review}/approve', [ReviewController::class, 'approveReview'])->name('review.approve');
+    Route::delete('/review/{review}/delete', [ReviewController::class, 'deleteReview'])->name('review.delete');
+
+    Route::post('/movie/{movie_id}/review', [ReviewController::class, 'store'])->name('review.store');
+    Route::get('/reviews/all', [ReviewController::class, 'show'])->name('review.show');
+});
+
+
+// Normal review form route
+Route::get('/review-form/{movie_id}', [ReviewController::class, 'showReviewForm'])->name('review.form');
+
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
 
 
 
 Route::get('/user-dashboard', function () {
     return view ('user-dashboard');
-})->name('user-dashboard');
+})->middleware(['auth'])->name('user-dashboard');
 
-Route::get('/admin-dashboard', function () {
-    return view ('admin-dashboard');
-})->name('admin-dashboard');
+Route::get('/user-settings', [AdminController::class, 'showUserSettings'])->middleware(['auth'])->name('user-settings');
+Route::post('/user-settings', [AdminController::class, 'updateUserSettings'])->middleware(['auth'])->name('user.profile.update');
 
-// Route::get('/actors', function () {
-//     return view ('actors');
-// });
+Route::middleware('auth')->group(function () {
+    Route::post('/create_new_user', [RegisteredUserController::class, 'storeAdmin'])->name('create_new_user');
+});
 
-// Route::get('/actorpage', function () {
-//     return view ('actorpage');
-// });
+Route::get('/create-watchlist', [MovieController::class, 'create_watchlist'])->name('create-watchlist');
+Route::post('/create-watchlist', [MovieController::class, 'storeWatchlist'])->name('store.watchlist');
 
-Route::get('/admin-settings', function () {
-    return view ('admin-settings');
-})->name('admin_settings');
+//new routes for watchlist
+Route::delete('/watchlist/{list_id}', [MovieController::class, 'destroy'])->name('watchlist.destroy');
+Route::get('/watchlist/{list_id}/edit', [MovieController::class, 'editWatchlist'])->middleware('auth')->name('watchlist.edit');
+Route::post('/watchlist/{list_id}/update', [MovieController::class, 'updateWatchlist'])->middleware('auth')->name('watchlist.update');
 
-Route::get('/user-settings', function () {
-    return view ('user-settings');
-})->name('user_settings');
+// Show empty watchlist when no list is selected
+Route::get('/watchlist', [MovieController::class, 'showEmptyWatchlist'])->name('watchlist.empty');
 
+// Handle watchlist selection and redirect
+Route::post('/watchlist', [MovieController::class, 'selectWatchlist'])->name('watchlist.show');
 
-
-
-
-
-
-
-
-
-
-
-
+// Display the selected watchlist and movies
+Route::get('/watchlist/{list_id}', [MovieController::class, 'showWatchlist'])->name('watchlist.view');
 
 
 // Testing

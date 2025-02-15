@@ -25,7 +25,7 @@
         <div class="grid grid-cols-2 gap-4">
             @foreach($images as $image)
                 <div class="bg-gray-200 p-2 rounded-lg">
-                    <img src="{{ url('storage/' . $image->file_path) }}" alt="Uploaded Image" class="w-full h-32 object-cover rounded-lg">
+                    <img src="{{ url('storage/' . $image->file_path) }}" alt="Uploaded Image" class="object-center rounded-lg">
                 </div>
             @endforeach
         </div>
