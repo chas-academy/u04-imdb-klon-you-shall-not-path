@@ -22,20 +22,22 @@
 </head>
 <body class="bg-gradient-to-b from-[#012169] to-[#3874F8] min-h-screen flex flex-col">
     <header>
-        <nav class="bg-[#012169]">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="bg-[#012169] py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-32">
                 <div class="flex justify-between h-16 items-center">
                     <div class="flex-shrink-0">
                         <a href="{{ route('home') }}" class="text-white text-2xl font-bold"> <!-- Insert logo here -->
                             MyApp
                         </a>
                     </div>
-                    <div class="hidden md:flex space-x-8">
-                        <a href="{{ route('home') }}" class="text-white hover:text-indigo-700 font-medium transition duration-300">Movies</a>
-                        <a href="{{ route('actors') }}" class="text-white hover:text-indigo-700 font-medium transition duration-300">Actors</a>
-                        <a href="{{ route('genre') }}" class="text-white hover:text-indigo-700 font-medium transition duration-300">Genres</a>
+                    <div class="flex flex-wrap justify-center gap-x-6 md:gap-x-12 lg:gap-x-16 xl:gap-x-24">
+                        <a href="{{ route('home') }}" class="text-white hover:text-indigo-700 font-medium transition duration-300 my-2 mx-4">Movies</a>
+                        <a href="{{ route('actors') }}" class="text-white hover:text-indigo-700 font-medium transition duration-300 my-2 mx-4">Actors</a>
+                        <a href="{{ route('genre') }}" class="text-white hover:text-indigo-700 font-medium transition duration-300 my-2 mx-4">Genres</a>
                     </div>
                     <div>
+
+                    <div class="flex flex-wrap justify-center space-x-4 md:space-x-8">
                         @auth
                             @if(Auth::user()->role === 'admin')
                             <a href="{{ route('admin-dashboard') }}" class="text-white px-4 py-2 rounded-lg font-medium mx-4">
