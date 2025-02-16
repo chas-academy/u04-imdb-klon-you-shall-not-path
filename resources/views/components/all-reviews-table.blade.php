@@ -19,8 +19,6 @@
                 <th class="p-4">Film Name</th>
                 <th class="p-4">Votes</th>
                 <th class="p-4">Username</th>
-                <th class="p-4">awdaw</th>
-
             </tr>
         </thead>
         <tbody class="text-white">
@@ -34,11 +32,6 @@
                     {{ $review->votes->pluck('vote')->implode(', ') }}/10
                 </td>
                 <td class="p-4">{{ $review->user->name }}</td>
-                <td class="p-4 flex flex-row gap-2">
-                    <x-approve-button :review="$review" class="w-full" />
-                    <x-edit-review-button :review="$review" class="w-full" />
-                    <x-delete-review-button :review="$review" class="w-full" />
-                </td>
             </tr>
             @endforeach
         </tbody>
@@ -53,12 +46,6 @@
         <p class="font-semibold">Film: <span class="font-normal">{{ $review->title }}</span></p>
         <p class="font-semibold">Rating: <span class="font-normal">{{ $review->positive_vote_count }}/5</span></p>
         <p class="font-semibold">User ID: <span class="font-normal">{{ $review->user_id }}</span></p>
-        
-        <div class="mt-3 flex flex-col space-y-2">
-            <x-approve-button :review="$review" class="w-full" />
-            <x-edit-review-button :review="$review" class="w-full" />
-            <x-delete-review-button :review="$review" class="w-full" />
-        </div>
     </div>
     @endforeach
 </div>

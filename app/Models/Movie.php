@@ -8,6 +8,7 @@ class Movie extends Model
 {
     protected $table = 'movie';
     protected $primaryKey = 'movie_id';
+    protected $fillable = ['title', 'overview', 'release_date', 'poster', 'trailer'];
 
     public function genre()
     {

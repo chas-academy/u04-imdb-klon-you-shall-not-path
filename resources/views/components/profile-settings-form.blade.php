@@ -67,10 +67,9 @@
             <button type="submit" class="bg-blue-600 text-white px-6 py-3 mx-4 rounded-lg font-bold hover:bg-blue-700 transition duration-300">
                 Update
             </button>
-            <x-delete-user-button :user=$user/>
         </div>
     </form>
-
-
-
+    <div class="flex justify-center mt-6">
+        <x-delete-user-button :user=$user/>
+    </div>
 </div>
