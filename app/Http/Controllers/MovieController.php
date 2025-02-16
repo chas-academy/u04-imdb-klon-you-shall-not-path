@@ -7,10 +7,18 @@ use Illuminate\Http\Request;
 use App\Models\Genre;
 use App\Models\User;
 use App\Models\Vote;
+use App\Models\Actor;
 use App\Models\Review;
 use App\Models\WatchList;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Image;
+use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response; // Testing
+use Intervention\Image\Drivers\Gd\Driver; // Testing
+use Intervention\Image\Encoders\AutoEncoder;
+
 
 class MovieController extends Controller
 {
@@ -158,7 +166,7 @@ class MovieController extends Controller
     } catch (\Exception $e) {
         return redirect()->route('watchlist.empty')->with('error', 'Failed to delete watchlist. Please try again.');
     }
-    }
+}
 
 
     public function editWatchlist($list_id)
@@ -197,7 +205,6 @@ class MovieController extends Controller
     
         try {
             DB::beginTransaction();
-    
             
             DB::table('list')->where('list_id', $list_id)->update([
                 'title' => $request->name,
@@ -225,5 +232,158 @@ class MovieController extends Controller
             DB::rollBack();
             return redirect()->back()->with('error', 'Failed to update watchlist. Please try again.');
         }
+    }
+
+    public function showMovie()
+    {
+        // Fetch all genres with their respective movies
+        $genres = Genre::with('movie')->get();
+
+        $user = Auth::user();
+
+        // Pass the data to the Blade view
+        return view('movie', compact('genres', 'user'));
+    }
+
+    public function editMovie($movie_id)
+    {
+        // Fetch the movie data
+        $movie = Movie::where('movie_id', $movie_id)->with(['actor', 'genre'])->firstOrFail();
+    
+        // Fetch all actors and genres from the database
+        $actors = Actor::all();
+        $genre = Genre::all();
+    
+        // Get selected actors and genres for the movie
+        $selectedActors = $movie->actor->pluck('actor_id')->toArray();
+        $selectedGenres = $movie->genre->pluck('genre_id')->toArray();
+    
+        return view('movie-form', compact('movie', 'actors', 'genre', 'selectedActors', 'selectedGenres'));
+    }
+
+    public function updateMovie(Request $request, $movie_id)
+    {
+        try {
+            // Validate the form data
+            $request->validate([
+                'title' => 'nullable|string|max:255',
+                'overview' => 'nullable|string',
+                'poster' => 'nullable|string',
+                'trailer' => 'nullable|string',
+                'actors' => 'nullable|array',
+                'actors.*' => 'exists:actor,actor_id',
+                'genres' => 'nullable|array',
+                'genres.*' => 'exists:genre,genre_id',
+                'image' => 'nullable|image|mimes:jpeg,jpg,png|max:2048', // Image validation
+            ]);
+        
+            // Find the movie by ID
+            $movie = Movie::where('movie_id', $movie_id)->firstOrFail();
+        
+            // Update movie fields only if they are provided
+            $updateData = array_filter($request->only(['title', 'overview', 'poster', 'trailer']), fn($value) => !is_null($value));
+            $movie->update($updateData);
+        
+            // Handle image upload with compression
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+        
+                // Generate a new filename using movie title or unique ID if no title is provided
+                $filename = ($request->title ? str_replace(' ', '_', strtolower($request->title)) : uniqid()) . '.' . $image->getClientOriginalExtension();
+                $filepath = 'uploads/' . $filename;
+        
+                // Get original image dimensions
+                $data = getimagesize($image);
+                $imageHeight = 1000;
+        
+                // Initialize Image Manager
+                $manager = new ImageManager(new Driver());
+        
+                // Compress and resize image
+                $compressedImage = $manager->read($image)
+                    ->scale(height: 800) // Resize image to height 800px (keeping aspect ratio)
+                    ->encode(new AutoEncoder(quality: 75)); // 75% quality compression
+        
+                // Save compressed image to storage
+                Storage::disk('public')->put($filepath, $compressedImage);
+        
+                // Update movie with new poster path
+                $movie->update([
+                    'poster_file_path' => $filepath
+                ]);
+            }
+        
+            // Sync actors and genres only if provided
+            if ($request->has('actors')) {
+                $movie->actor()->sync($request->actors);
+            }
+            if ($request->has('genres')) {
+                $movie->genre()->sync($request->genres);
+            }
+        
+            // Redirect with success message
+            return redirect()->back()->with('success', 'Movie updated successfully!');
+
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to updated movie. Please try again.');
+        }
+    }    
+    
+
+    public function deleteMovie($movie_id)
+    {
+        try {
+        
+            $movie = DB::table('movie')->where('movie_id', $movie_id)->first();
+        
+    
+            if (!$movie) {
+                return redirect()->route('allmovies.show')->with('error', 'Movie not found.');
+            }
+    
+            DB::table('movie')->where('movie_id', $movie_id)->delete();
+    
+            return redirect()->route('allmovies.show')->with('success', 'Watchlist deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('allmovies.show')->with('error', 'Failed to delete watchlist. Please try again.');
+        }
+    }
+
+    public function createMovie(Request $request)
+    {
+        // Validate the request
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'overview' => 'required|string',
+            'release_date' => 'required|date', // Ensure the release_date is a valid date
+            'actors' => 'required|array', 
+            'actors.*' => 'required|exists:actor,actor_id',
+            'genres' => 'required|array',
+            'genres.*' => 'exists:genre,genre_id',
+            'poster' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'trailer' => 'required|nullable|url',
+        ]);
+    
+        // Handle poster upload
+        if ($request->hasFile('poster')) {
+            $posterPath = $request->file('poster')->store('posters', 'public');
+        } else {
+            return back()->with('error', 'Poster upload failed.');
+        }
+    
+        // Create the movie
+        $movie = Movie::create([
+            'title' => $validatedData['title'],
+            'overview' => $validatedData['overview'],
+            'release_date' => $validatedData['release_date'],
+            'poster_file_path' => $posterPath,
+            'trailer_file_path' => $validatedData['trailer'],
+        ]);
+    
+        // Attach actors and genres
+        $movie->actor()->attach($validatedData['actors']);
+        $movie->genre()->attach($validatedData['genres']);
+    
+        return redirect()->route('allmovies.show')->with('success', 'Movie created successfully.');
     }
 }
