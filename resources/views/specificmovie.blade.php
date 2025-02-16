@@ -7,10 +7,9 @@
         <!-- Image Slideshow -->
         <div class="relative">
             <div class="w-full h-64 overflow-hidden rounded-lg">
-                <img id="slide" src="{{ asset('images/movie1.jpg') }}" alt="Movie Image" class="w-full h-full object-cover">
+                <img class="w-full h-full object-cover" src="{{ asset($movie['poster_file_path']) }}" alt="{{ $movie->title }}">
             </div>
         </div>
-+
         <!-- Movie Info -->
         <div class="mt-4">
             <div class="flex items-center gap-2">
