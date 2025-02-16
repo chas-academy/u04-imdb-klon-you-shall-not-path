@@ -1,74 +1,93 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/9Y3cG2WL)
+# IMDb Clone
+
+This project is an IMDb-inspired web application built with Laravel and MariaDB. The application allows users to browse and review movies, create watchlists, and manage content through an admin panel. The project follows an agile workflow and is responsive.
+
+# Features
+- Laravel
+- MariaDB
+- Sanctum
+- Blade
+- Docker
+- Tailwind
+
+## Public Users
+Browse and view movie details
+Watch trailers and read reviews
+
+## Registered Users
+Create their own movie reviews
+Create and manage personal watchlists
+
+## Administrators
+Approve or remove inappropriate reviews
+Add new Admin
+Perform CRUD operations on movies and users
+
+**Getting Started**
+- Prerequisites
+- Make sure you have the following installed:
+- PHP
+- Composer
+- Laravel
+- MariaDB
+- Node.js & npm
+- Git
+- Tailwind Css
+
+**Installation**
+Clone the repository:
+git clone: https://github.com/chas-academy/u04-imdb-klon-you-shall-not-path.git
+cd u04-imdb-klon-you-shall-not-path
+
+**Install dependencies:**
+- composer install
+- npm install & npm run build
+- npm run dev
+
+Copy the environment file and set up the database:
+cp .env.example .env
+php artisan key:generate
+
+Update .env with your database credentials.
+
+Run migrations and seed the database:
+php artisan migrate --seed
+
+Start the development server:
+Docker compose up
+
+## Documentation
+
+[Documentation](https://docs.google.com/document/d/1Qg42IW79C_6eY-DWCDwOeKSLo62S3tApt_0o01oB02w/edit?tab=t.0)
+
+**OBS**
+Sence thier is a slight issue with the db-seeders regarding images, to ensure that the images are displayed for movies and actors, do the following:
+
+Download each png file that are listed down below:
+
+1. [Actor.png](storage\app\public\uploads\Actor.png)
+
+2. [Movie.png](storage\app\public\uploads\Movie.png)
+
+When the application is up and running, go to "/images", in the url. 
+Upload said images with thier respective names "Actor" & "Movie".
+
+Deployment
+To deploy the application, follow standard Laravel deployment practices, including setting up a production database, configuring environment variables, and using a web server like Apache.
 
 
-# IMDB Clone
 
-New Test
+## Things that could have been done better
 
+There are a few issues that arises during the projects process, one main thing was that the group struggled with CRUD functions regarding this project.
+That led to scrummaster having too wear more than one hat, and focus on almost every crud function just to have a functional project.
+Sence the workload got alot bigger it lead to a few features that were not either correctly implemented, or was not implemented at all.
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+One ex. of a feature that wasnt implemented because of time restraints, was vote_avr and vote_count regarding movies. Currently all the vote_avr will display 0/10,
+there is logic so the function can be implementen futhur along, if we had the time.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+One feature that wasnt implemented correctly was the image viewing, we planned on using local files, instead of an url of another website. We chose this approach beacuse if 
+you use another image hostings url and they update thier website, your application than break.
+We managed to constructed an image encoder and decoder to reduce file-size so that the 100MB limit regarding github-repo wouldn't be an issue, we managed to reduce the size of images to around 300kb instead of >1MB, The problem was including the local files into a db-seeder to than automaticlly upload every image thru render.com and aiven.io
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This was not solved correctly.

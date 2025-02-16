@@ -27,8 +27,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/specificmovie', [SpecificMovieController::class, 'show']);
-
   
 Route::get('/movie/{movie_id}', [MovieController::class, 'show'])->name('movie.show');
 
@@ -75,7 +73,17 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/movie/{movie_id}/review', [ReviewController::class, 'store'])->name('review.store');
     Route::get('/reviews/all', [ReviewController::class, 'show'])->name('review.show');
+
+    Route::get('/movie', [MovieController::class, 'showMovie'])->name('allmovies.show');
+    Route::delete('/movie/{movie_id}/delete', [MovieController::class, 'deleteMovie'])->name('movie.delete');
+    Route::get('/movie/edit/{movie_id}', [MovieController::class, 'editMovie'])->name('movie.edit');
+    Route::put('/movie/update/{movie_id}', [MovieController::class, 'updateMovie'])->name('movie.update');
+    Route::post('/movie/new/', [MovieController::class, 'createMovie'])->name('new.movie');
+
+    Route::get('/createform', [PageController::class, 'showCreateMovie'])->name('createform');
 });
+
+
 
 
 // Normal review form route
