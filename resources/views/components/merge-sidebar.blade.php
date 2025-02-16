@@ -26,6 +26,7 @@
                 @if(Auth::user()->role === 'admin')
                     <li><a href="{{ route('admin-dashboard') }}" class="block hover:bg-blue-500 p-2 rounded">Admin Dashboard</a></li>
                     <li><a href="{{ route('admin-settings') }}" class="block hover:bg-blue-500 p-2 rounded">Admin Settings</a></li>
+                    <li><a href="{{ route('allmovies.show') }}" class="block hover:bg-blue-500 p-2 rounded">Admin Movies</a></li> 
                 @else
                     <li><a href="{{ route('user-dashboard') }}" class="block hover:bg-blue-500 p-2 rounded">Profile Page</a></li>
                     <li><a href="{{ route('user-settings') }}" class="block hover:bg-blue-500 p-2 rounded">Profile Settings</a></li>

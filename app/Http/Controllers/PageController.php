@@ -18,5 +18,13 @@ class PageController extends Controller
         return view('homepage', compact('genres'));
     }
 
+    public function showCreateMovie()
+    {
+        $actors = Actor::all();
+        $genres = Genre::all(); // Corrected variable name to plural for clarity
     
+        return view('createform', compact('actors', 'genres'));
+    }
+    
+
 }
