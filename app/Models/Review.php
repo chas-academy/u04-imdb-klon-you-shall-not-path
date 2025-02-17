@@ -19,7 +19,7 @@ class Review extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    
+
     public function votes()
     {
         return $this->belongsToMany(Vote::class, 'review_vote', 'review_id', 'vote_id');

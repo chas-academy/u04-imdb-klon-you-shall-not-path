@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use App\Models\Actor;
 
 class TestListSeeder extends Seeder
@@ -19,5 +17,5 @@ class TestListSeeder extends Seeder
             $actor->save();
         });
     }
-    
+
 }

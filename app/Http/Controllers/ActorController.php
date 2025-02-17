@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Actor;
-use App\Models\Movie;
-use App\Models\Genre;
 
 class ActorController extends Controller
 {
@@ -25,7 +22,7 @@ class ActorController extends Controller
 
         // // Retrive all movies
         $movies = $actor->movie()->get();
-        
+
         // // Retrive all genres
         $genres = $actor->genre()->get();
 

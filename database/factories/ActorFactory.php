@@ -10,7 +10,6 @@ use App\Models\Actor;
  */
 class ActorFactory extends Factory
 {
-
     protected $model = Actor::class;
     /**
      * Define the model's default state.

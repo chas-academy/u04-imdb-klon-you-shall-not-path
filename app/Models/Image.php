@@ -21,4 +21,3 @@ class Image extends Model
         return asset('storage/' . $this->file_path);
     }
 }
-

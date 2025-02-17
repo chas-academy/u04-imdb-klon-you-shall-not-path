@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\Review;
 use App\Models\Vote;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Password;
 
 class AdminController extends Controller
@@ -45,10 +44,10 @@ class AdminController extends Controller
         $id = Auth::user();
 
         $query = $request->input('search');
-    
+
         // Search users by name
         $users = User::where('name', 'LIKE', "%{$query}%")->get();
-    
+
         return view('admin-settings', compact('users', 'query', 'id'));
     }
 
@@ -66,9 +65,9 @@ class AdminController extends Controller
                 'name' => 'required|string|max:255',
                 'role' => 'required|string|max:255',
             ]);
-    
+
             $user->update($request->all());
-    
+
             return redirect()->route('user.edit', ['user' => $user->user_id])->with('success', 'User updated successfully');
         } catch (\Exception $e) {
 
@@ -80,19 +79,19 @@ class AdminController extends Controller
     public function updateUserSettings(Request $request)
     {
         $user = Auth::user(); // Get authenticated user
-    
+
         try {
             if (!$request->filled('username') && !$request->filled('email') && !$request->filled('password')) {
                 return redirect()->back()->with('error', 'You must provide at least one field to update.');
             }
-    
+
             // Validate only the fields that are filled
             $validatedData = $request->validate([
                 'username' => 'nullable|string|max:255|unique:users,name,' . $user->user_id . ',user_id',
                 'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->user_id . ',user_id',
                 'password' => ['nullable', 'confirmed', Password::min(8)],
             ]);
-                        
+
             // Update fields only if they are provided
             if ($request->filled('username')) {
                 $user->name = $request->username;
@@ -103,13 +102,13 @@ class AdminController extends Controller
             if ($request->filled('password')) {
                 $user->password = Hash::make($request->password);
             }
-    
+
             $user->save();
-    
+
             return redirect()->back()->with('success', 'Profile updated successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to update user: ' . $e->getMessage());
-        }        
+        }
     }
 
     public function destroy(User $user)
@@ -129,5 +128,5 @@ class AdminController extends Controller
 
         return view('user-settings', compact('user'));
     }
-    
+
 }

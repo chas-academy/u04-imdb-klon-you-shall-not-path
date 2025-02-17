@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -19,6 +18,6 @@ class UserSeeder extends Seeder
             'role' => 'admin',
             'password' => 'MJFJXEJW26',
             // Continue
-        ]
+        ];
     }
 }

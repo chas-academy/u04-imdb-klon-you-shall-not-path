@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Movie;
 use App\Models\Genre;
 use App\Models\Actor;
 
@@ -22,9 +20,9 @@ class PageController extends Controller
     {
         $actors = Actor::all();
         $genres = Genre::all(); // Corrected variable name to plural for clarity
-    
+
         return view('createform', compact('actors', 'genres'));
     }
-    
+
 
 }

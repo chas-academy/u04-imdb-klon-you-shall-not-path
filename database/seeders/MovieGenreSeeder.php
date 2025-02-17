@@ -431,45 +431,45 @@ class MovieGenreSeeder extends Seeder
             ['movie_id' => $TheChroniclesOfNarniaTheLionTheWitchAndTheWardrobe->movie_id, 'genre_id' => $Fantasy->genre_id],
 
             // The Price of Money Alargo Winch Adventure
-            ['movie_id' =>$ThePriceOfMoneyALargoWinchAdventure->movie_id, 'genre_id' => $Adventure->genre_id],
-            ['movie_id' =>$ThePriceOfMoneyALargoWinchAdventure->movie_id, 'genre_id' => $Action->genre_id],
-            ['movie_id' =>$ThePriceOfMoneyALargoWinchAdventure->movie_id, 'genre_id' => $Thriller->genre_id],
+            ['movie_id' => $ThePriceOfMoneyALargoWinchAdventure->movie_id, 'genre_id' => $Adventure->genre_id],
+            ['movie_id' => $ThePriceOfMoneyALargoWinchAdventure->movie_id, 'genre_id' => $Action->genre_id],
+            ['movie_id' => $ThePriceOfMoneyALargoWinchAdventure->movie_id, 'genre_id' => $Thriller->genre_id],
 
             // The Substance
-            ['movie_id' =>$TheSubstance->movie_id, 'genre_id' => $Horror->genre_id],
-            ['movie_id' =>$TheSubstance->movie_id, 'genre_id' => $Science_Fiction->genre_id],
+            ['movie_id' => $TheSubstance->movie_id, 'genre_id' => $Horror->genre_id],
+            ['movie_id' => $TheSubstance->movie_id, 'genre_id' => $Science_Fiction->genre_id],
 
             // Transformers One
-            ['movie_id' =>$TransformersOne->movie_id, 'genre_id' => $Animation->genre_id],
-            ['movie_id' =>$TransformersOne->movie_id, 'genre_id' => $Adventure->genre_id],
-            ['movie_id' =>$TransformersOne->movie_id, 'genre_id' => $Science_Fiction->genre_id],
-            ['movie_id' =>$TransformersOne->movie_id, 'genre_id' => $Family->genre_id],
+            ['movie_id' => $TransformersOne->movie_id, 'genre_id' => $Animation->genre_id],
+            ['movie_id' => $TransformersOne->movie_id, 'genre_id' => $Adventure->genre_id],
+            ['movie_id' => $TransformersOne->movie_id, 'genre_id' => $Science_Fiction->genre_id],
+            ['movie_id' => $TransformersOne->movie_id, 'genre_id' => $Family->genre_id],
 
             // Venom The Last Dance
-            ['movie_id' =>$VenomTheLastDance->movie_id, 'genre_id' => $Adventure->genre_id],
-            ['movie_id' =>$VenomTheLastDance->movie_id, 'genre_id' => $Action->genre_id],
-            ['movie_id' =>$VenomTheLastDance->movie_id, 'genre_id' => $Science_Fiction->genre_id],
+            ['movie_id' => $VenomTheLastDance->movie_id, 'genre_id' => $Adventure->genre_id],
+            ['movie_id' => $VenomTheLastDance->movie_id, 'genre_id' => $Action->genre_id],
+            ['movie_id' => $VenomTheLastDance->movie_id, 'genre_id' => $Science_Fiction->genre_id],
 
             // Wallace Gromit Vengeance Most Fowl
-            ['movie_id' =>$WallaceGromitVengeanceMostFowl->movie_id, 'genre_id' => $Adventure->genre_id],
-            ['movie_id' =>$WallaceGromitVengeanceMostFowl->movie_id, 'genre_id' => $Animation->genre_id],
-            ['movie_id' =>$WallaceGromitVengeanceMostFowl->movie_id, 'genre_id' => $Comedy->genre_id],
-            ['movie_id' =>$WallaceGromitVengeanceMostFowl->movie_id, 'genre_id' => $Family->genre_id],
+            ['movie_id' => $WallaceGromitVengeanceMostFowl->movie_id, 'genre_id' => $Adventure->genre_id],
+            ['movie_id' => $WallaceGromitVengeanceMostFowl->movie_id, 'genre_id' => $Animation->genre_id],
+            ['movie_id' => $WallaceGromitVengeanceMostFowl->movie_id, 'genre_id' => $Comedy->genre_id],
+            ['movie_id' => $WallaceGromitVengeanceMostFowl->movie_id, 'genre_id' => $Family->genre_id],
 
             // WereWolves
-            ['movie_id' =>$Werewolves->movie_id, 'genre_id' => $Action->genre_id],
-            ['movie_id' =>$Werewolves->movie_id, 'genre_id' => $Horror->genre_id],
-            ['movie_id' =>$Werewolves->movie_id, 'genre_id' => $Thriller->genre_id],
+            ['movie_id' => $Werewolves->movie_id, 'genre_id' => $Action->genre_id],
+            ['movie_id' => $Werewolves->movie_id, 'genre_id' => $Horror->genre_id],
+            ['movie_id' => $Werewolves->movie_id, 'genre_id' => $Thriller->genre_id],
 
             // WolfMan
-            ['movie_id' =>$WolfMan->movie_id, 'genre_id' => $Horror->genre_id],
-            ['movie_id' =>$WolfMan->movie_id, 'genre_id' => $Thriller->genre_id],
+            ['movie_id' => $WolfMan->movie_id, 'genre_id' => $Horror->genre_id],
+            ['movie_id' => $WolfMan->movie_id, 'genre_id' => $Thriller->genre_id],
 
             // xXx
-            ['movie_id' =>$xXx->movie_id, 'genre_id' => $Action->genre_id],
-            ['movie_id' =>$xXx->movie_id, 'genre_id' => $Adventure->genre_id],
-            ['movie_id' =>$xXx->movie_id, 'genre_id' => $Thriller->genre_id],
-            ['movie_id' =>$xXx->movie_id, 'genre_id' => $Crime->genre_id],
+            ['movie_id' => $xXx->movie_id, 'genre_id' => $Action->genre_id],
+            ['movie_id' => $xXx->movie_id, 'genre_id' => $Adventure->genre_id],
+            ['movie_id' => $xXx->movie_id, 'genre_id' => $Thriller->genre_id],
+            ['movie_id' => $xXx->movie_id, 'genre_id' => $Crime->genre_id],
 
         ];
 
