@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
-use Illuminate\Http\Request;
 
 class GenreController extends Controller
 {
@@ -11,7 +10,7 @@ class GenreController extends Controller
     {
         // Fetch all genres
         $genres = Genre::all();
-        
+
         // Pass genres to the Blade view
         return view('genre', compact('genres'));
     }

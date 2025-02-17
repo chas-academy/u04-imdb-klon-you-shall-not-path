@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Vote;
 use App\Models\Review;
 
 class VoteController extends Controller

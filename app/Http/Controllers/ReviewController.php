@@ -31,7 +31,7 @@ class ReviewController extends Controller
                 'movie_id' => 'required|exists:movie,movie_id',
                 'vote' => 'required|integer',
             ]);
-    
+
             $review = Review::create([
                 'title' => $request->title,
                 'review' => $request->review,
@@ -50,7 +50,7 @@ class ReviewController extends Controller
                 'review_id' => $review->review_id,
                 'vote_id' => $vote->vote_id,
             ]);
-    
+
             return redirect()->back()->with('success', 'The Review have been succefully created.');
 
         } catch (\Exception $e) {
@@ -65,7 +65,7 @@ class ReviewController extends Controller
             $review = Review::findOrFail($review_id);
             $review->approved = true;
             $review->save();
-    
+
             return back()->with('success', 'Review approved successfully!');
         } catch (\Exception $e) {
             return back()->with('error', 'Failed too approve review, try again!');
@@ -78,7 +78,7 @@ class ReviewController extends Controller
 
             $review = Review::findOrFail($review_id);
             $review->delete();
-    
+
             return back()->with('success', 'Review deleted successfully!');
 
         } catch (\Exception $e) {
@@ -93,10 +93,10 @@ class ReviewController extends Controller
     }
 
 
-    public function showReviewForm($movie_id)    
+    public function showReviewForm($movie_id)
     {
-    $movie = Movie::findOrFail($movie_id);
-    return view('review-form', compact('movie'));
+        $movie = Movie::findOrFail($movie_id);
+        return view('review-form', compact('movie'));
     }
 
     public function show()

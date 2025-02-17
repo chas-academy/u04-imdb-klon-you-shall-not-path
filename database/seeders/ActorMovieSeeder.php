@@ -90,220 +90,220 @@ class ActorMovieSeeder extends Seeder
         $xXx = DB::table('movie')->where('title', 'xXx')->first();
 
         // Fetch Actors
-        $Liam_Neeson= DB::table('actor')->where('name', 'Liam Neeson')->first();
-        $Anna_Maria_Sieklucka= DB::table('actor')->where('name', 'Anna-Maria Sieklucka')->first();
-        $Dylan_Sprouse= DB::table('actor')->where('name', 'Dylan Sprouse')->first();
-        $Scott_Eastwood= DB::table('actor')->where('name', 'Scott Eastwood')->first();
-        $Mikey_Madison= DB::table('actor')->where('name', 'Mikey Madison')->first();
-        $Jason_Patric= DB::table('actor')->where('name', 'Jason Patric')->first();
-        $Robert_Downey_Jr= DB::table('actor')->where('name', 'Robert Downey Jr.')->first();
-        $Will_Smith= DB::table('actor')->where('name', 'Will Smith')->first();
-        $Anthony_Mackie= DB::table('actor')->where('name', 'Anthony Mackie')->first();
-        $Sophie_Thatcher= DB::table('actor')->where('name', 'Sophie Thatcher')->first();
-        $Huang_Bo= DB::table('actor')->where('name', 'Huang Bo')->first();
-        $Ryan_Reynolds= DB::table('actor')->where('name', 'Ryan Reynolds')->first();
-        $Vin_Diesel= DB::table('actor')->where('name', 'Vin Diesel')->first();
-        $Paul_Mescal= DB::table('actor')->where('name', 'Paul Mescal')->first();
-        $Rebecca_Hall= DB::table('actor')->where('name', 'Rebecca Hall')->first();
-        $Daniel_Radcliffe= DB::table('actor')->where('name', 'Daniel Radcliffe')->first();
-        $Chris_Pratt= DB::table('actor')->where('name', 'Chris Pratt')->first();
-        $Scarlett_Johansson= DB::table('actor')->where('name', 'Scarlett Johansson')->first();
-        $Jack_Black= DB::table('actor')->where('name', 'Jack Black')->first();
-        $Nicole_Wallace= DB::table('actor')->where('name', 'Nicole Wallace')->first();
-        $Sjur_Vatne_Brean= DB::table('actor')->where('name', 'Sjur Vatne Brean')->first();
-        $Harrison_Ford= DB::table('actor')->where('name', 'Harrison Ford')->first();
-        $Dwayne_Johnson= DB::table('actor')->where('name', 'Dwayne Johnson')->first();
-        $Cody_Rhodes= DB::table('actor')->where('name', 'Cody Rhodes')->first();
-        $Woo_Yeol= DB::table('actor')->where('name', 'Woo Yeol')->first();
-        $Taito_Ban= DB::table('actor')->where('name', 'Taito Ban')->first();
-        $Ben_Schwartz= DB::table('actor')->where('name', 'Ben Schwartz')->first();
-        $Jim_Carrey= DB::table('actor')->where('name', 'Jim Carrey')->first();
-        $Tom_Holland= DB::table('actor')->where('name', 'Tom Holland')->first();
-        $Tim_Robbins= DB::table('actor')->where('name', 'Tim Robbins')->first();
-        $Lupita_Nyong= DB::table('actor')->where('name', 'Lupita Nyong')->first();
-        $Cynthia_Erivo= DB::table('actor')->where('name', 'Cynthia Erivo')->first();
-        $Will_Ferrell= DB::table('actor')->where('name', 'Will Ferrell')->first();
-        $Nicolas_Cage= DB::table('actor')->where('name', 'Nicolas Cage')->first();
-        $Gabriela_Andrada= DB::table('actor')->where('name', 'Gabriela Andrada')->first();
-        $Samara_Weaving= DB::table('actor')->where('name', 'Samara Weaving')->first();
-        $Nicole_Kidman= DB::table('actor')->where('name', 'Nicole Kidman')->first();
-        $Cameron_Diaz= DB::table('actor')->where('name', 'Cameron Diaz')->first();
-        $Audrey_Avila= DB::table('actor')->where('name', 'Audrey Avila')->first();
-        $Taron_Egerton= DB::table('actor')->where('name', 'Taron Egerton')->first();
-        $Ralph_Fiennes= DB::table('actor')->where('name', 'Ralph Fiennes')->first();
-        $Kappei_Yamaguchi= DB::table('actor')->where('name', 'Kappei Yamaguchi')->first();
-        $Steve_Carell= DB::table('actor')->where('name', 'Steve Carell')->first();
-        $Eva_Green= DB::table('actor')->where('name', 'Eva Green')->first();
-        $Peter_Hastings= DB::table('actor')->where('name', 'Peter Hastings')->first();
-        $Xie_Miao= DB::table('actor')->where('name', 'Xie Miao')->first();
-        $Frank_Lammers= DB::table('actor')->where('name', 'Frank Lammers')->first();
-        $Michelle_Dockery= DB::table('actor')->where('name', 'Michelle Dockery')->first();
-        $Hugh_Grant= DB::table('actor')->where('name', 'Hugh Grant')->first();
-        $Amy_Poehler= DB::table('actor')->where('name', 'Amy Poehler')->first();
-        $Matthew_McConaughey= DB::table('actor')->where('name', 'Matthew McConaughey')->first();
-        $Owen_Teague= DB::table('actor')->where('name', 'Owen Teague')->first();
-        $Aaron_Taylor_Johnson= DB::table('actor')->where('name', 'Aaron Taylor-Johnson')->first();
-        $Taskya_Namya= DB::table('actor')->where('name', 'Taskya Namya')->first();
-        $Sarah_Snook= DB::table('actor')->where('name', 'Sarah Snook')->first();
-        $Jackie_Chan= DB::table('actor')->where('name', 'Jackie Chan')->first();
-        $Sofia_Kappel= DB::table('actor')->where('name', 'Sofia Kappel')->first();
-        $Christine_Bermas= DB::table('actor')->where('name', 'Christine Bermas')->first();
-        $Joseph_Millson= DB::table('actor')->where('name', 'Joseph Millson')->first();
-        $Siena_Agudong= DB::table('actor')->where('name', 'Siena Agudong')->first();
-        $Wim_van_Damme= DB::table('actor')->where('name', 'Wim van Damme')->first();
-        $Naomi_Scott= DB::table('actor')->where('name', 'Naomi Scott')->first();
-        $Lauren_LaVera= DB::table('actor')->where('name', 'Lauren LaVera')->first();
-        $William_Moseley= DB::table('actor')->where('name', 'William Moseley')->first();
-        $Tomer_Sisley= DB::table('actor')->where('name', 'Tomer Sisley')->first();
-        $Demi_Moore= DB::table('actor')->where('name', 'Demi Moore')->first();
-        $Chris_Hemsworth= DB::table('actor')->where('name', 'Chris Hemsworth')->first();
-        $Tom_Hardy= DB::table('actor')->where('name', 'Tom Hardy')->first();
-        $Ben_Whitehead= DB::table('actor')->where('name', 'Ben Whitehead')->first();
-        $Frank_Grillo= DB::table('actor')->where('name', 'Frank Grillo')->first();
-        $Christopher_Abbott= DB::table('actor')->where('name', 'Christopher Abbott')->first();
+        $Liam_Neeson = DB::table('actor')->where('name', 'Liam Neeson')->first();
+        $Anna_Maria_Sieklucka = DB::table('actor')->where('name', 'Anna-Maria Sieklucka')->first();
+        $Dylan_Sprouse = DB::table('actor')->where('name', 'Dylan Sprouse')->first();
+        $Scott_Eastwood = DB::table('actor')->where('name', 'Scott Eastwood')->first();
+        $Mikey_Madison = DB::table('actor')->where('name', 'Mikey Madison')->first();
+        $Jason_Patric = DB::table('actor')->where('name', 'Jason Patric')->first();
+        $Robert_Downey_Jr = DB::table('actor')->where('name', 'Robert Downey Jr.')->first();
+        $Will_Smith = DB::table('actor')->where('name', 'Will Smith')->first();
+        $Anthony_Mackie = DB::table('actor')->where('name', 'Anthony Mackie')->first();
+        $Sophie_Thatcher = DB::table('actor')->where('name', 'Sophie Thatcher')->first();
+        $Huang_Bo = DB::table('actor')->where('name', 'Huang Bo')->first();
+        $Ryan_Reynolds = DB::table('actor')->where('name', 'Ryan Reynolds')->first();
+        $Vin_Diesel = DB::table('actor')->where('name', 'Vin Diesel')->first();
+        $Paul_Mescal = DB::table('actor')->where('name', 'Paul Mescal')->first();
+        $Rebecca_Hall = DB::table('actor')->where('name', 'Rebecca Hall')->first();
+        $Daniel_Radcliffe = DB::table('actor')->where('name', 'Daniel Radcliffe')->first();
+        $Chris_Pratt = DB::table('actor')->where('name', 'Chris Pratt')->first();
+        $Scarlett_Johansson = DB::table('actor')->where('name', 'Scarlett Johansson')->first();
+        $Jack_Black = DB::table('actor')->where('name', 'Jack Black')->first();
+        $Nicole_Wallace = DB::table('actor')->where('name', 'Nicole Wallace')->first();
+        $Sjur_Vatne_Brean = DB::table('actor')->where('name', 'Sjur Vatne Brean')->first();
+        $Harrison_Ford = DB::table('actor')->where('name', 'Harrison Ford')->first();
+        $Dwayne_Johnson = DB::table('actor')->where('name', 'Dwayne Johnson')->first();
+        $Cody_Rhodes = DB::table('actor')->where('name', 'Cody Rhodes')->first();
+        $Woo_Yeol = DB::table('actor')->where('name', 'Woo Yeol')->first();
+        $Taito_Ban = DB::table('actor')->where('name', 'Taito Ban')->first();
+        $Ben_Schwartz = DB::table('actor')->where('name', 'Ben Schwartz')->first();
+        $Jim_Carrey = DB::table('actor')->where('name', 'Jim Carrey')->first();
+        $Tom_Holland = DB::table('actor')->where('name', 'Tom Holland')->first();
+        $Tim_Robbins = DB::table('actor')->where('name', 'Tim Robbins')->first();
+        $Lupita_Nyong = DB::table('actor')->where('name', 'Lupita Nyong')->first();
+        $Cynthia_Erivo = DB::table('actor')->where('name', 'Cynthia Erivo')->first();
+        $Will_Ferrell = DB::table('actor')->where('name', 'Will Ferrell')->first();
+        $Nicolas_Cage = DB::table('actor')->where('name', 'Nicolas Cage')->first();
+        $Gabriela_Andrada = DB::table('actor')->where('name', 'Gabriela Andrada')->first();
+        $Samara_Weaving = DB::table('actor')->where('name', 'Samara Weaving')->first();
+        $Nicole_Kidman = DB::table('actor')->where('name', 'Nicole Kidman')->first();
+        $Cameron_Diaz = DB::table('actor')->where('name', 'Cameron Diaz')->first();
+        $Audrey_Avila = DB::table('actor')->where('name', 'Audrey Avila')->first();
+        $Taron_Egerton = DB::table('actor')->where('name', 'Taron Egerton')->first();
+        $Ralph_Fiennes = DB::table('actor')->where('name', 'Ralph Fiennes')->first();
+        $Kappei_Yamaguchi = DB::table('actor')->where('name', 'Kappei Yamaguchi')->first();
+        $Steve_Carell = DB::table('actor')->where('name', 'Steve Carell')->first();
+        $Eva_Green = DB::table('actor')->where('name', 'Eva Green')->first();
+        $Peter_Hastings = DB::table('actor')->where('name', 'Peter Hastings')->first();
+        $Xie_Miao = DB::table('actor')->where('name', 'Xie Miao')->first();
+        $Frank_Lammers = DB::table('actor')->where('name', 'Frank Lammers')->first();
+        $Michelle_Dockery = DB::table('actor')->where('name', 'Michelle Dockery')->first();
+        $Hugh_Grant = DB::table('actor')->where('name', 'Hugh Grant')->first();
+        $Amy_Poehler = DB::table('actor')->where('name', 'Amy Poehler')->first();
+        $Matthew_McConaughey = DB::table('actor')->where('name', 'Matthew McConaughey')->first();
+        $Owen_Teague = DB::table('actor')->where('name', 'Owen Teague')->first();
+        $Aaron_Taylor_Johnson = DB::table('actor')->where('name', 'Aaron Taylor-Johnson')->first();
+        $Taskya_Namya = DB::table('actor')->where('name', 'Taskya Namya')->first();
+        $Sarah_Snook = DB::table('actor')->where('name', 'Sarah Snook')->first();
+        $Jackie_Chan = DB::table('actor')->where('name', 'Jackie Chan')->first();
+        $Sofia_Kappel = DB::table('actor')->where('name', 'Sofia Kappel')->first();
+        $Christine_Bermas = DB::table('actor')->where('name', 'Christine Bermas')->first();
+        $Joseph_Millson = DB::table('actor')->where('name', 'Joseph Millson')->first();
+        $Siena_Agudong = DB::table('actor')->where('name', 'Siena Agudong')->first();
+        $Wim_van_Damme = DB::table('actor')->where('name', 'Wim van Damme')->first();
+        $Naomi_Scott = DB::table('actor')->where('name', 'Naomi Scott')->first();
+        $Lauren_LaVera = DB::table('actor')->where('name', 'Lauren LaVera')->first();
+        $William_Moseley = DB::table('actor')->where('name', 'William Moseley')->first();
+        $Tomer_Sisley = DB::table('actor')->where('name', 'Tomer Sisley')->first();
+        $Demi_Moore = DB::table('actor')->where('name', 'Demi Moore')->first();
+        $Chris_Hemsworth = DB::table('actor')->where('name', 'Chris Hemsworth')->first();
+        $Tom_Hardy = DB::table('actor')->where('name', 'Tom Hardy')->first();
+        $Ben_Whitehead = DB::table('actor')->where('name', 'Ben Whitehead')->first();
+        $Frank_Grillo = DB::table('actor')->where('name', 'Frank Grillo')->first();
+        $Christopher_Abbott = DB::table('actor')->where('name', 'Christopher Abbott')->first();
         $Ron_Perlman = DB::table('actor')->where('name', 'Ron Perlman')->first();
-        $Michele_Morrone= DB::table('actor')->where('name', 'Michele Morrone')->first();
-        $Mason_Gooding= DB::table('actor')->where('name', 'Mason Gooding')->first();
-        $Sylvester_Stallone= DB::table('actor')->where('name', 'Sylvester Stallone')->first();
-        $Mark_Eydelshteyn= DB::table('actor')->where('name', 'Mark Eydelshteyn')->first();
-        $Chris_Evans= DB::table('actor')->where('name', 'Chris Evans')->first();
-        $Martin_Lawrence= DB::table('actor')->where('name', 'Martin Lawrence')->first();
-        $Danny_Ramirez= DB::table('actor')->where('name', 'Danny Ramirez')->first();
-        $Jack_Quaid= DB::table('actor')->where('name', 'Jack Quaid')->first();
-        $Yu_Shi= DB::table('actor')->where('name', 'Yu Shi')->first();
-        $Hugh_Jackman= DB::table('actor')->where('name', 'Hugh Jackman')->first();
-        $Morena_Baccarin= DB::table('actor')->where('name', 'Morena Baccarin')->first();
-        $Michelle_Rodriguez= DB::table('actor')->where('name', 'Michelle Rodriguez')->first();
-        $Denzel_Washington= DB::table('actor')->where('name', 'Denzel Washington')->first();
-        $Brian_Tyree_Henry= DB::table('actor')->where('name', 'Brian Tyree Henry')->first();
-        $Rupert_Grint= DB::table('actor')->where('name', 'Rupert Grint')->first();
-        $Bryce_Dallas_Howard= DB::table('actor')->where('name', 'Bryce Dallas Howard')->first();
-        $Jonathan_Bailey= DB::table('actor')->where('name', 'Jonathan Bailey')->first();
-        $Awkwafina= DB::table('actor')->where('name', 'Awkwafina')->first();
-        $Gabriel_Guevara= DB::table('actor')->where('name', 'Gabriel Guevara')->first();
-        $Erik_Hivju= DB::table('actor')->where('name', 'Erik Hivju')->first();
-        $Karen_Allen= DB::table('actor')->where('name', 'Karen Allen')->first();
-        $Kevin_Steen= DB::table('actor')->where('name', 'Kevin Steen')->first();
-        $So_Jeong= DB::table('actor')->where('name', 'So Jeong')->first();
-        $Genta_Nakamura= DB::table('actor')->where('name', 'Genta Nakamura')->first();
-        $James_Marsden= DB::table('actor')->where('name', 'James Marsden')->first();
-        $Ben_Schwartz= DB::table('actor')->where('name', 'Ben Schwartz')->first();
-        $Zendaya= DB::table('actor')->where('name', 'Zendaya')->first();
-        $Morgan_Freeman= DB::table('actor')->where('name', 'Morgan Freeman')->first();
-        $Pedro_Pascal= DB::table('actor')->where('name', 'Pedro Pascal')->first();
-        $Ariana_Grande= DB::table('actor')->where('name', 'Ariana Grande')->first();
-        $Reese_Witherspoon= DB::table('actor')->where('name', 'Reese Witherspoon')->first();
-        $Jaeden_Martell= DB::table('actor')->where('name', 'Jaeden Martell')->first();
-        $Mario_Ermito= DB::table('actor')->where('name', 'Mario Ermito')->first();
-        $Vic_Carmen_Sonne= DB::table('actor')->where('name', 'Vic Carmen Sonne')->first();
-        $Harris_Dickinson= DB::table('actor')->where('name', 'Harris Dickinson')->first();
-        $Jamie_Foxx= DB::table('actor')->where('name', 'Jamie Foxx')->first();
-        $Dani_Yoshida= DB::table('actor')->where('name', 'Dani Yoshida')->first();
-        $Jason_Bateman= DB::table('actor')->where('name', 'Jason Bateman')->first();
-        $Stanley_Tucci= DB::table('actor')->where('name', 'Stanley Tucci')->first();
-        $Hideyuki_Tanaka= DB::table('actor')->where('name', 'Hideyuki Tanaka')->first();
-        $Kristen_Wiig= DB::table('actor')->where('name', 'Kristen Wiig')->first();
-        $Maria_Bakalova= DB::table('actor')->where('name', 'Maria Bakalova')->first();
-        $Pete_Davidson= DB::table('actor')->where('name', 'Pete Davidson')->first();
-        $Yang_Enyou= DB::table('actor')->where('name', 'Yang Enyou')->first();
-        $Aiko_Beemsterboer= DB::table('actor')->where('name', 'Aiko Beemsterboer')->first();
-        $Mark_Wahlberg= DB::table('actor')->where('name', 'Mark Wahlberg')->first();
-        $Sophie_Thatcher= DB::table('actor')->where('name', 'Sophie Thatcher')->first();
-        $Maya_Hawke= DB::table('actor')->where('name', 'Maya Hawke')->first();
-        $Anne_Hathaway= DB::table('actor')->where('name', 'Anne Hathaway')->first();
-        $Freya_Allan= DB::table('actor')->where('name', 'Freya Allan')->first();
-        $Ariana_DeBose= DB::table('actor')->where('name', 'Ariana DeBose')->first();
-        $Yasamin_Jasem= DB::table('actor')->where('name', 'Yasamin Jasem')->first();
-        $Kodi_Smit_McPhee= DB::table('actor')->where('name', 'Kodi Smit-McPhee')->first();
-        $Shi_Ce= DB::table('actor')->where('name', 'Shi Ce')->first();
-        $Zelda_Morrison= DB::table('actor')->where('name', 'Zelda Morrison')->first();
-        $Gold_Aceron= DB::table('actor')->where('name', 'Gold Aceron')->first();
-        $Sarah_Alexandra_Marks= DB::table('actor')->where('name', 'Sarah Alexandra Marks')->first();
-        $Noah_Beck= DB::table('actor')->where('name', 'Noah Beck')->first();
-        $Floor_Wyns= DB::table('actor')->where('name', 'Floor Wyns')->first();
-        $Rosemarie_DeWitt= DB::table('actor')->where('name', 'Rosemarie DeWitt')->first();
-        $David_Howard_Thornton= DB::table('actor')->where('name', 'David Howard Thornton')->first();
-        $Colm_Meaney= DB::table('actor')->where('name', 'Colm Meaney')->first();
-        $Anna_Popplewell= DB::table('actor')->where('name', 'Anna Popplewell')->first();
-        $James_Franco= DB::table('actor')->where('name', 'James Franco')->first();
-        $Margaret_Qualley= DB::table('actor')->where('name', 'Margaret Qualley')->first();
-        $Chiwetel_Ejiofor= DB::table('actor')->where('name', 'Chiwetel Ejiofor')->first();
-        $Peter_Kay= DB::table('actor')->where('name', 'Peter Kay')->first();
-        $Katrina_Law= DB::table('actor')->where('name', 'Katrina Law')->first();
-        $Julia_Garner= DB::table('actor')->where('name', 'Julia Garner')->first();
-        $Asia_Argento= DB::table('actor')->where('name', 'Asia Argento')->first();
+        $Michele_Morrone = DB::table('actor')->where('name', 'Michele Morrone')->first();
+        $Mason_Gooding = DB::table('actor')->where('name', 'Mason Gooding')->first();
+        $Sylvester_Stallone = DB::table('actor')->where('name', 'Sylvester Stallone')->first();
+        $Mark_Eydelshteyn = DB::table('actor')->where('name', 'Mark Eydelshteyn')->first();
+        $Chris_Evans = DB::table('actor')->where('name', 'Chris Evans')->first();
+        $Martin_Lawrence = DB::table('actor')->where('name', 'Martin Lawrence')->first();
+        $Danny_Ramirez = DB::table('actor')->where('name', 'Danny Ramirez')->first();
+        $Jack_Quaid = DB::table('actor')->where('name', 'Jack Quaid')->first();
+        $Yu_Shi = DB::table('actor')->where('name', 'Yu Shi')->first();
+        $Hugh_Jackman = DB::table('actor')->where('name', 'Hugh Jackman')->first();
+        $Morena_Baccarin = DB::table('actor')->where('name', 'Morena Baccarin')->first();
+        $Michelle_Rodriguez = DB::table('actor')->where('name', 'Michelle Rodriguez')->first();
+        $Denzel_Washington = DB::table('actor')->where('name', 'Denzel Washington')->first();
+        $Brian_Tyree_Henry = DB::table('actor')->where('name', 'Brian Tyree Henry')->first();
+        $Rupert_Grint = DB::table('actor')->where('name', 'Rupert Grint')->first();
+        $Bryce_Dallas_Howard = DB::table('actor')->where('name', 'Bryce Dallas Howard')->first();
+        $Jonathan_Bailey = DB::table('actor')->where('name', 'Jonathan Bailey')->first();
+        $Awkwafina = DB::table('actor')->where('name', 'Awkwafina')->first();
+        $Gabriel_Guevara = DB::table('actor')->where('name', 'Gabriel Guevara')->first();
+        $Erik_Hivju = DB::table('actor')->where('name', 'Erik Hivju')->first();
+        $Karen_Allen = DB::table('actor')->where('name', 'Karen Allen')->first();
+        $Kevin_Steen = DB::table('actor')->where('name', 'Kevin Steen')->first();
+        $So_Jeong = DB::table('actor')->where('name', 'So Jeong')->first();
+        $Genta_Nakamura = DB::table('actor')->where('name', 'Genta Nakamura')->first();
+        $James_Marsden = DB::table('actor')->where('name', 'James Marsden')->first();
+        $Ben_Schwartz = DB::table('actor')->where('name', 'Ben Schwartz')->first();
+        $Zendaya = DB::table('actor')->where('name', 'Zendaya')->first();
+        $Morgan_Freeman = DB::table('actor')->where('name', 'Morgan Freeman')->first();
+        $Pedro_Pascal = DB::table('actor')->where('name', 'Pedro Pascal')->first();
+        $Ariana_Grande = DB::table('actor')->where('name', 'Ariana Grande')->first();
+        $Reese_Witherspoon = DB::table('actor')->where('name', 'Reese Witherspoon')->first();
+        $Jaeden_Martell = DB::table('actor')->where('name', 'Jaeden Martell')->first();
+        $Mario_Ermito = DB::table('actor')->where('name', 'Mario Ermito')->first();
+        $Vic_Carmen_Sonne = DB::table('actor')->where('name', 'Vic Carmen Sonne')->first();
+        $Harris_Dickinson = DB::table('actor')->where('name', 'Harris Dickinson')->first();
+        $Jamie_Foxx = DB::table('actor')->where('name', 'Jamie Foxx')->first();
+        $Dani_Yoshida = DB::table('actor')->where('name', 'Dani Yoshida')->first();
+        $Jason_Bateman = DB::table('actor')->where('name', 'Jason Bateman')->first();
+        $Stanley_Tucci = DB::table('actor')->where('name', 'Stanley Tucci')->first();
+        $Hideyuki_Tanaka = DB::table('actor')->where('name', 'Hideyuki Tanaka')->first();
+        $Kristen_Wiig = DB::table('actor')->where('name', 'Kristen Wiig')->first();
+        $Maria_Bakalova = DB::table('actor')->where('name', 'Maria Bakalova')->first();
+        $Pete_Davidson = DB::table('actor')->where('name', 'Pete Davidson')->first();
+        $Yang_Enyou = DB::table('actor')->where('name', 'Yang Enyou')->first();
+        $Aiko_Beemsterboer = DB::table('actor')->where('name', 'Aiko Beemsterboer')->first();
+        $Mark_Wahlberg = DB::table('actor')->where('name', 'Mark Wahlberg')->first();
+        $Sophie_Thatcher = DB::table('actor')->where('name', 'Sophie Thatcher')->first();
+        $Maya_Hawke = DB::table('actor')->where('name', 'Maya Hawke')->first();
+        $Anne_Hathaway = DB::table('actor')->where('name', 'Anne Hathaway')->first();
+        $Freya_Allan = DB::table('actor')->where('name', 'Freya Allan')->first();
+        $Ariana_DeBose = DB::table('actor')->where('name', 'Ariana DeBose')->first();
+        $Yasamin_Jasem = DB::table('actor')->where('name', 'Yasamin Jasem')->first();
+        $Kodi_Smit_McPhee = DB::table('actor')->where('name', 'Kodi Smit-McPhee')->first();
+        $Shi_Ce = DB::table('actor')->where('name', 'Shi Ce')->first();
+        $Zelda_Morrison = DB::table('actor')->where('name', 'Zelda Morrison')->first();
+        $Gold_Aceron = DB::table('actor')->where('name', 'Gold Aceron')->first();
+        $Sarah_Alexandra_Marks = DB::table('actor')->where('name', 'Sarah Alexandra Marks')->first();
+        $Noah_Beck = DB::table('actor')->where('name', 'Noah Beck')->first();
+        $Floor_Wyns = DB::table('actor')->where('name', 'Floor Wyns')->first();
+        $Rosemarie_DeWitt = DB::table('actor')->where('name', 'Rosemarie DeWitt')->first();
+        $David_Howard_Thornton = DB::table('actor')->where('name', 'David Howard Thornton')->first();
+        $Colm_Meaney = DB::table('actor')->where('name', 'Colm Meaney')->first();
+        $Anna_Popplewell = DB::table('actor')->where('name', 'Anna Popplewell')->first();
+        $James_Franco = DB::table('actor')->where('name', 'James Franco')->first();
+        $Margaret_Qualley = DB::table('actor')->where('name', 'Margaret Qualley')->first();
+        $Chiwetel_Ejiofor = DB::table('actor')->where('name', 'Chiwetel Ejiofor')->first();
+        $Peter_Kay = DB::table('actor')->where('name', 'Peter Kay')->first();
+        $Katrina_Law = DB::table('actor')->where('name', 'Katrina Law')->first();
+        $Julia_Garner = DB::table('actor')->where('name', 'Julia Garner')->first();
+        $Asia_Argento = DB::table('actor')->where('name', 'Asia Argento')->first();
         $Yolonda_Ross = DB::table('actor')->where('name', 'Yolonda Ross')->first();
-        $Simone_Susinna= DB::table('actor')->where('name', 'Simone Susinna')->first();
-        $Dichen_Lachman= DB::table('actor')->where('name', 'Dichen Lachman')->first();
-        $Willa_Fitzgerald= DB::table('actor')->where('name', 'Willa Fitzgerald')->first();
-        $Yura_Borisov= DB::table('actor')->where('name', 'Yura Borisov')->first();
-        $Josh_Wiggins= DB::table('actor')->where('name', 'Josh Wiggins')->first();
-        $Mark_Ruffalo= DB::table('actor')->where('name', 'Mark Ruffalo')->first();
-        $Chris_Hemsworth= DB::table('actor')->where('name', 'Chris Hemsworth')->first();
-        $Vanessa_Hudgens= DB::table('actor')->where('name', 'Vanessa Hudgens')->first();
-        $Harrison_Ford= DB::table('actor')->where('name', 'Harrison Ford')->first();
-        $Lukas_Gage= DB::table('actor')->where('name', 'Lukas Gage')->first();
-        $Nashi= DB::table('actor')->where('name', 'Nashi')->first();
-        $Emma_Corrin= DB::table('actor')->where('name', 'Emma Corrin')->first();
-        $Maddie_Hasson= DB::table('actor')->where('name', 'Maddie Hasson')->first();
-        $Tyrese_Gibson= DB::table('actor')->where('name', 'Tyrese Gibson')->first();
-        $Dan_Stevens= DB::table('actor')->where('name', 'Dan Stevens')->first();
-        $Emma_Watson= DB::table('actor')->where('name', 'Emma Watson')->first();
-        $Laura_Dern= DB::table('actor')->where('name', 'Laura Dern')->first();
-        $Mahershala_Ali= DB::table('actor')->where('name', 'Mahershala Ali')->first();
-        $Viola_Davis= DB::table('actor')->where('name', 'Viola Davis')->first();
-        $Marta_Hazas= DB::table('actor')->where('name', 'Marta Hazas')->first();
-        $Philip_Helgar= DB::table('actor')->where('name', 'Philip Helgar')->first();
-        $Paul_Freeman= DB::table('actor')->where('name', 'Paul Freeman')->first();
-        $Lucy_Liu= DB::table('actor')->where('name', 'Lucy Liu')->first();
-        $Chelsea_Cardona= DB::table('actor')->where('name', 'Chelsea Cardona')->first();
-        $Lee_Chae_dam= DB::table('actor')->where('name', 'Lee Chae-dam')->first();
-        $Haruna_Mikawa= DB::table('actor')->where('name', 'Haruna Mikawa')->first();
-        $Tika_Sumpter= DB::table('actor')->where('name', 'Tika Sumpter')->first();
-        $Keanu_Reeves= DB::table('actor')->where('name', 'Keanu Reeves')->first();
-        $Benedict_Cumberbatch= DB::table('actor')->where('name', 'Benedict Cumberbatch')->first();
-        $Bob_Gunton= DB::table('actor')->where('name', 'Bob Gunton')->first();
-        $Kit_Connor= DB::table('actor')->where('name', 'Kit Connor')->first();
-        $Jeff_Goldblum= DB::table('actor')->where('name', 'Jeff Goldblum')->first();
-        $Geraldine_Viswanathan= DB::table('actor')->where('name', 'Geraldine Viswanathan')->first();
-        $Maxwell_Jenkins= DB::table('actor')->where('name', 'Maxwell Jenkins')->first();
-        $Celia_Freijeiro= DB::table('actor')->where('name', 'Celia Freijeiro')->first();
-        $Katariina_Unt= DB::table('actor')->where('name', 'Katariina Unt')->first();
-        $Antonio_Banderas= DB::table('actor')->where('name', 'Antonio Banderas')->first();
-        $McKenna_Roberts= DB::table('actor')->where('name', 'McKenna Roberts')->first();
-        $Denise_Esteban= DB::table('actor')->where('name', 'Denise Esteban')->first();
-        $Sofia_Carson= DB::table('actor')->where('name', 'Sofia Carson')->first();
-        $John_Lithgow= DB::table('actor')->where('name', 'John Lithgow')->first();
-        $Reiko_Oimori= DB::table('actor')->where('name', 'Reiko Oimori')->first();
-        $Will_Ferrell= DB::table('actor')->where('name', 'Will Ferrell')->first();
-        $Ruby_Rose= DB::table('actor')->where('name', 'Ruby Rose')->first();
-        $Lil_Rel_Howery= DB::table('actor')->where('name', 'Lil Rel Howery')->first();
-        $Huang_Tao= DB::table('actor')->where('name', 'Huang Tao')->first();
-        $Tobias_Kersloot= DB::table('actor')->where('name', 'Tobias Kersloot')->first();
-        $Topher_Grace= DB::table('actor')->where('name', 'Topher Grace')->first();
-        $Chloe_East= DB::table('actor')->where('name', 'Chloe East')->first();
-        $Kensington_Tallman= DB::table('actor')->where('name', 'Kensington Tallman')->first();
-        $Michael_Caine= DB::table('actor')->where('name', 'Michael Caine')->first();
-        $Kevin_Durand= DB::table('actor')->where('name', 'Kevin Durand')->first();
-        $Fred_Hechinger= DB::table('actor')->where('name', 'Fred Hechinger')->first();
-        $Arya_Saloka= DB::table('actor')->where('name', 'Arya Saloka')->first();
-        $Jacki_Weaver= DB::table('actor')->where('name', 'Jacki Weaver')->first();
-        $Wei_Xiang= DB::table('actor')->where('name', 'Wei Xiang')->first();
-        $Tee_Reel= DB::table('actor')->where('name', 'Tee Reel')->first();
-        $VR_Relosa= DB::table('actor')->where('name', 'VR Relosa')->first();
-        $David_Wayman= DB::table('actor')->where('name', 'David Wayman')->first();
-        $Drew_Ray_Tanner= DB::table('actor')->where('name', 'Drew Ray Tanner')->first();
-        $Samantha_Scaffidi= DB::table('actor')->where('name', 'Samantha Scaffidi')->first();
-        $Jesse_Hutch= DB::table('actor')->where('name', 'Jesse Hutch')->first();
-        $Skandar_Keynes= DB::table('actor')->where('name', 'Skandar Keynes')->first();
-        $Clotilde_Hesme= DB::table('actor')->where('name', 'Clotilde Hesme')->first();
-        $Dennis_Quaid= DB::table('actor')->where('name', 'Dennis Quaid')->first();
-        $Scarlett_Johansson= DB::table('actor')->where('name', 'Scarlett Johansson')->first();
-        $Juno_Temple= DB::table('actor')->where('name', 'Juno Temple')->first();
-        $Lauren_Patel= DB::table('actor')->where('name', 'Lauren Patel')->first();
-        $Ilfenesh_Hadera= DB::table('actor')->where('name', 'Ilfenesh Hadera')->first();
-        $Matilda_Firth= DB::table('actor')->where('name', 'Matilda Firth')->first();
-        $Marton_Csokas= DB::table('actor')->where('name', 'Marton Csokas')->first();
+        $Simone_Susinna = DB::table('actor')->where('name', 'Simone Susinna')->first();
+        $Dichen_Lachman = DB::table('actor')->where('name', 'Dichen Lachman')->first();
+        $Willa_Fitzgerald = DB::table('actor')->where('name', 'Willa Fitzgerald')->first();
+        $Yura_Borisov = DB::table('actor')->where('name', 'Yura Borisov')->first();
+        $Josh_Wiggins = DB::table('actor')->where('name', 'Josh Wiggins')->first();
+        $Mark_Ruffalo = DB::table('actor')->where('name', 'Mark Ruffalo')->first();
+        $Chris_Hemsworth = DB::table('actor')->where('name', 'Chris Hemsworth')->first();
+        $Vanessa_Hudgens = DB::table('actor')->where('name', 'Vanessa Hudgens')->first();
+        $Harrison_Ford = DB::table('actor')->where('name', 'Harrison Ford')->first();
+        $Lukas_Gage = DB::table('actor')->where('name', 'Lukas Gage')->first();
+        $Nashi = DB::table('actor')->where('name', 'Nashi')->first();
+        $Emma_Corrin = DB::table('actor')->where('name', 'Emma Corrin')->first();
+        $Maddie_Hasson = DB::table('actor')->where('name', 'Maddie Hasson')->first();
+        $Tyrese_Gibson = DB::table('actor')->where('name', 'Tyrese Gibson')->first();
+        $Dan_Stevens = DB::table('actor')->where('name', 'Dan Stevens')->first();
+        $Emma_Watson = DB::table('actor')->where('name', 'Emma Watson')->first();
+        $Laura_Dern = DB::table('actor')->where('name', 'Laura Dern')->first();
+        $Mahershala_Ali = DB::table('actor')->where('name', 'Mahershala Ali')->first();
+        $Viola_Davis = DB::table('actor')->where('name', 'Viola Davis')->first();
+        $Marta_Hazas = DB::table('actor')->where('name', 'Marta Hazas')->first();
+        $Philip_Helgar = DB::table('actor')->where('name', 'Philip Helgar')->first();
+        $Paul_Freeman = DB::table('actor')->where('name', 'Paul Freeman')->first();
+        $Lucy_Liu = DB::table('actor')->where('name', 'Lucy Liu')->first();
+        $Chelsea_Cardona = DB::table('actor')->where('name', 'Chelsea Cardona')->first();
+        $Lee_Chae_dam = DB::table('actor')->where('name', 'Lee Chae-dam')->first();
+        $Haruna_Mikawa = DB::table('actor')->where('name', 'Haruna Mikawa')->first();
+        $Tika_Sumpter = DB::table('actor')->where('name', 'Tika Sumpter')->first();
+        $Keanu_Reeves = DB::table('actor')->where('name', 'Keanu Reeves')->first();
+        $Benedict_Cumberbatch = DB::table('actor')->where('name', 'Benedict Cumberbatch')->first();
+        $Bob_Gunton = DB::table('actor')->where('name', 'Bob Gunton')->first();
+        $Kit_Connor = DB::table('actor')->where('name', 'Kit Connor')->first();
+        $Jeff_Goldblum = DB::table('actor')->where('name', 'Jeff Goldblum')->first();
+        $Geraldine_Viswanathan = DB::table('actor')->where('name', 'Geraldine Viswanathan')->first();
+        $Maxwell_Jenkins = DB::table('actor')->where('name', 'Maxwell Jenkins')->first();
+        $Celia_Freijeiro = DB::table('actor')->where('name', 'Celia Freijeiro')->first();
+        $Katariina_Unt = DB::table('actor')->where('name', 'Katariina Unt')->first();
+        $Antonio_Banderas = DB::table('actor')->where('name', 'Antonio Banderas')->first();
+        $McKenna_Roberts = DB::table('actor')->where('name', 'McKenna Roberts')->first();
+        $Denise_Esteban = DB::table('actor')->where('name', 'Denise Esteban')->first();
+        $Sofia_Carson = DB::table('actor')->where('name', 'Sofia Carson')->first();
+        $John_Lithgow = DB::table('actor')->where('name', 'John Lithgow')->first();
+        $Reiko_Oimori = DB::table('actor')->where('name', 'Reiko Oimori')->first();
+        $Will_Ferrell = DB::table('actor')->where('name', 'Will Ferrell')->first();
+        $Ruby_Rose = DB::table('actor')->where('name', 'Ruby Rose')->first();
+        $Lil_Rel_Howery = DB::table('actor')->where('name', 'Lil Rel Howery')->first();
+        $Huang_Tao = DB::table('actor')->where('name', 'Huang Tao')->first();
+        $Tobias_Kersloot = DB::table('actor')->where('name', 'Tobias Kersloot')->first();
+        $Topher_Grace = DB::table('actor')->where('name', 'Topher Grace')->first();
+        $Chloe_East = DB::table('actor')->where('name', 'Chloe East')->first();
+        $Kensington_Tallman = DB::table('actor')->where('name', 'Kensington Tallman')->first();
+        $Michael_Caine = DB::table('actor')->where('name', 'Michael Caine')->first();
+        $Kevin_Durand = DB::table('actor')->where('name', 'Kevin Durand')->first();
+        $Fred_Hechinger = DB::table('actor')->where('name', 'Fred Hechinger')->first();
+        $Arya_Saloka = DB::table('actor')->where('name', 'Arya Saloka')->first();
+        $Jacki_Weaver = DB::table('actor')->where('name', 'Jacki Weaver')->first();
+        $Wei_Xiang = DB::table('actor')->where('name', 'Wei Xiang')->first();
+        $Tee_Reel = DB::table('actor')->where('name', 'Tee Reel')->first();
+        $VR_Relosa = DB::table('actor')->where('name', 'VR Relosa')->first();
+        $David_Wayman = DB::table('actor')->where('name', 'David Wayman')->first();
+        $Drew_Ray_Tanner = DB::table('actor')->where('name', 'Drew Ray Tanner')->first();
+        $Samantha_Scaffidi = DB::table('actor')->where('name', 'Samantha Scaffidi')->first();
+        $Jesse_Hutch = DB::table('actor')->where('name', 'Jesse Hutch')->first();
+        $Skandar_Keynes = DB::table('actor')->where('name', 'Skandar Keynes')->first();
+        $Clotilde_Hesme = DB::table('actor')->where('name', 'Clotilde Hesme')->first();
+        $Dennis_Quaid = DB::table('actor')->where('name', 'Dennis Quaid')->first();
+        $Scarlett_Johansson = DB::table('actor')->where('name', 'Scarlett Johansson')->first();
+        $Juno_Temple = DB::table('actor')->where('name', 'Juno Temple')->first();
+        $Lauren_Patel = DB::table('actor')->where('name', 'Lauren Patel')->first();
+        $Ilfenesh_Hadera = DB::table('actor')->where('name', 'Ilfenesh Hadera')->first();
+        $Matilda_Firth = DB::table('actor')->where('name', 'Matilda Firth')->first();
+        $Marton_Csokas = DB::table('actor')->where('name', 'Marton Csokas')->first();
 
         // Insert Movie-Actor Relationships
         $movieActor = [
@@ -650,44 +650,44 @@ class ActorMovieSeeder extends Seeder
             ['movie_id' => $TheChroniclesOfNarniaTheLionTheWitchAndTheWardrobe->movie_id, 'actor_id' => $Dennis_Quaid->actor_id],
 
             // The Price of Money Alargo Winch Adventure
-            ['movie_id' =>$ThePriceOfMoneyALargoWinchAdventure->movie_id, 'actor_id' => $Chris_Hemsworth->actor_id],
-            ['movie_id' =>$ThePriceOfMoneyALargoWinchAdventure->movie_id, 'actor_id' => $Brian_Tyree_Henry->actor_id],
-            ['movie_id' =>$ThePriceOfMoneyALargoWinchAdventure->movie_id, 'actor_id' => $Scarlett_Johansson->actor_id],
+            ['movie_id' => $ThePriceOfMoneyALargoWinchAdventure->movie_id, 'actor_id' => $Chris_Hemsworth->actor_id],
+            ['movie_id' => $ThePriceOfMoneyALargoWinchAdventure->movie_id, 'actor_id' => $Brian_Tyree_Henry->actor_id],
+            ['movie_id' => $ThePriceOfMoneyALargoWinchAdventure->movie_id, 'actor_id' => $Scarlett_Johansson->actor_id],
 
             // The Substance
-            ['movie_id' =>$TheSubstance->movie_id, 'actor_id' => $Tom_Hardy->actor_id],
-            ['movie_id' =>$TheSubstance->movie_id, 'actor_id' => $Chiwetel_Ejiofor->actor_id],
-            ['movie_id' =>$TheSubstance->movie_id, 'actor_id' => $Juno_Temple->actor_id],
+            ['movie_id' => $TheSubstance->movie_id, 'actor_id' => $Tom_Hardy->actor_id],
+            ['movie_id' => $TheSubstance->movie_id, 'actor_id' => $Chiwetel_Ejiofor->actor_id],
+            ['movie_id' => $TheSubstance->movie_id, 'actor_id' => $Juno_Temple->actor_id],
 
             // Transformers One
-            ['movie_id' =>$TransformersOne->movie_id, 'actor_id' => $Ben_Whitehead->actor_id],
-            ['movie_id' =>$TransformersOne->movie_id, 'actor_id' => $Peter_Kay->actor_id],
-            ['movie_id' =>$TransformersOne->movie_id, 'actor_id' => $Lauren_Patel->actor_id],
+            ['movie_id' => $TransformersOne->movie_id, 'actor_id' => $Ben_Whitehead->actor_id],
+            ['movie_id' => $TransformersOne->movie_id, 'actor_id' => $Peter_Kay->actor_id],
+            ['movie_id' => $TransformersOne->movie_id, 'actor_id' => $Lauren_Patel->actor_id],
 
             // Venom The Last Dance
-            ['movie_id' =>$VenomTheLastDance->movie_id, 'actor_id' => $Frank_Grillo->actor_id],
-            ['movie_id' =>$VenomTheLastDance->movie_id, 'actor_id' => $Katrina_Law->actor_id],
-            ['movie_id' =>$VenomTheLastDance->movie_id, 'actor_id' => $Ilfenesh_Hadera->actor_id],
+            ['movie_id' => $VenomTheLastDance->movie_id, 'actor_id' => $Frank_Grillo->actor_id],
+            ['movie_id' => $VenomTheLastDance->movie_id, 'actor_id' => $Katrina_Law->actor_id],
+            ['movie_id' => $VenomTheLastDance->movie_id, 'actor_id' => $Ilfenesh_Hadera->actor_id],
 
             // Wallace Gromit Vengeance Most Fowl
-            ['movie_id' =>$WallaceGromitVengeanceMostFowl->movie_id, 'actor_id' => $Ben_Whitehead->actor_id],
-            ['movie_id' =>$WallaceGromitVengeanceMostFowl->movie_id, 'actor_id' => $Peter_Kay->actor_id],
-            ['movie_id' =>$WallaceGromitVengeanceMostFowl->movie_id, 'actor_id' => $Lauren_Patel->actor_id],
+            ['movie_id' => $WallaceGromitVengeanceMostFowl->movie_id, 'actor_id' => $Ben_Whitehead->actor_id],
+            ['movie_id' => $WallaceGromitVengeanceMostFowl->movie_id, 'actor_id' => $Peter_Kay->actor_id],
+            ['movie_id' => $WallaceGromitVengeanceMostFowl->movie_id, 'actor_id' => $Lauren_Patel->actor_id],
 
             // WereWolves
-            ['movie_id' =>$Werewolves->movie_id, 'actor_id' => $Frank_Grillo->actor_id],
-            ['movie_id' =>$Werewolves->movie_id, 'actor_id' => $Katrina_Law->actor_id],
-            ['movie_id' =>$Werewolves->movie_id, 'actor_id' => $Ilfenesh_Hadera->actor_id],
+            ['movie_id' => $Werewolves->movie_id, 'actor_id' => $Frank_Grillo->actor_id],
+            ['movie_id' => $Werewolves->movie_id, 'actor_id' => $Katrina_Law->actor_id],
+            ['movie_id' => $Werewolves->movie_id, 'actor_id' => $Ilfenesh_Hadera->actor_id],
 
             // WolfMan
-            ['movie_id' =>$WolfMan->movie_id, 'actor_id' => $Christopher_Abbott->actor_id],
-            ['movie_id' =>$WolfMan->movie_id, 'actor_id' => $Julia_Garner->actor_id],
-            ['movie_id' =>$WolfMan->movie_id, 'actor_id' => $Matilda_Firth->actor_id],
+            ['movie_id' => $WolfMan->movie_id, 'actor_id' => $Christopher_Abbott->actor_id],
+            ['movie_id' => $WolfMan->movie_id, 'actor_id' => $Julia_Garner->actor_id],
+            ['movie_id' => $WolfMan->movie_id, 'actor_id' => $Matilda_Firth->actor_id],
 
             // xXx
-            ['movie_id' =>$xXx->movie_id, 'actor_id' => $Vin_Diesel->actor_id],
-            ['movie_id' =>$xXx->movie_id, 'actor_id' => $Asia_Argento->actor_id],
-            ['movie_id' =>$xXx->movie_id, 'actor_id' => $Marton_Csokas->actor_id],
+            ['movie_id' => $xXx->movie_id, 'actor_id' => $Vin_Diesel->actor_id],
+            ['movie_id' => $xXx->movie_id, 'actor_id' => $Asia_Argento->actor_id],
+            ['movie_id' => $xXx->movie_id, 'actor_id' => $Marton_Csokas->actor_id],
         ];
 
         DB::table('movie_actor')->insert($movieActor);

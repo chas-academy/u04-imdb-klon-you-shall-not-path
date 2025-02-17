@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
             Log::info('User logged in successfully', ['user' => $request->input('name')]);
 
             $request->session()->regenerate();
-    
+
             return redirect()->intended(route('home', absolute: false));
         } catch (\Exception $e) {
             Log::error('Login failed', ['error' => $e->getMessage()]);

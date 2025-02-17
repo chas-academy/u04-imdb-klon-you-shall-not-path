@@ -15,10 +15,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Image;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Response; // Testing
+// Testing
 use Intervention\Image\Drivers\Gd\Driver; // Testing
 use Intervention\Image\Encoders\AutoEncoder;
-
 
 class MovieController extends Controller
 {
@@ -61,14 +60,14 @@ class MovieController extends Controller
             'selected_movies' => 'required|array',
             'selected_movies.*' => 'exists:movie,movie_id',
         ]);
-    
+
         try {
             // Start a database transaction
             DB::beginTransaction();
-    
+
             // Get the authenticated user
             $user = Auth::user();
-    
+
             // Insert into lists table manually
             $watchlistId = DB::table('list')->insertGetId([
                 'title' => $request->name,
@@ -77,7 +76,7 @@ class MovieController extends Controller
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-    
+
             // Insert selected movies into pivot table (list_movie)
             $moviesToInsert = [];
             foreach ($request->selected_movies as $movie_id) {
@@ -86,21 +85,21 @@ class MovieController extends Controller
                     'movie_id' => $movie_id,
                 ];
             }
-    
+
             // Insert movies into pivot table
             DB::table('movie_list')->insert($moviesToInsert);
-    
+
             // Commit transaction
             DB::commit();
-    
+
             return redirect()->back()->with('success', 'Watchlist created successfully!');
         } catch (Exception $e) {
             // Rollback transaction in case of error
             DB::rollBack();
-    
+
             // Log the error for debugging
             \Log::error('Failed to create watchlist: ' . $e->getMessage());
-    
+
             return redirect()->back()->with('error', 'Failed to create the list');
         }
     }
@@ -109,32 +108,32 @@ class MovieController extends Controller
     {
         // Fetch the selected watchlist
         $selectedlist = DB::table('list')->where('list_id', $list_id)->first();
-    
+
         // If the list does not exist, return to the empty watchlist page
         if (!$selectedlist) {
             return redirect()->route('watchlist.empty')->with('error', 'Watchlist not found.');
         }
-    
+
         // Fetch movies for the selected watchlist
         $movies = DB::table('movie')
             ->join('movie_list', 'movie.movie_id', '=', 'movie_list.movie_id')
             ->where('movie_list.list_id', $list_id)
             ->select('movie.*')
             ->get();
-    
+
         // Fetch all lists for the sidebar
         $lists = DB::table('list')->get();
-    
+
         return view('watchlist', compact('selectedlist', 'movies', 'lists'));
     }
-    
-    
-    
+
+
+
 
     public function showEmptyWatchlist()
     {
         $lists = DB::table('list')->get();
-        
+
         return view('watchlist', ['lists' => $lists, 'selectedlist' => null, 'movies' => collect([])]);
     }
 
@@ -144,55 +143,55 @@ class MovieController extends Controller
         $request->validate([
             'list_id' => 'required|exists:list,list_id',
         ]);
-    
+
         return redirect()->route('watchlist.view', ['list_id' => $request->list_id])->with('debug_list', $request->list_id);
     }
 
 
     public function destroy($list_id)
-{
-    try {
-        
+    {
+        try {
+
+            $watchlist = DB::table('list')->where('list_id', $list_id)->first();
+
+
+            if (!$watchlist) {
+                return redirect()->route('watchlist.empty')->with('error', 'Watchlist not found.');
+            }
+
+            DB::table('list')->where('list_id', $list_id)->delete();
+
+            return redirect()->route('watchlist.empty')->with('success', 'Watchlist deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('watchlist.empty')->with('error', 'Failed to delete watchlist. Please try again.');
+        }
+    }
+
+
+    public function editWatchlist($list_id)
+    {
+
         $watchlist = DB::table('list')->where('list_id', $list_id)->first();
-    
+
 
         if (!$watchlist) {
             return redirect()->route('watchlist.empty')->with('error', 'Watchlist not found.');
         }
 
-        DB::table('list')->where('list_id', $list_id)->delete();
 
-        return redirect()->route('watchlist.empty')->with('success', 'Watchlist deleted successfully.');
-    } catch (\Exception $e) {
-        return redirect()->route('watchlist.empty')->with('error', 'Failed to delete watchlist. Please try again.');
+        $lists = DB::table('list')->get();
+
+
+        $movies = DB::table('movie')->get();
+
+
+        $selectedMovies = DB::table('movie_list')
+            ->where('list_id', $list_id)
+            ->pluck('movie_id')
+            ->toArray();
+
+        return view('edit-watchlist', compact('watchlist', 'lists', 'movies', 'selectedMovies'));
     }
-}
-
-
-    public function editWatchlist($list_id)
-{
-    
-    $watchlist = DB::table('list')->where('list_id', $list_id)->first();
-
-    
-    if (!$watchlist) {
-        return redirect()->route('watchlist.empty')->with('error', 'Watchlist not found.');
-    }
-
-    
-    $lists = DB::table('list')->get();
-
-    
-    $movies = DB::table('movie')->get();
-
-    
-    $selectedMovies = DB::table('movie_list')
-        ->where('list_id', $list_id)
-        ->pluck('movie_id')
-        ->toArray();
-
-    return view('edit-watchlist', compact('watchlist', 'lists', 'movies', 'selectedMovies'));
-}
 
 
     public function updateWatchlist(Request $request, $list_id)
@@ -202,19 +201,19 @@ class MovieController extends Controller
             'selected_movies' => 'required|array',
             'selected_movies.*' => 'exists:movie,movie_id',
         ]);
-    
+
         try {
             DB::beginTransaction();
-            
+
             DB::table('list')->where('list_id', $list_id)->update([
                 'title' => $request->name,
                 'updated_at' => now(),
             ]);
-    
-            
+
+
             DB::table('movie_list')->where('list_id', $list_id)->delete();
-    
-            
+
+
             $moviesToInsert = [];
             foreach ($request->selected_movies as $movie_id) {
                 $moviesToInsert[] = [
@@ -222,11 +221,11 @@ class MovieController extends Controller
                     'movie_id' => $movie_id,
                 ];
             }
-    
+
             DB::table('movie_list')->insert($moviesToInsert);
-    
+
             DB::commit();
-    
+
             return redirect()->route('watchlist.view', ['list_id' => $list_id])->with('success', 'Watchlist updated successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -249,15 +248,15 @@ class MovieController extends Controller
     {
         // Fetch the movie data
         $movie = Movie::where('movie_id', $movie_id)->with(['actor', 'genre'])->firstOrFail();
-    
+
         // Fetch all actors and genres from the database
         $actors = Actor::all();
         $genre = Genre::all();
-    
+
         // Get selected actors and genres for the movie
         $selectedActors = $movie->actor->pluck('actor_id')->toArray();
         $selectedGenres = $movie->genre->pluck('genre_id')->toArray();
-    
+
         return view('movie-form', compact('movie', 'actors', 'genre', 'selectedActors', 'selectedGenres'));
     }
 
@@ -276,43 +275,43 @@ class MovieController extends Controller
                 'genres.*' => 'exists:genre,genre_id',
                 'image' => 'nullable|image|mimes:jpeg,jpg,png|max:2048', // Image validation
             ]);
-        
+
             // Find the movie by ID
             $movie = Movie::where('movie_id', $movie_id)->firstOrFail();
-        
+
             // Update movie fields only if they are provided
-            $updateData = array_filter($request->only(['title', 'overview', 'poster', 'trailer']), fn($value) => !is_null($value));
+            $updateData = array_filter($request->only(['title', 'overview', 'poster', 'trailer']), fn ($value) => !is_null($value));
             $movie->update($updateData);
-        
+
             // Handle image upload with compression
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
-        
+
                 // Generate a new filename using movie title or unique ID if no title is provided
                 $filename = ($request->title ? str_replace(' ', '_', strtolower($request->title)) : uniqid()) . '.' . $image->getClientOriginalExtension();
                 $filepath = 'uploads/' . $filename;
-        
+
                 // Get original image dimensions
                 $data = getimagesize($image);
                 $imageHeight = 1000;
-        
+
                 // Initialize Image Manager
                 $manager = new ImageManager(new Driver());
-        
+
                 // Compress and resize image
                 $compressedImage = $manager->read($image)
                     ->scale(height: 800) // Resize image to height 800px (keeping aspect ratio)
                     ->encode(new AutoEncoder(quality: 75)); // 75% quality compression
-        
+
                 // Save compressed image to storage
                 Storage::disk('public')->put($filepath, $compressedImage);
-        
+
                 // Update movie with new poster path
                 $movie->update([
                     'poster_file_path' => $filepath
                 ]);
             }
-        
+
             // Sync actors and genres only if provided
             if ($request->has('actors')) {
                 $movie->actor()->sync($request->actors);
@@ -320,29 +319,29 @@ class MovieController extends Controller
             if ($request->has('genres')) {
                 $movie->genre()->sync($request->genres);
             }
-        
+
             // Redirect with success message
             return redirect()->back()->with('success', 'Movie updated successfully!');
 
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to updated movie. Please try again.');
         }
-    }    
-    
+    }
+
 
     public function deleteMovie($movie_id)
     {
         try {
-        
+
             $movie = DB::table('movie')->where('movie_id', $movie_id)->first();
-        
-    
+
+
             if (!$movie) {
                 return redirect()->route('allmovies.show')->with('error', 'Movie not found.');
             }
-    
+
             DB::table('movie')->where('movie_id', $movie_id)->delete();
-    
+
             return redirect()->route('allmovies.show')->with('success', 'Watchlist deleted successfully.');
         } catch (\Exception $e) {
             return redirect()->route('allmovies.show')->with('error', 'Failed to delete watchlist. Please try again.');
@@ -356,21 +355,21 @@ class MovieController extends Controller
             'title' => 'required|string|max:255',
             'overview' => 'required|string',
             'release_date' => 'required|date', // Ensure the release_date is a valid date
-            'actors' => 'required|array', 
+            'actors' => 'required|array',
             'actors.*' => 'required|exists:actor,actor_id',
             'genres' => 'required|array',
             'genres.*' => 'exists:genre,genre_id',
             'poster' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'trailer' => 'required|nullable|url',
         ]);
-    
+
         // Handle poster upload
         if ($request->hasFile('poster')) {
             $posterPath = $request->file('poster')->store('posters', 'public');
         } else {
             return back()->with('error', 'Poster upload failed.');
         }
-    
+
         // Create the movie
         $movie = Movie::create([
             'title' => $validatedData['title'],
@@ -379,11 +378,11 @@ class MovieController extends Controller
             'poster_file_path' => $posterPath,
             'trailer_file_path' => $validatedData['trailer'],
         ]);
-    
+
         // Attach actors and genres
         $movie->actor()->attach($validatedData['actors']);
         $movie->genre()->attach($validatedData['genres']);
-    
+
         return redirect()->route('allmovies.show')->with('success', 'Movie created successfully.');
     }
 }

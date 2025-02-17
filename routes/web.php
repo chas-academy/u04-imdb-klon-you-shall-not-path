@@ -5,7 +5,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GenreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\SpecificMovieController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ImageController; // Testing
 use Intervention\Image\ImageManager; // Testing
@@ -16,9 +15,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\VoteController;
 use App\Http\Controllers\MovieController;
-use App\Http\Controllers\WatchlistController;
 use App\Models\Watchlist;
-
 
 Route::get('/', [PageController::class, 'homepage'])->name('home');
 
@@ -27,7 +24,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-  
+
 Route::get('/movie/{movie_id}', [MovieController::class, 'show'])->name('movie.show');
 
 Route::post('/movie/{movie_id}/review/{review_id}/vote/add', [VoteController::class, 'add'])->middleware('auth')->name('vote.add');
@@ -95,7 +92,7 @@ Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store
 
 
 Route::get('/user-dashboard', function () {
-    return view ('user-dashboard');
+    return view('user-dashboard');
 })->middleware(['auth'])->name('user-dashboard');
 
 Route::get('/user-settings', [AdminController::class, 'showUserSettings'])->middleware(['auth'])->name('user-settings');

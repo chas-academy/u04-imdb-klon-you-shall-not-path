@@ -67,4 +67,3 @@ class ImageController extends Controller
         return response($decompressedImage)->header('Content-Type', 'image/jpeg');
     }
 }
-
