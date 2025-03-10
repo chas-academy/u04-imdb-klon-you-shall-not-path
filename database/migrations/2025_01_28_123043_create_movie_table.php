@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('movie', function (Blueprint $table) {
             $table->id('movie_id');
             $table->string('title', 255);
-            $table->mediumText('overview')->default('');
+            $table->mediumText('overview');
             $table->unsignedInteger('vote_count')->default(0);
             $table->float('vote_avr')->unsigned()->default(0);
             $table->date('release_date');
